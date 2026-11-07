@@ -1,0 +1,161 @@
+/* sits on the same page colour the sections above and below meet it with */
+.strip {
+    position: relative;
+    padding: clamp(56px, 8vw, 128px) var(--gutter);
+    background: var(--bg);
+}
+
+/* framed by two hairlines that fade out at their ends */
+/* heading centred over two rows of logos */
+.inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(28px, 3vw, 48px);
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: clamp(32px, 3.6vw, 56px) 0;
+}
+
+.inner::before,
+.inner::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(12, 12, 13, 0), rgba(12, 12, 13, 0.14) 20%, rgba(12, 12, 13, 0.14) 80%, rgba(12, 12, 13, 0));
+}
+
+.inner::before {
+    top: 0;
+}
+
+.inner::after {
+    bottom: 0;
+}
+
+.heading {
+    flex: none;
+    font-size: clamp(1.8rem, 2.8vw, 3rem);
+    text-align: center;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    white-space: nowrap;
+}
+
+/* two rows; --per-row comes from the component (5, or 3 on phones) */
+.logos {
+    display: grid;
+    grid-template-columns: repeat(var(--per-row, 5), auto);
+    justify-content: center;
+    column-gap: clamp(8px, 2vw, 40px);
+    row-gap: clamp(8px, 1.4vw, 24px);
+    list-style: none;
+}
+
+/* fixed-size slots: every mark stacks in one cell, so swapping never shifts anything;
+   the slot's font-size is the unit each mark's height is set in */
+.slot {
+    display: grid;
+    place-items: center;
+    width: clamp(130px, 11vw, 200px);
+    height: clamp(72px, 6vw, 108px);
+    font-size: clamp(13px, 1.05vw, 18px);
+}
+
+.mark {
+    grid-area: 1 / 1;
+    max-width: 100%;
+    object-fit: contain;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease;
+}
+
+.mark[data-state="in"] {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slot:hover .mark[data-state="in"] {
+    opacity: 1;
+}
+
+/* ── the swap: the outgoing mark lifts and fades, the next rises in, slot by slot.
+   The travel and blur stay small and the old mark is gone before it moves far,
+   so dark marks never smear into grey ghosts above the row. ── */
+
+@keyframes markIn {
+    from {
+        opacity: 0;
+        transform: translateY(22%);
+        filter: blur(3px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+}
+
+@keyframes markOut {
+    from {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+    60% {
+        opacity: 0;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-18%);
+        filter: blur(3px);
+    }
+}
+
+.logos[data-swapped="true"] .mark[data-state="in"] {
+    animation: markIn 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    /* starts as the old mark finishes fading, so the two never stack */
+    animation-delay: calc(var(--i) * 0.09s + 0.2s);
+}
+
+.mark[data-state="out"] {
+    visibility: visible;
+    animation: markOut 0.35s ease-in both;
+    animation-delay: calc(var(--i) * 0.09s);
+}
+
+/* ── responsive ── */
+
+/* phones: two rows of three, filling the width */
+@media (max-width: 640px) {
+    .logos {
+        width: 100%;
+        grid-template-columns: repeat(var(--per-row, 3), minmax(0, 1fr));
+        column-gap: 0;
+        row-gap: 10px;
+    }
+
+    .slot {
+        width: auto;
+        height: 64px;
+        font-size: 11px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .logos[data-swapped="true"] .mark[data-state="in"],
+    .mark[data-state="out"] {
+        animation: none;
+    }
+
+    .mark[data-state="out"] {
+        visibility: hidden;
+    }
+}

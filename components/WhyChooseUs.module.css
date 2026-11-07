@@ -1,0 +1,492 @@
+.section {
+    position: relative;
+    background: var(--bg);
+}
+
+/* the tall track gives the page room to scroll while the stage stays pinned */
+.track {
+    position: relative;
+    height: calc(100svh + var(--steps) * 55svh);
+}
+
+.stage {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(28px, 6vh, 72px);
+    padding: clamp(48px, 7vh, 88px) var(--gutter) clamp(32px, 5vh, 64px);
+    /* clip, not hidden: a hidden box can still be scrolled sideways by a focused button */
+    overflow: hidden;
+    overflow: clip;
+    background:
+        /* settles to the flat page colour at the bottom, so the strip below joins without a seam */
+        linear-gradient(0deg, var(--bg) 0%, rgba(246, 246, 243, 0) 14%),
+        /* a soft pool of white behind the dial and card */
+        radial-gradient(60% 55% at 50% 62%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 72%),
+        /* starts and ends on the page colour, a touch deeper through the middle */
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-sunk) 50%, var(--bg) 100%);
+}
+
+/* ── heading ── */
+
+.head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.title {
+    font-size: clamp(2.2rem, 3.9vw, 4rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+}
+
+/* ── layout ── */
+
+.body {
+    display: grid;
+    grid-template-columns: auto minmax(0, 740px);
+    justify-content: center;
+    align-items: center;
+    gap: clamp(40px, 7.5vw, 145px);
+    width: 100%;
+}
+
+/* ── dial ── */
+
+.dial {
+    --d: min(500px, 28vw, 56svh);
+    /* where the active segment points: 0deg = toward the card on the right */
+    --base: 0deg;
+    /* set every frame from the scroll position, so no CSS transition here */
+    --rot: 0deg;
+    position: relative;
+    width: var(--d);
+    aspect-ratio: 1;
+}
+
+.ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    transform: rotate(calc(var(--rot) + var(--base)));
+    will-change: transform;
+}
+
+.seg {
+    fill: var(--bg-raise);
+    stroke: var(--line);
+    stroke-width: 1.5;
+    transform-box: view-box;
+    transform-origin: center;
+    cursor: pointer;
+    transition:
+        fill 0.5s ease,
+        stroke 0.5s ease,
+        transform 0.5s ease,
+        filter 0.5s ease;
+}
+
+.seg[data-hover="true"] {
+    fill: #f1f1ee;
+    stroke: var(--line-strong);
+}
+
+/* fixed at the base angle; the segments turn underneath it */
+.slot {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    transform: rotate(var(--base));
+}
+
+.slot path {
+    fill: var(--ink);
+    stroke: var(--ink);
+    stroke-width: 2.5;
+    filter: drop-shadow(0 14px 24px rgba(12, 12, 13, 0.22));
+}
+
+.labels {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    transform: rotate(calc(var(--rot) + var(--base)));
+    will-change: transform;
+}
+
+/* sits at its segment's centre; the inner span turns back so text stays upright */
+.label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: 6px;
+    border-radius: 10px;
+    pointer-events: auto;
+    color: var(--ink-soft);
+    transform: translate(-50%, -50%) rotate(var(--a)) translateX(calc(var(--d) * 0.335)) rotate(calc(var(--a) * -1));
+    transition: color 0.4s ease;
+}
+
+.label[data-hover="true"] {
+    color: var(--ink);
+}
+
+.label[data-active="true"] {
+    color: var(--on-ink);
+}
+
+.labelInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(6px, 0.7vw, 12px);
+    transform: rotate(calc((var(--rot) + var(--base)) * -1));
+}
+
+.labelTop {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 0.9vw, 14px);
+}
+
+.num {
+    font-size: clamp(10px, 0.8vw, 14px);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--ink-faint);
+    transition: color 0.4s ease;
+}
+
+.label[data-active="true"] .num {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.labelIcon {
+    display: inline-flex;
+    width: clamp(20px, 1.6vw, 28px);
+    height: clamp(20px, 1.6vw, 28px);
+}
+
+.labelIcon svg,
+.cardIcon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.label[data-active="true"] .labelIcon {
+    color: var(--on-ink);
+}
+
+.labelText {
+    font-size: clamp(12px, 0.92vw, 16px);
+    font-weight: 500;
+    line-height: 1.3;
+    text-align: center;
+}
+
+.label[data-active="true"] .labelText {
+    font-weight: 600;
+}
+
+.hub {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: calc(var(--d) * 0.33);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--d) * 0.016);
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 30%, #ffffff, #f4f4f1 70%);
+    border: 1px solid var(--line);
+    box-shadow:
+        0 0 0 calc(var(--d) * 0.012) rgba(12, 12, 13, 0.03),
+        0 18px 40px rgba(12, 12, 13, 0.1);
+    color: var(--ink);
+    font-size: calc(var(--d) * 0.029);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    pointer-events: none;
+}
+
+.hubLogo {
+    width: calc(var(--d) * 0.075);
+    height: auto;
+}
+
+/* ── card ── */
+
+.card {
+    display: grid;
+    padding: clamp(24px, 2.6vw, 50px);
+    border-radius: clamp(20px, 1.8vw, 30px);
+    border: 1px solid var(--line);
+    background: var(--bg-raise);
+    box-shadow: var(--shadow-card);
+}
+
+/* all six panes share one grid cell; only the active one is shown */
+.pane {
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity 0.35s ease,
+        visibility 0s linear 0.35s;
+}
+
+.pane[data-state="active"] {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition:
+        opacity 0.5s ease 0.1s,
+        visibility 0s;
+}
+
+/* rows drift in the direction the dial is turning, softly blurred, one after another */
+.pane > * {
+    transition:
+        transform 0.75s cubic-bezier(0.22, 0.8, 0.24, 1),
+        filter 0.6s ease,
+        opacity 0.6s ease;
+}
+
+.pane[data-state="after"] > * {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(6px);
+}
+
+.pane[data-state="before"] > * {
+    opacity: 0;
+    transform: translateY(-16px);
+    filter: blur(6px);
+}
+
+.pane[data-state="active"] > * {
+    transition-delay: calc(0.1s + var(--i) * 0.07s);
+}
+
+.cardHead {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2vw, 32px);
+}
+
+.cardIcon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: clamp(48px, 3.6vw, 68px);
+    aspect-ratio: 1;
+    padding: clamp(12px, 1vw, 18px);
+    border-radius: clamp(12px, 1vw, 16px);
+    background: var(--ink);
+    color: var(--on-ink);
+}
+
+.cardTitle {
+    font-size: clamp(1.5rem, 2.2vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+}
+
+.cardBody {
+    margin-top: clamp(18px, 1.7vw, 28px);
+    padding-bottom: clamp(18px, 1.7vw, 28px);
+    border-bottom: 1px solid var(--line);
+    font-size: clamp(14px, 1.05vw, 19px);
+    line-height: 1.65;
+    color: var(--ink-soft);
+}
+
+.points {
+    display: grid;
+    gap: clamp(12px, 1.25vw, 20px);
+    padding: clamp(18px, 1.9vw, 30px) 0;
+    border-bottom: 1px solid var(--line);
+    list-style: none;
+}
+
+.points li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: clamp(14px, 1.05vw, 19px);
+    font-weight: 500;
+}
+
+.points li::before {
+    content: "";
+    flex: none;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--ink);
+}
+
+.cardFoot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding-top: clamp(18px, 1.9vw, 30px);
+    font-size: clamp(12px, 0.95vw, 15px);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.count {
+    flex: none;
+    letter-spacing: 0.14em;
+}
+
+/* ── responsive ── */
+
+@media (max-width: 900px) {
+    .stage {
+        justify-content: flex-start;
+        gap: clamp(18px, 3vh, 28px);
+        padding-top: clamp(40px, 7vh, 64px);
+    }
+
+    .body {
+        grid-template-columns: minmax(0, 1fr);
+        justify-items: center;
+        gap: clamp(16px, 3vh, 28px);
+    }
+
+    .dial {
+        --d: min(340px, 74vw, 36svh);
+        /* stacked: the active segment points down at the card */
+        --base: 90deg;
+    }
+
+    .labelInner {
+        gap: 4px;
+    }
+
+    .labelTop {
+        gap: 6px;
+    }
+
+    .num {
+        font-size: 10px;
+    }
+
+    .labelIcon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .labelText {
+        font-size: 11px;
+    }
+
+    .hub {
+        font-size: 9px;
+    }
+
+    .card {
+        width: 100%;
+        padding: 20px 20px 18px;
+    }
+
+    .cardHead {
+        gap: 14px;
+    }
+
+    .cardIcon {
+        width: 46px;
+        padding: 11px;
+    }
+
+    .cardTitle {
+        font-size: 1.3rem;
+    }
+
+    .cardBody {
+        margin-top: 14px;
+        padding-bottom: 14px;
+        font-size: 14px;
+        line-height: 1.55;
+    }
+
+    .points {
+        gap: 8px;
+        padding: 14px 0;
+    }
+
+    .points li {
+        font-size: 14px;
+        gap: 10px;
+    }
+
+    .points li::before {
+        width: 7px;
+        height: 7px;
+    }
+
+    .cardFoot {
+        padding-top: 14px;
+        font-size: 11px;
+    }
+}
+
+/* short phones: everything has to fit in one pinned screen */
+@media (max-width: 900px) and (max-height: 760px) {
+    .stage {
+        padding-top: 28px;
+    }
+
+    .title {
+        font-size: 1.85rem;
+    }
+
+    .dial {
+        --d: min(340px, 74vw, 32svh);
+    }
+
+    .labelIcon {
+        display: none;
+    }
+
+    .cardFoot {
+        display: none;
+    }
+
+    .points {
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .seg,
+    .label,
+    .num,
+    .pane,
+    .pane > * {
+        transition: none;
+    }
+}

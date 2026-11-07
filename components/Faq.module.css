@@ -1,0 +1,606 @@
+/* FAQ, in the dark band that runs on from Testimonials, in the language of the
+   Services band: white type with a silver second line, glass panels, thin
+   numerals, a lit bar on the open row, and the white pill. Colours are set
+   here, locally.
+
+   Pinned (screens 560px+ tall): the section holds the screen for the length of
+   .scroller and the page scroll moves only the questions, inside .viewport. */
+.scroller {
+    --ink: #ffffff;
+    --ink-soft: rgba(255, 255, 255, 0.78);
+    --ink-dim: rgba(255, 255, 255, 0.5);
+    --ink-faint: rgba(255, 255, 255, 0.3);
+    --line: rgba(255, 255, 255, 0.12);
+    --line-strong: rgba(255, 255, 255, 0.24);
+    --band: #18181a;
+    position: relative;
+    /* overlaps Testimonials by a pixel, so a fractional edge can't show a hairline */
+    margin-top: -1px;
+    background: var(--band);
+    color: var(--ink);
+}
+
+.section {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    background: var(--band);
+}
+
+/* a soft light that drifts slowly behind the questions */
+.section::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -20%;
+    right: -10%;
+    width: 70%;
+    height: 90%;
+    pointer-events: none;
+    background: radial-gradient(closest-side, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0));
+    animation: drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+    to {
+        transform: translate3d(-18%, 22%, 0) scale(1.15);
+    }
+}
+
+/* a hairline that fades at its ends, between this band and Testimonials */
+.section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: var(--gutter);
+    right: var(--gutter);
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.14) 20%, rgba(255, 255, 255, 0.14) 80%, rgba(255, 255, 255, 0));
+}
+
+.scroller[data-pinned="true"] .section {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+}
+
+.inner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    grid-template-rows: minmax(0, 1fr);
+    gap: clamp(40px, 6vw, 120px);
+    max-width: 1400px;
+    margin: 0 auto;
+    /* the top clears the fixed Menu button */
+    padding: clamp(100px, 14vh, 150px) var(--gutter) clamp(80px, 10vw, 140px);
+}
+
+.scroller[data-pinned="true"] .inner {
+    height: 100%;
+    padding-bottom: clamp(28px, 6vh, 64px);
+}
+
+/* ── left: title and the contact card ── */
+
+.side {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(32px, 4vh, 56px);
+    min-height: 0;
+}
+
+/* two-tone, like the service titles: white, then silver */
+.title {
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(2.4rem, 4.3vw, 5rem);
+    font-weight: 700;
+    line-height: 1.03;
+    letter-spacing: -0.035em;
+}
+
+/* each line rises out of its own mask */
+.titleLine {
+    display: block;
+    overflow: hidden;
+    /* room for descenders inside the mask */
+    padding-bottom: 0.06em;
+    margin-bottom: -0.06em;
+}
+
+.titleLine > * {
+    display: block;
+}
+
+.title em {
+    font-style: normal;
+    background: linear-gradient(90deg, #ffffff 0%, #c9c9c9 55%, #9a9a9a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.lede {
+    max-width: 26em;
+    margin-top: clamp(16px, 2.2vh, 28px);
+    font-size: clamp(15px, 1.15vw, 19px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+}
+
+/* the contact card: frosted glass with a light in its corner */
+.contact {
+    position: relative;
+    max-width: 460px;
+    padding: clamp(24px, 2.2vw, 38px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: clamp(22px, 1.8vw, 30px);
+    background:
+        radial-gradient(80% 90% at 100% 0%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 60%),
+        linear-gradient(140deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+}
+
+/* the second copy closes the list on phones only */
+.contactEnd {
+    display: none;
+}
+
+.contactTitle {
+    font-size: clamp(20px, 1.6vw, 26px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.contactText {
+    margin-top: 10px;
+    font-size: clamp(14.5px, 1vw, 16px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+}
+
+/* the white pill with a black arrow disc, as in Services */
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    height: 54px;
+    margin-top: clamp(20px, 2.4vh, 30px);
+    padding: 0 7px 0 24px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #0c0c0d;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.pill:hover {
+    background: #e8e8e8;
+    transform: translateY(-2px);
+}
+
+.pillIcon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #0c0c0d;
+    color: #ffffff;
+}
+
+.pillIcon svg {
+    width: 40%;
+    height: 40%;
+    transition: transform 0.25s ease;
+}
+
+.pill:hover .pillIcon svg {
+    transform: translate(2px, -2px);
+}
+
+.pill:focus-visible,
+.tab:focus-visible,
+.q:focus-visible {
+    outline-color: #ffffff;
+}
+
+/* ── right: tabs, then the window the questions scroll through ── */
+
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    min-width: 0;
+}
+
+/* a glass bar holding one row of tabs; it scrolls sideways when it can't fit */
+.tabsWrap {
+    flex: none;
+    max-width: 100%;
+    align-self: flex-start;
+    padding: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    overflow: hidden;
+}
+
+.tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2px;
+    overflow-x: auto;
+    border-radius: 999px;
+    scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.tab {
+    position: relative;
+    flex: none;
+    height: 42px;
+    padding: 0 clamp(10px, 1.05vw, 20px);
+    border-radius: 999px;
+    font-size: clamp(12.5px, 0.95vw, 14.5px);
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--ink-dim);
+    transition: color 0.3s ease;
+}
+
+.tab:hover {
+    color: var(--ink);
+}
+
+.tab[data-active="true"] {
+    color: #0c0c0d;
+}
+
+/* the white pill that slides to the chosen tab */
+.tabPill {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: #ffffff;
+    box-shadow: 0 6px 24px rgba(255, 255, 255, 0.18);
+}
+
+.tabLabel {
+    position: relative;
+}
+
+.listWrap {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    margin-top: clamp(14px, 2.2vh, 26px);
+}
+
+/* a thin rail beside the list that fills as the page scrolls through it */
+.rail {
+    position: absolute;
+    left: 0;
+    top: 16px;
+    bottom: 56px;
+    width: 2px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.scroller[data-pinned="true"][data-scrollable="true"] .rail {
+    opacity: 1;
+}
+
+.railFill {
+    position: absolute;
+    inset: 0;
+    background: #ffffff;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+    transform-origin: top;
+    transform: scaleY(var(--p, 0));
+}
+
+.viewport {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    /* past the rail, with room for the open row's glow; clip, not hidden, so it can't scroll itself */
+    padding: 0 6px 0 22px;
+    overflow: clip;
+}
+
+.scroller[data-pinned="true"] .viewport {
+    /* rows fade out at the window's edges instead of being cut */
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 16px, #000 calc(100% - 56px), transparent);
+    mask-image: linear-gradient(180deg, transparent 0, #000 16px, #000 calc(100% - 56px), transparent);
+}
+
+.content {
+    padding: 16px 0 72px;
+    will-change: transform;
+}
+
+.list {
+    list-style: none;
+    border-top: 1px solid var(--line);
+}
+
+.row {
+    position: relative;
+    border-bottom: 1px solid var(--line);
+    transition: border-color 0.4s ease;
+}
+
+/* the open row lifts onto a glass panel with a lit bar, like the active service */
+.row::before,
+.row::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.45s ease;
+}
+
+.row::before {
+    inset: -1px 0;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: clamp(16px, 1.3vw, 22px);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04) 70%, rgba(255, 255, 255, 0.02));
+}
+
+.row::after {
+    left: 0;
+    top: clamp(20px, 1.7vw, 28px);
+    height: clamp(26px, 2vw, 34px);
+    width: 3px;
+    border-radius: 3px;
+    background: #ffffff;
+    box-shadow: 0 0 14px 2px rgba(255, 255, 255, 0.4);
+}
+
+/* a faint sheen on the row under the pointer */
+.row:hover::before {
+    opacity: 0.45;
+}
+
+.row[data-open="true"] {
+    z-index: 1;
+    border-bottom-color: transparent;
+}
+
+.row[data-open="true"]::before,
+.row[data-open="true"]::after {
+    opacity: 1;
+}
+
+.row > * {
+    position: relative;
+}
+
+.q {
+    display: grid;
+    grid-template-columns: clamp(52px, 4vw, 76px) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: clamp(18px, 1.6vw, 26px) clamp(16px, 1.4vw, 26px);
+    text-align: left;
+}
+
+.num {
+    font-size: clamp(22px, 1.55vw, 30px);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-faint);
+    transition: color 0.4s ease;
+}
+
+.text {
+    font-size: clamp(15.5px, 1.12vw, 18.5px);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    transition: color 0.4s ease;
+}
+
+.row[data-open="true"] .num {
+    color: var(--ink);
+}
+
+.row[data-open="true"] .text,
+.q:hover .text {
+    color: var(--ink);
+}
+
+.icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    color: var(--ink);
+    transition:
+        transform 0.45s cubic-bezier(0.22, 0.8, 0.24, 1),
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.icon svg {
+    width: 13px;
+    height: 13px;
+}
+
+.q:hover .icon {
+    border-color: #ffffff;
+}
+
+/* open: a white disc with the plus turned to a cross */
+.row[data-open="true"] .icon {
+    transform: rotate(135deg);
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #0c0c0d;
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.25);
+}
+
+.answerWrap {
+    overflow: hidden;
+}
+
+/* lines up under the question, past the numeral */
+.answer {
+    max-width: 44em;
+    padding: 0 clamp(16px, 1.4vw, 26px) clamp(22px, 1.9vw, 32px) calc(clamp(16px, 1.4vw, 26px) + clamp(52px, 4vw, 76px) + 12px);
+    font-size: clamp(14.5px, 1.02vw, 17px);
+    line-height: 1.7;
+    color: var(--ink-soft);
+}
+
+/* ── small laptops and landscape tablets: the questions take more of the width,
+   so all six tabs fit their row ── */
+
+@media (min-width: 901px) and (max-width: 1180px) {
+    .inner {
+        grid-template-columns: minmax(0, 0.68fr) minmax(0, 1.32fr);
+        column-gap: 40px;
+    }
+}
+
+/* ── short desktops: tighter left column so the card still fits ── */
+
+@media (min-width: 901px) and (max-height: 760px) {
+    .title {
+        font-size: clamp(2.2rem, 3.6vw, 4rem);
+    }
+
+    .lede {
+        font-size: 15px;
+    }
+
+    .contactText {
+        display: none;
+    }
+}
+
+/* ── phones and tablets: one column ── */
+
+@media (max-width: 900px) {
+    .inner {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto minmax(0, 1fr);
+        row-gap: 18px;
+        padding-top: clamp(84px, 12vh, 110px);
+    }
+
+    .title {
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 0.25em;
+        font-size: clamp(2rem, 8.4vw, 3rem);
+    }
+
+    .lede {
+        margin-top: 10px;
+        font-size: 14.5px;
+    }
+
+    /* the card moves to the end of the list */
+    .contactSide {
+        display: none;
+    }
+
+    .contactEnd {
+        display: block;
+        max-width: none;
+        margin-top: 28px;
+    }
+
+    .listWrap {
+        margin-top: 12px;
+    }
+
+    /* the bar spans the width; the row inside it scrolls sideways, fading at
+       its right end to show there's more */
+    .tabsWrap {
+        align-self: stretch;
+    }
+
+    .tabs {
+        -webkit-mask-image: linear-gradient(90deg, #000 82%, transparent);
+        mask-image: linear-gradient(90deg, #000 82%, transparent);
+    }
+
+    .tab {
+        height: 38px;
+        padding: 0 14px;
+        font-size: 13px;
+    }
+
+    .viewport {
+        padding-left: 14px;
+    }
+
+    .q {
+        grid-template-columns: 36px minmax(0, 1fr) auto;
+        padding: 16px 12px;
+    }
+
+    .num {
+        font-size: 19px;
+    }
+
+    .icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .row::after {
+        top: 20px;
+        height: 24px;
+    }
+
+    .answer {
+        padding: 0 14px 20px calc(12px + 36px + 12px);
+    }
+}
+
+@media (max-width: 480px) {
+    /* on narrow phones the answer uses the full width */
+    .answer {
+        padding-left: 14px;
+    }
+}
+
+/* phones short on height: the line under the title gives way to the questions */
+@media (max-width: 900px) and (max-height: 740px) {
+    .lede {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .section::before {
+        animation: none;
+    }
+}

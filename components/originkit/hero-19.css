@@ -1,0 +1,24 @@
+/* hero-19 — Visionary wellness partner hero (from diip3sh/sections section-26) */
+
+/* Pixie: the hero uses the site's one font (Montserrat, via font-sans), so no
+   extra fonts are loaded here. */
+
+/* Pixie: the copy rises in one piece after another on load */
+@keyframes h19-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(6px);
+  }
+}
+
+.h19 .h19-in {
+  animation: h19-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(0.15s + var(--d, 0) * 0.12s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .h19 .h19-in {
+    animation: none;
+  }
+}

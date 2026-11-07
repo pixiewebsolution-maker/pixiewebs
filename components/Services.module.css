@@ -1,0 +1,699 @@
+/* A photo band within the light site: the service photo fills the section, so
+   the copy turns white over it. The colours are set here, locally. */
+.section {
+    --ink: #ffffff;
+    --ink-soft: rgba(255, 255, 255, 0.82);
+    --ink-dim: rgba(255, 255, 255, 0.6);
+    --line: rgba(255, 255, 255, 0.14);
+    /* a soft charcoal, not black, so the band doesn't slam shut after the
+       light section above */
+    --band: #18181a;
+    --edge: clamp(20px, 4vw, 72px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100svh;
+    color: var(--ink);
+    /* clip, not hidden: the blurred layer bleeds past the edges, and a hidden
+       box can still be scrolled sideways when a focused button pulls it */
+    overflow: hidden;
+    overflow: clip;
+    isolation: isolate;
+    /* a clean, straight edge against the light page above: no fade, no curve */
+    background: var(--band);
+}
+
+/* Side by side (wider than 900px), the band pins for the length of the track:
+   one screen, plus 70% of a screen of scroll for each service after the first. */
+@media (min-width: 901px) {
+    .scroller {
+        height: calc(100vh + (var(--n) - 1) * 70vh);
+        height: calc(100svh + (var(--n) - 1) * 70svh);
+    }
+
+    .section {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        height: 100svh;
+    }
+}
+
+/* ── backdrop: one photo per service, crossfading ── */
+
+/* in full colour, like the client sites in Our Work below */
+.bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: clip;
+}
+
+.frame {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.frame[data-on="true"] {
+    opacity: 1;
+}
+
+.photo {
+    object-fit: cover;
+}
+
+.ambient {
+    position: absolute;
+    inset: -6%;
+    filter: blur(48px) brightness(0.85);
+}
+
+/* sized so the subject sits large between the copy and the list (centre at 52%) */
+.sharp {
+    --w: 72vw;
+    position: absolute;
+    top: 56%;
+    left: calc(52% - var(--fx) * var(--w));
+    width: var(--w);
+    aspect-ratio: 2 / 1;
+    transform: translateY(-50%) scale(1.05);
+    transition: transform 6s cubic-bezier(0.2, 0.6, 0.2, 1);
+    -webkit-mask-image:
+        linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent),
+        linear-gradient(180deg, transparent, #000 10%, #000 90%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image:
+        linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent),
+        linear-gradient(180deg, transparent, #000 10%, #000 90%, transparent);
+    mask-composite: intersect;
+}
+
+/* a slow settle each time a photo comes in */
+.frame[data-on="true"] .sharp {
+    transform: translateY(-50%);
+}
+
+/* deep behind the copy (left) and the list (right), the photo lit between */
+.shade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        /* the base settles into the band's own charcoal, which Our Work below
+           starts on, so the two sections meet without a seam */
+        linear-gradient(180deg, rgba(24, 24, 26, 0) 80%, var(--band) 100%),
+        linear-gradient(
+            90deg,
+            rgba(24, 24, 26, 0.86) 0%,
+            rgba(24, 24, 26, 0.74) 30%,
+            rgba(24, 24, 26, 0.42) 44%,
+            rgba(24, 24, 26, 0.04) 54%,
+            rgba(24, 24, 26, 0.08) 64%,
+            rgba(24, 24, 26, 0.68) 74%,
+            rgba(24, 24, 26, 0.82) 100%
+        ),
+        /* a light tint over everything, so no bright patch of photo competes with the text */
+        linear-gradient(rgba(24, 24, 26, 0.1), rgba(24, 24, 26, 0.1));
+}
+
+/* ── layout ── */
+
+.inner {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, min(25vw, 440px));
+    align-items: center;
+    gap: clamp(32px, 4vw, 80px);
+    padding: clamp(56px, 13vh, 130px) var(--edge) clamp(110px, 14vh, 140px) var(--gutter);
+}
+
+/* centred against the list, so the headline lines up with its first rows */
+.left {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+/* ── copy panes ── */
+
+.copy {
+    display: grid;
+}
+
+.pane {
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.35s ease,
+        visibility 0s linear 0.35s;
+}
+
+.pane[data-state="active"] {
+    opacity: 1;
+    visibility: visible;
+    transition:
+        opacity 0.5s ease 0.1s,
+        visibility 0s;
+}
+
+.pane > * {
+    transition:
+        transform 0.8s cubic-bezier(0.22, 0.8, 0.24, 1),
+        filter 0.6s ease,
+        opacity 0.6s ease;
+}
+
+.pane[data-state="after"] > * {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(8px);
+}
+
+.pane[data-state="before"] > * {
+    opacity: 0;
+    transform: translateY(-18px);
+    filter: blur(8px);
+}
+
+.pane[data-state="active"] > * {
+    transition-delay: calc(0.1s + var(--i) * 0.08s);
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(2.4rem, 4.3vw, 5.2rem);
+    font-weight: 700;
+    line-height: 1.03;
+    letter-spacing: -0.035em;
+}
+
+/* the second line fades from white to silver */
+.title em {
+    font-style: normal;
+    background: linear-gradient(90deg, #ffffff 0%, #c9c9c9 55%, #9a9a9a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.body {
+    max-width: 33em;
+    margin-top: clamp(18px, 2vw, 36px);
+    font-size: clamp(15px, 1.15vw, 21px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+}
+
+/* two pills a row, so they stay on the copy's side of the photo */
+.includes {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    justify-items: start;
+    gap: clamp(10px, 0.9vw, 16px);
+    margin-top: clamp(20px, 2vw, 36px);
+    list-style: none;
+}
+
+.includes li {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(9px, 0.7vw, 12px);
+    height: clamp(40px, 2.75vw, 50px);
+    padding: 0 clamp(14px, 1.2vw, 22px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-size: clamp(13px, 0.86vw, 15.5px);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.includes svg {
+    width: 1.4em;
+    height: 1.4em;
+    flex: none;
+}
+
+/* ── calls to action ── */
+
+.ctas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: clamp(20px, 2.2vw, 40px);
+    margin-top: clamp(32px, 3.4vw, 60px);
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(18px, 1.6vw, 28px);
+    height: clamp(52px, 3.25vw, 60px);
+    padding: 0 7px 0 clamp(22px, 1.6vw, 28px);
+    border-radius: 999px;
+    background: #ffffff;
+    color: #0c0c0d;
+    font-size: clamp(15px, 0.95vw, 17px);
+    font-weight: 600;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.pill:hover {
+    background: #e8e8e8;
+    transform: translateY(-2px);
+}
+
+.pillIcon {
+    display: grid;
+    place-items: center;
+    width: clamp(40px, 2.5vw, 46px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #0c0c0d;
+    color: #ffffff;
+}
+
+.pillIcon svg {
+    width: 40%;
+    height: 40%;
+    transition: transform 0.25s ease;
+}
+
+.pill:hover .pillIcon svg {
+    transform: translate(2px, -2px);
+}
+
+.watch {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(12px, 0.9vw, 16px);
+    font-size: clamp(15px, 0.95vw, 17px);
+    font-weight: 600;
+}
+
+.watchIcon {
+    display: grid;
+    place-items: center;
+    width: clamp(42px, 2.65vw, 48px);
+    aspect-ratio: 1;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 50%;
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.watchIcon svg {
+    width: 30%;
+    height: 30%;
+    margin-left: 2px;
+}
+
+.watch:hover .watchIcon {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── service list ── */
+
+.list {
+    position: relative;
+    padding: clamp(20px, 1.6vw, 30px) 0 clamp(8px, 0.6vw, 12px) clamp(20px, 1.8vw, 32px);
+    list-style: none;
+}
+
+/* the hairline that separates the list from the photo */
+.list::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.18) 15%, rgba(255, 255, 255, 0.18) 85%, rgba(255, 255, 255, 0));
+}
+
+.row {
+    position: relative;
+    display: grid;
+    grid-template-columns: clamp(56px, 4.1vw, 78px) minmax(0, 1fr) auto;
+    align-items: center;
+    width: 100%;
+    padding: clamp(16px, 1.45vw, 27px) clamp(14px, 1.1vw, 20px);
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    transition: border-color 0.4s ease;
+}
+
+/* the active row's frosted panel and its white left bar */
+.row::before,
+.row::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.45s ease;
+}
+
+.row::before {
+    inset: 0;
+    border-radius: clamp(14px, 1vw, 18px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03) 70%, rgba(255, 255, 255, 0));
+}
+
+.row::after {
+    left: 0;
+    top: 22%;
+    bottom: 22%;
+    width: 3px;
+    border-radius: 3px;
+    background: #ffffff;
+    box-shadow: 0 0 14px 2px rgba(255, 255, 255, 0.4);
+}
+
+.row[data-active="true"] {
+    border-bottom-color: transparent;
+}
+
+.row[data-active="true"]::before,
+.row[data-active="true"]::after {
+    opacity: 1;
+}
+
+.row > * {
+    position: relative;
+}
+
+.num {
+    font-size: clamp(24px, 1.65vw, 32px);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: var(--ink-dim);
+}
+
+.name {
+    font-size: clamp(14px, 1vw, 18px);
+    font-weight: 500;
+    color: var(--ink-soft);
+    transition: color 0.4s ease;
+}
+
+.row[data-active="true"] .name,
+.row:hover .name {
+    color: var(--ink);
+}
+
+.rowArrow {
+    display: inline-flex;
+    width: 18px;
+    height: 18px;
+    color: var(--ink);
+    transition: transform 0.3s ease;
+}
+
+.rowArrow svg {
+    width: 100%;
+    height: 100%;
+}
+
+.row:hover .rowArrow {
+    transform: translate(2px, -2px);
+}
+
+/* ── progress meter ── */
+
+.meter {
+    position: absolute;
+    right: var(--edge);
+    bottom: clamp(28px, 5.5vh, 64px);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 1.8vw, 34px);
+    font-size: clamp(11px, 0.78vw, 14px);
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    /* equal-width digits, so "01" and "04" take the same room */
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-soft);
+}
+
+.tags {
+    display: grid;
+}
+
+.tags > span {
+    grid-area: 1 / 1;
+    visibility: hidden;
+}
+
+.tags > span[data-on="true"] {
+    visibility: visible;
+}
+
+.track {
+    position: relative;
+    width: clamp(100px, 7.7vw, 142px);
+    height: 2px;
+    border-radius: 2px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.fill {
+    position: absolute;
+    inset: 0;
+    background: #ffffff;
+    transform: scaleX(var(--p));
+    transform-origin: left;
+    transition: transform 0.6s ease;
+}
+
+/* ── entrance, once the section scrolls in ── */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(6px);
+    transition:
+        opacity 0.9s ease,
+        transform 1s cubic-bezier(0.2, 0.7, 0.2, 1),
+        filter 0.9s ease;
+    transition-delay: calc(var(--d) * 0.12s);
+}
+
+.section[data-inview="true"] .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+}
+
+/* ── responsive ── */
+
+/* narrower desktops: the copy sits at its minimum sizes, so the photo steps
+   back and right to keep the laptop's own lettering clear of it */
+@media (min-width: 901px) and (max-width: 1300px) {
+    .sharp {
+        --w: 58vw;
+        left: calc(60% - var(--fx) * var(--w));
+    }
+}
+
+@media (max-width: 900px) {
+    .section {
+        min-height: 0;
+    }
+
+    /* stacked layout: the photo heads the section and fades into the blur,
+       so the copy below never sits on top of the photo's own lettering */
+    .sharp {
+        top: 0;
+        left: 0;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        transform: none;
+        -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent);
+        mask-image: linear-gradient(180deg, #000 55%, transparent);
+    }
+
+    .sharp .photo {
+        object-position: calc(var(--fx) * 100%) 50%;
+    }
+
+    .frame[data-on="true"] .sharp {
+        transform: none;
+    }
+
+    .shade {
+        background:
+            /* settles into the band's charcoal at the foot, where Our Work starts */
+            linear-gradient(180deg, rgba(24, 24, 26, 0) 88%, var(--band) 100%),
+            linear-gradient(
+            180deg,
+            rgba(24, 24, 26, 0.04) 0,
+            rgba(24, 24, 26, 0.2) 40vw,
+            rgba(24, 24, 26, 0.76) 58vw,
+            rgba(24, 24, 26, 0.86) 100%
+        );
+    }
+
+    .inner {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 40px;
+        /* clears most of the 16:10 header photo */
+        padding: 52vw var(--gutter) 64px;
+    }
+
+    .title {
+        font-size: clamp(2.2rem, 9.5vw, 3.2rem);
+    }
+
+    /* two long pills don't fit side by side on a phone: let them wrap */
+    .includes {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .list {
+        padding: 0;
+    }
+
+    .list::before {
+        display: none;
+    }
+
+    .meter {
+        display: none;
+    }
+}
+
+/* Phones and tablets tall enough (600px+) pin too, on a compact layout that
+   fits one screen: the photo heads it, the copy and buttons follow, and the
+   meter at the foot shows which service of five is up. The list gives way to
+   the meter, since the scroll now does the choosing. */
+@media (max-width: 900px) and (min-height: 600px) {
+    .scroller {
+        height: calc(100vh + (var(--n) - 1) * 70vh);
+        height: calc(100svh + (var(--n) - 1) * 70svh);
+    }
+
+    .section {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        height: 100svh;
+    }
+
+    .inner {
+        align-items: start;
+        /* the copy sits at the foot, just above the meter, so taller screens show
+           more of the photo; the top padding keeps it off the photo's lit part */
+        align-content: end;
+        padding: min(46vw, 27svh) var(--gutter) 84px;
+    }
+
+    .list {
+        display: none;
+    }
+
+    .title {
+        font-size: clamp(2rem, 8.6vw, 2.9rem);
+    }
+
+    .body {
+        margin-top: 12px;
+        font-size: 15px;
+    }
+
+    .includes {
+        gap: 8px;
+        margin-top: 16px;
+    }
+
+    .includes li {
+        height: 34px;
+        gap: 8px;
+        padding: 0 12px;
+        font-size: 12.5px;
+    }
+
+    .ctas {
+        gap: 18px;
+        margin-top: 24px;
+    }
+
+    .pill {
+        height: 48px;
+        gap: 14px;
+        padding-left: 20px;
+        font-size: 14.5px;
+    }
+
+    .watch {
+        font-size: 14.5px;
+    }
+
+    .meter {
+        display: flex;
+        left: var(--gutter);
+        right: auto;
+        bottom: max(28px, env(safe-area-inset-bottom));
+        gap: 14px;
+        font-size: 11px;
+    }
+
+    .track {
+        width: 72px;
+    }
+}
+
+/* short phones (600-700px tall): a shorter photo, and only the main button,
+   so the two buttons don't wrap onto a second row; Our Work is the very next
+   section, so its link isn't missed */
+@media (max-width: 900px) and (min-height: 600px) and (max-height: 700px) {
+    .inner {
+        padding-top: min(46vw, 22svh);
+    }
+
+    .ctas {
+        margin-top: 20px;
+    }
+
+    .watch {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .frame,
+    .sharp,
+    .pane,
+    .pane > *,
+    .reveal,
+    .fill,
+    .row::before,
+    .row::after {
+        transition: none;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+}

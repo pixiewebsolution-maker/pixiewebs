@@ -1,0 +1,449 @@
+/* The contact page, in the site's dark band: white Montserrat, a silver second
+   line, underlined fields, the white pill, a wireframe globe and a ticker. */
+.page {
+    --ink: #ffffff;
+    --ink-soft: rgba(255, 255, 255, 0.72);
+    --ink-dim: rgba(255, 255, 255, 0.45);
+    --line: rgba(255, 255, 255, 0.18);
+    position: relative;
+    min-height: 100vh;
+    padding-top: clamp(28px, 4vw, 44px);
+    overflow: clip;
+    background:
+        radial-gradient(40% 50% at 78% 45%, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 70%),
+        #18181a;
+    color: var(--ink);
+}
+
+/* ── the logo lockup, lined up with the fixed Menu button ── */
+
+.lockup {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    height: 44px;
+    margin-left: var(--gutter);
+}
+
+.logo {
+    display: block;
+    width: auto;
+    height: 28px;
+}
+
+.divider {
+    display: block;
+    width: 1px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.brand {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.01em;
+}
+
+/* ── the statement ── */
+
+.hero {
+    padding: clamp(48px, 7vw, 110px) var(--gutter) 0;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(2.6rem, 6.4vw, 6.6rem);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+}
+
+/* each line rises out of its own mask */
+.line {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.06em;
+    margin-bottom: -0.06em;
+}
+
+.line > * {
+    display: block;
+}
+
+/* the silver second line, like the service titles */
+.title em {
+    font-style: normal;
+    background: linear-gradient(90deg, #ffffff 0%, #c9c9c9 55%, #9a9a9a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.reach {
+    margin-top: clamp(20px, 2.4vw, 36px);
+    font-size: clamp(1.15rem, 2vw, 2rem);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: var(--ink-soft);
+}
+
+.reach a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.3);
+    text-underline-offset: 0.18em;
+    transition: text-decoration-color 0.25s ease;
+}
+
+.reach a:hover {
+    text-decoration-color: #ffffff;
+}
+
+.rule {
+    height: 1px;
+    margin: clamp(32px, 4vw, 56px) var(--gutter) 0;
+    background: var(--line);
+}
+
+/* ── the form and the globe ── */
+
+.body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(40px, 6vw, 120px);
+    padding: clamp(28px, 3vw, 44px) var(--gutter) clamp(64px, 8vw, 120px);
+}
+
+/* small spaced capitals, like the service categories */
+.tag {
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(26px, 3vw, 40px);
+    margin-top: clamp(28px, 3vw, 44px);
+}
+
+.field {
+    position: relative;
+}
+
+.input {
+    display: block;
+    width: 100%;
+    padding: 18px 0 12px;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-size: clamp(16px, 1.25vw, 19px);
+    line-height: 1.5;
+    resize: none;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.input:hover {
+    border-bottom-color: rgba(255, 255, 255, 0.4);
+}
+
+.input:focus {
+    outline: none;
+    border-bottom-color: #ffffff;
+}
+
+/* a white line draws across under the field in use */
+.field::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: #ffffff;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.22, 0.8, 0.24, 1);
+}
+
+.field:focus-within::after {
+    transform: scaleX(1);
+}
+
+/* the label sits on the line, then floats up small once the field is in use */
+.label {
+    position: absolute;
+    left: 0;
+    top: 18px;
+    font-size: clamp(16px, 1.25vw, 19px);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    pointer-events: none;
+    transform-origin: left top;
+    transition:
+        transform 0.35s cubic-bezier(0.22, 0.8, 0.24, 1),
+        color 0.3s ease;
+}
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+    transform: translateY(-22px) scale(0.68);
+    color: var(--ink-dim);
+}
+
+.optional {
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--ink-dim);
+}
+
+/* the service chips */
+.services {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.legend {
+    font-size: clamp(16px, 1.25vw, 19px);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.chip {
+    height: 42px;
+    padding: 0 18px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.chip:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.chip[aria-pressed="true"] {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #0c0c0d;
+}
+
+.trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.submitRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 24px;
+    margin-top: 8px;
+}
+
+/* the white pill with a black arrow disc, as in Services */
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    height: 58px;
+    padding: 0 7px 0 30px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #0c0c0d;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.pill:hover:not(:disabled) {
+    background: #e8e8e8;
+    transform: translateY(-2px);
+}
+
+.pill:disabled {
+    opacity: 0.7;
+    cursor: progress;
+}
+
+.pillIcon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #0c0c0d;
+    color: #ffffff;
+}
+
+.pillIcon svg {
+    width: 40%;
+    height: 40%;
+    transition: transform 0.25s ease;
+}
+
+.pill:hover .pillIcon svg {
+    transform: translate(2px, -2px);
+}
+
+.pill:focus-visible,
+.chip:focus-visible,
+.again:focus-visible,
+.lockup:focus-visible {
+    outline-color: #ffffff;
+}
+
+.note {
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* after sending */
+.sent {
+    margin-top: clamp(28px, 3vw, 44px);
+    padding: clamp(28px, 3vw, 44px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: clamp(20px, 1.8vw, 28px);
+    background: linear-gradient(140deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+}
+
+.sentTitle {
+    font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.sentText {
+    margin-top: 12px;
+    font-size: clamp(15px, 1.1vw, 17px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+}
+
+.again {
+    margin-top: 22px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(255, 255, 255, 0.4);
+}
+
+/* the globe column */
+.figure {
+    display: flex;
+    flex-direction: column;
+}
+
+.globe {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    aspect-ratio: 1;
+    margin: clamp(16px, 2vw, 32px) auto 0;
+    cursor: grab;
+}
+
+.globe:active {
+    cursor: grabbing;
+}
+
+/* ── the ticker ── */
+
+.ticker {
+    border-top: 1px solid var(--line);
+    padding: clamp(18px, 2vw, 28px) 0;
+    overflow: hidden;
+}
+
+.tickerTrack {
+    display: flex;
+    width: max-content;
+    animation: ticker 36s linear infinite;
+}
+
+.tickerGroup {
+    display: flex;
+}
+
+.tickerItem {
+    display: inline-flex;
+    align-items: center;
+    font-size: clamp(2.4rem, 4.4vw, 4.4rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+}
+
+/* a thin dash between the words */
+.tickerDash {
+    display: inline-block;
+    width: clamp(28px, 3.2vw, 52px);
+    height: 2px;
+    margin: 0 clamp(20px, 2.4vw, 40px);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+@keyframes ticker {
+    to {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+/* ── phones and tablets: one column, the globe under the form ── */
+
+@media (max-width: 900px) {
+    .body {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .globe {
+        width: min(100%, 420px);
+        margin-inline: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tickerTrack {
+        animation: none;
+    }
+}
