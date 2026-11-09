@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site"
 import StructuredData from "@/components/StructuredData"
+import SmoothScroll from "@/components/SmoothScroll"
 
 // the site's one typeface, used by every section
 const montserrat = Montserrat({
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="en" className={montserrat.variable}>
             <body>
                 <StructuredData />
+                <SmoothScroll />
                 {children}
                 {/* Vercel Web Analytics: visit counts without cookies; switch it on under
                     the project's Analytics tab in Vercel */}

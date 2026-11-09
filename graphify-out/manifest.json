@@ -18,15 +18,15 @@
     "semantic_hash": ""
   },
   "app/layout.tsx": {
-    "mtime": 1794211678.2964394,
-    "seen": 1794212352.9039173,
-    "ast_hash": "35a23983aeef8e722297eb13c9a09aac",
+    "mtime": 1794221455.5539794,
+    "seen": 1794221672.2506151,
+    "ast_hash": "de08dd37f851be2bf4f5d324396702c3",
     "semantic_hash": ""
   },
   "app/page.tsx": {
-    "mtime": 1794201645.1445124,
-    "seen": 1794201708.8212538,
-    "ast_hash": "77605ed95845a14a27b317339c6e0bee",
+    "mtime": 1794223078.2392302,
+    "seen": 1794223175.5565975,
+    "ast_hash": "3331e60adb9137421444349c800477fb",
     "semantic_hash": ""
   },
   "components/Logo.tsx": {
@@ -36,9 +36,9 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1794212210.153254,
-    "seen": 1794212352.9039173,
-    "ast_hash": "a35e88e574779b937508b220030c2ea4",
+    "mtime": 1794221437.426541,
+    "seen": 1794221672.2506151,
+    "ast_hash": "df98691ec17b4fe150bae66a359aa778",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -72,9 +72,9 @@
     "semantic_hash": ""
   },
   "components/Services.tsx": {
-    "mtime": 1794207180.957052,
-    "seen": 1794207338.8796546,
-    "ast_hash": "9d1f8820a6cc3c47c108e240fc288d4a",
+    "mtime": 1794223068.0120716,
+    "seen": 1794223175.5565975,
+    "ast_hash": "8ad441b96ba3ba1cca8f2423db5e708e",
     "semantic_hash": ""
   },
   "components/SideNav.tsx": {
@@ -114,9 +114,9 @@
     "semantic_hash": ""
   },
   "components/originkit/ui/hero-19/particle-sphere.tsx": {
-    "mtime": 1794214974.0080633,
-    "seen": 1794215398.5007057,
-    "ast_hash": "4b7d56c280859c5cf4e9d18a14fdfe8f",
+    "mtime": 1794225344.2157156,
+    "seen": 1794225370.781556,
+    "ast_hash": "b1763359dd42eaeac2341f06d50bc4b8",
     "semantic_hash": ""
   },
   "components/originkit/ui/hero-19/section-26-hero.tsx": {
@@ -270,9 +270,9 @@
     "semantic_hash": ""
   },
   "components/OurWork.tsx": {
-    "mtime": 1794219311.8995247,
-    "seen": 1794219399.4553227,
-    "ast_hash": "54efc8609943b78d4d6a1d2c51c7fd90",
+    "mtime": 1794223092.831509,
+    "seen": 1794223175.5565975,
+    "ast_hash": "dbd5cc91441ee7fcf930798a71105612",
     "semantic_hash": ""
   },
   "public/work/01.webp": {
@@ -360,15 +360,15 @@
     "semantic_hash": ""
   },
   "components/Testimonials.tsx": {
-    "mtime": 1794211869.006662,
-    "seen": 1794212352.9039173,
-    "ast_hash": "7800c62134d2f259477d1d6ccedc6987",
+    "mtime": 1794223068.0120716,
+    "seen": 1794223175.5565975,
+    "ast_hash": "4c02d1496c10da2a0ed58b85fe853df1",
     "semantic_hash": ""
   },
   "components/Faq.tsx": {
-    "mtime": 1794211869.006662,
-    "seen": 1794212352.9039173,
-    "ast_hash": "4b6db37cd0cd4ac69228f0e4c6b23dba",
+    "mtime": 1794223068.0120716,
+    "seen": 1794223175.5565975,
+    "ast_hash": "3abe3e0ea60a40e7464dddb62f18d9e5",
     "semantic_hash": ""
   },
   "components/FinalCta.tsx": {
@@ -924,9 +924,9 @@
     "semantic_hash": ""
   },
   "components/work/ScrollStroke.tsx": {
-    "mtime": 1794212037.1547482,
-    "seen": 1794212352.9039173,
-    "ast_hash": "3bf22669baa2a53074ef53870688299c",
+    "mtime": 1794221611.1824198,
+    "seen": 1794221672.2506151,
+    "ast_hash": "20489b23ab90fcda9d662f1d10803d26",
     "semantic_hash": ""
   },
   "components/HeroStack.tsx": {
@@ -1841,10 +1841,22 @@
     "ast_hash": "059370830d4bb21d1282527b07d95980",
     "semantic_hash": ""
   },
+  "components/SmoothScroll.tsx": {
+    "mtime": 1794225344.307597,
+    "seen": 1794225370.781556,
+    "ast_hash": "96125d7067ad3a4d38d7de61a5bab1a2",
+    "semantic_hash": ""
+  },
+  "components/ScrollSteps.tsx": {
+    "mtime": 1794225344.261052,
+    "seen": 1794225370.781556,
+    "ast_hash": "c569f371d138e6324eb743c6801b4321",
+    "semantic_hash": ""
+  },
   "package-lock.json": {
-    "mtime": 1794212210.1823063,
-    "seen": 1794212352.9044218,
-    "ast_hash": "d3536b1a23d5858e49a33b855eb3ab0c",
+    "mtime": 1794221437.4984004,
+    "seen": 1794221672.2506151,
+    "ast_hash": "242f2b858d3dbff631cd3f3560d72614",
     "semantic_hash": ""
   }
 }

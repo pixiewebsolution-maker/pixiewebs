@@ -341,6 +341,10 @@ export default function ParticleSphereRefactor(
     canvas.style.width = `${canvasWidth}px`;
     canvas.style.height = `${canvasHeight}px`;
     canvas.style.display = "block";
+    // Pixie Webs: never two spheres at once. If an earlier set-up left its canvas
+    // behind (React can set up twice), clear it first; otherwise a still copy sits
+    // under the live one and the hover looks broken.
+    container.querySelectorAll("canvas").forEach((old) => old.remove());
     container.appendChild(canvas);
     rendererRef.current = renderer;
 
@@ -1288,7 +1292,7 @@ export default function ParticleSphereRefactor(
         if (rendererRef.current) {
           rendererRef.current.dispose();
           if (containerRef.current && canvas.parentNode) {
-            containerRef.current.removeChild(canvas);
+            canvas.remove();
           }
         }
         if (coreMesh) {
@@ -1359,9 +1363,7 @@ export default function ParticleSphereRefactor(
       }
       if (rendererRef.current) {
         rendererRef.current.dispose();
-        if (containerRef.current && canvas.parentNode) {
-          containerRef.current.removeChild(canvas);
-        }
+        canvas.remove();
       }
       if (coreMesh) {
         coreMesh.geometry.dispose();

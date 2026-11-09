@@ -16,7 +16,10 @@ const SHOT_COUNT = 18
  */
 type Work = { img: string; name: string; kind: string; blurb: string; href: string }
 
-const NICHES: { label: string; tagline: string; works: Work[] }[] = CATEGORIES.map((c) => ({
+/** the order the niches turn through: online stores first */
+const NICHE_ORDER = ["ecommerce", "erp", "website"] as const
+
+const NICHES: { label: string; tagline: string; works: Work[] }[] = NICHE_ORDER.map((id) => CATEGORIES.find((c) => c.id === id)!).map((c) => ({
     label: c.label,
     tagline: c.tagline,
     works: WORKS.filter((w) => w.category === c.id && w.featured).map((w) => ({
@@ -30,7 +33,7 @@ const NICHES: { label: string; tagline: string; works: Work[] }[] = CATEGORIES.m
 const VIEW_ALL_HREF = "/work"
 const N = NICHES.length
 /** how long each work holds in a niche's carousel before the next slides in */
-const SLIDE_MS = 3800
+const SLIDE_MS = 2000
 
 /**
  * The wall: rows of screenshots, tilted, sliding sideways like the old
@@ -442,10 +445,10 @@ export default function OurWork() {
             // one screen, plus the sequence's scroll
             style={{ height: `calc(100svh + ${TOTAL * 100}svh)` }}
         >
-            {/* on phones, a stop at each stage, so one scroll moves one step:
-                the wall, each niche facing front, then the close */}
+            {/* a stop at each stage (the wall, each niche facing front, then the
+                close); on touch screens one swipe moves one stage (ScrollSteps) */}
             {STOPS.map((at, i) => (
-                <span key={i} className={styles.stop} style={{ top: `calc(${at.toFixed(4)} * 100svh)` }} aria-hidden="true" />
+                <span key={i} data-scroll-stop className={styles.stop} style={{ top: `calc(${at.toFixed(4)} * 100svh)` }} aria-hidden="true" />
             ))}
             <section className={styles.stage} aria-labelledby="work-title">
                 {/* the front work's colours, blurred into a soft light behind its card */}
@@ -488,8 +491,8 @@ export default function OurWork() {
                                 }}
                                 className={styles.workCard}
                                 aria-hidden="true"
-                                onMouseEnter={() => setHover(true)}
-                                onMouseLeave={() => setHover(false)}
+                                onPointerEnter={(e) => e.pointerType === "mouse" && setHover(true)}
+                                onPointerLeave={(e) => e.pointerType === "mouse" && setHover(false)}
                                 // a soft light that follows the pointer across the screen
                                 onPointerMove={(e) => {
                                     const r = e.currentTarget.getBoundingClientRect()
@@ -534,8 +537,8 @@ export default function OurWork() {
                         className={styles.thumbs}
                         role="group"
                         aria-label={`${current.label} projects`}
-                        onMouseEnter={() => setHover(true)}
-                        onMouseLeave={() => setHover(false)}
+                        onPointerEnter={(e) => e.pointerType === "mouse" && setHover(true)}
+                        onPointerLeave={(e) => e.pointerType === "mouse" && setHover(false)}
                     >
                         {current.works.map((w, k) => (
                             <button

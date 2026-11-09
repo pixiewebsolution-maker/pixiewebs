@@ -713,3 +713,17 @@
         display: none;
     }
 }
+
+/* the scroll stops: invisible marks in the middle of each service's slice of
+   the pinned track; on touch screens a swipe moves one at a time (ScrollSteps) */
+.scroller {
+    position: relative;
+}
+
+.stop {
+    position: absolute;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+}

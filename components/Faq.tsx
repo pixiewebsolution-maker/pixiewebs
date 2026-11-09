@@ -340,6 +340,7 @@ export default function Faq() {
     return (
         <div
             ref={scrollerRef}
+            data-scroll-stop
             className={styles.scroller}
             data-pinned={pinned}
             data-scrollable={extra > 0}

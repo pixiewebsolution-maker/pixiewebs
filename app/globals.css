@@ -45,12 +45,10 @@
         scroll-behavior: smooth;
     }
 
-    /* phones: the Our Works stages are snap points (OurWork.tsx), so each
-       scroll stops on the next one; elsewhere the page scrolls freely */
-    @media (max-width: 900px) {
-        html {
-            scroll-snap-type: y proximity;
-        }
+    /* while Lenis smooths the scroll (components/SmoothScroll.tsx), it does the
+       easing itself, so the browser's own smooth scrolling must stay out of its way */
+    html.lenis {
+        scroll-behavior: auto;
     }
 
     body {

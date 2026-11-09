@@ -31,7 +31,7 @@ const KNOT_NUMS = KNOT.match(/-?[\d.]+/g)!.map(Number)
 const TIP = 0.5
 
 type Pt = { x: number; y: number }
-type Geo = { w: number; h: number; d: string; width: number }
+type Geo = { w: number; h: number; d: string; width: number; knotLen: number; knotEnd: number }
 
 const f = (n: number) => n.toFixed(1)
 
@@ -165,7 +165,9 @@ function build(page: HTMLElement): Geo | null {
 
     const radius = phone ? w * 0.09 : Math.min(w * 0.05, 80)
     const tail = tailPath(from, end, w, Math.max(420, Math.min(860, vh * 0.85)), radius)
-    return { w, h, d: knot + tail, width: Math.max(3, Math.min(7, 13 * s)) }
+    // the knot's length, and how far down the page it ends, so its drawing can
+    // run on the first stretch of scroll (see progressAt)
+    return { w, h, d: knot + tail, width: Math.max(3, Math.min(7, 13 * s)), knotLen: sample(knot).total, knotEnd: from.y }
 }
 
 /**
@@ -222,7 +224,7 @@ export default function ScrollStroke({ pageRef }: { pageRef: RefObject<HTMLDivEl
     const pathRef = useRef<SVGPathElement>(null)
     const [geo, setGeo] = useState<Geo | null>(null)
     /** for each sampled length along the path, the lowest point reached so far; and the page's top */
-    const table = useRef<{ len: number[]; y: number[]; total: number; top: number } | null>(null)
+    const table = useRef<{ len: number[]; y: number[]; total: number; top: number; knotLen: number; knotEnd: number } | null>(null)
 
     // lay the stroke out to the page, and again whenever the page changes size
     useEffect(() => {
@@ -255,7 +257,7 @@ export default function ScrollStroke({ pageRef }: { pageRef: RefObject<HTMLDivEl
     useEffect(() => {
         const page = pageRef.current
         if (!page || !geo) return
-        table.current = { ...sample(geo.d), top: page.getBoundingClientRect().top + window.scrollY }
+        table.current = { ...sample(geo.d), top: page.getBoundingClientRect().top + window.scrollY, knotLen: geo.knotLen, knotEnd: geo.knotEnd }
         // the new layout takes effect now, without waiting for a scroll
         progress.set(progressAt(window.scrollY))
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -265,24 +267,31 @@ export default function ScrollStroke({ pageRef }: { pageRef: RefObject<HTMLDivEl
     const progressAt = (scrollY: number) => {
         const t = table.current
         if (!t) return 0
-        const target = scrollY - t.top + window.innerHeight * TIP
-        // the first sample whose lowest point reaches the target
-        let lo = 0
-        let hi = t.y.length - 1
-        if (t.y[hi] <= target) return 1
-        while (lo < hi) {
-            const mid = (lo + hi) >> 1
-            if (t.y[mid] < target) lo = mid + 1
-            else hi = mid
+        const scrolled = scrollY - t.top
+        // 1. the knot draws steadily over the first stretch of scroll (at least
+        //    240px), from a little already drawn, so the line moves the moment the
+        //    page does. (Its loops double back on themselves, so following their
+        //    lowest point would hold still, then leap.)
+        const lead = Math.max(0, t.knotEnd - window.innerHeight * TIP)
+        const knotSpan = Math.max(240, lead)
+        if (scrolled <= knotSpan) {
+            const k = Math.min(1, Math.max(0, scrolled / knotSpan))
+            return (t.knotLen * (0.12 + 0.88 * k)) / t.total
         }
-        // a little of the knot is always drawn
-        return Math.max(t.len[lo] / t.total, 0.03)
+        // 2. then the tail, drawn at an even pace along its length over the rest of
+        //    the scroll, finishing as the closing title reaches the middle of the
+        //    screen. (Following its lowest point would stall on each sideways sweep
+        //    and loop, then leap.)
+        const endY = t.y[t.y.length - 1]
+        const finish = Math.max(knotSpan + 1, endY - window.innerHeight * TIP)
+        const k = Math.min(1, (scrolled - knotSpan) / (finish - knotSpan))
+        return (t.knotLen + (t.total - t.knotLen) * k) / t.total
     }
 
     const { scrollY } = useScroll()
     const progress = useMotionValue(0.03)
     useMotionValueEvent(scrollY, "change", (v) => progress.set(progressAt(v)))
-    const pathLength = useSpring(progress, { stiffness: 120, damping: 30, mass: 0.6 })
+    const pathLength = useSpring(progress, { stiffness: 260, damping: 40, mass: 0.35 })
 
     if (!geo) return null
     return (

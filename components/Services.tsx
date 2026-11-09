@@ -274,6 +274,17 @@ export default function Services() {
     return (
         // the track gives the pinned band its scroll room: one slice per service
         <div id="services" ref={trackRef} className={styles.scroller} style={{ ["--n" as string]: SERVICES.length }}>
+            {/* while pinned, a stop in the middle of each service's slice of the
+                track; on touch screens one swipe moves one service (ScrollSteps) */}
+            {pinned && SERVICES.map((sv, i) => (
+                <span
+                    key={sv.image}
+                    data-scroll-stop
+                    className={styles.stop}
+                    style={{ top: `calc(${(((i + 0.5) / SERVICES.length) * (SERVICES.length - 1) * 70).toFixed(2)}svh)` }}
+                    aria-hidden="true"
+                />
+            ))}
         <section ref={ref} className={styles.section} data-inview={inView} aria-label="Our services">
             {/* the photo is the section's background: a blurred copy fills it, the sharp
                 one sits large between the copy and the list and fades into it */}

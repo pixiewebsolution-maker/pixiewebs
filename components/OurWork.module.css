@@ -604,15 +604,8 @@
     pointer-events: none;
 }
 
-/* phones: each stop is a snap point (the html rule in app/globals.css), so one
-   scroll moves one stage: the wall, then each niche, then the close. The glow
-   behind the card, a large live blur, is left out. */
+/* phones: the glow behind the card, a large live blur, is left out */
 @media (max-width: 900px) {
-    .stop {
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-    }
-
     .glow {
         display: none;
     }

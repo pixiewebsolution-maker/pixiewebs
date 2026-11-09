@@ -1,5 +1,5 @@
 {
-  "0": "ScrollStroke.tsx",
+  "0": "WorksPage.tsx",
   "1": "package.json",
   "2": "compilerOptions",
   "3": "make-icons.py",
@@ -10,8 +10,9 @@
   "8": "AGENTS.md",
   "9": "CLAUDE.md",
   "10": "react",
-  "11": "ContactPage.tsx",
-  "12": "WorksPage.tsx",
+  "11": "Services.tsx",
+  "12": "ScrollStroke.tsx",
+  "13": "layout.tsx",
   "14": "WhyChooseUs.tsx",
   "16": "postcss.config.mjs",
   "17": "react",

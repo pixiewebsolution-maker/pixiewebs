@@ -139,6 +139,7 @@ export default function Testimonials() {
             id="testimonials"
             ref={ref}
             className={styles.section}
+            data-scroll-stop
             aria-labelledby="testimonials-title"
             aria-roledescription="carousel"
         >
