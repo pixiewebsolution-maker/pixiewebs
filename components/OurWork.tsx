@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react"
 import { haptic } from "@/lib/haptics"
 import { CATEGORIES, WORKS, workLink } from "@/lib/works"
-import OurWorkMobile from "./OurWorkMobile"
 import styles from "./OurWork.module.css"
 
 /** home-page screenshots for the wall, in public/work (960px copies of assets/originals/our-works) */
@@ -63,6 +62,13 @@ const PHASES = { hold: 0.7, breakup: 2.1, overlap: 0.7, arrive: 0.75, niches: 4.
 /** where the arrival starts, in screen heights */
 const ARRIVE_AT = PHASES.hold + PHASES.breakup - PHASES.overlap
 const TOTAL = ARRIVE_AT + PHASES.arrive + PHASES.niches + PHASES.outro
+
+/**
+ * The scroll stops on phones, in screen heights from the section's top: the
+ * wall with its title, each niche held at the front (the middle of its hold),
+ * and the closing call to action.
+ */
+const STOPS = [0, ...Array.from({ length: N }, (_, k) => ARRIVE_AT + PHASES.arrive + ((k + 0.5) / N) * PHASES.niches), TOTAL]
 
 const PERSPECTIVE = 1200
 const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v))
@@ -155,7 +161,7 @@ function Arrow() {
  * The wall, the break and the turns follow the scroll exactly, so they run
  * both ways; only the carousels move on a timer.
  */
-function OurWorkDesktop() {
+export default function OurWork() {
     const scrollerRef = useRef<HTMLDivElement>(null)
     const wallRefs = useRef<(HTMLDivElement | null)[]>([])
     const faceRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -183,17 +189,11 @@ function OurWorkDesktop() {
     // the last-to-first step still slides forward before snapping back to 0
     const [pos, setPos] = useState<number[]>(() => NICHES.map(() => 0))
     const [snap, setSnap] = useState<boolean[]>(() => NICHES.map(() => false))
-    /** phones get OurWorkMobile instead; none of this sequence's work runs there */
-    const desktopRef = useRef(true)
     /** the section is near the screen: its images load and its scroll handler runs */
     const [near, setNear] = useState(false)
     const nearRef = useRef(false)
 
     useEffect(() => {
-        const mq = window.matchMedia("(min-width: 901px)")
-        const sync = () => (desktopRef.current = mq.matches)
-        sync()
-        mq.addEventListener("change", sync)
         // near: within a screen and a half above or below, so the images are in
         // before they're seen. A plain distance check on scroll (one measurement),
         // which can't miss the way a deferred observer callback can.
@@ -215,7 +215,6 @@ function OurWorkDesktop() {
         window.addEventListener("scroll", check, { passive: true })
         window.addEventListener("resize", check)
         return () => {
-            mq.removeEventListener("change", sync)
             window.removeEventListener("scroll", check)
             window.removeEventListener("resize", check)
         }
@@ -225,8 +224,8 @@ function OurWorkDesktop() {
     const frame = useCallback(() => {
         const scroller = scrollerRef.current
         const g = geo.current
-        // nothing to do on phones, or while the section is far off screen
-        if (!scroller || !g || !desktopRef.current || !nearRef.current) return
+        // nothing to do while the section is far off screen
+        if (!scroller || !g || !nearRef.current) return
         const total = scroller.offsetHeight - g.vh
         const P = total > 0 ? clamp(-scroller.getBoundingClientRect().top / total) : 0
 
@@ -438,10 +437,16 @@ function OurWorkDesktop() {
     return (
         <div
             ref={scrollerRef}
+            id="work"
             className={styles.scroller}
             // one screen, plus the sequence's scroll
             style={{ height: `calc(100svh + ${TOTAL * 100}svh)` }}
         >
+            {/* on phones, a stop at each stage, so one scroll moves one step:
+                the wall, each niche facing front, then the close */}
+            {STOPS.map((at, i) => (
+                <span key={i} className={styles.stop} style={{ top: `calc(${at.toFixed(4)} * 100svh)` }} aria-hidden="true" />
+            ))}
             <section className={styles.stage} aria-labelledby="work-title">
                 {/* the front work's colours, blurred into a soft light behind its card */}
                 <div ref={glowRef} className={styles.glow} aria-hidden="true" style={{ opacity: 0 }}>
@@ -609,29 +614,6 @@ function OurWorkDesktop() {
                     </a>
                 </div>
             </section>
-        </div>
-    )
-}
-
-/**
- * Our Works: on desktop, the pinned 3D sequence above, built only there (on
- * the client, once the screen is known to be wide); on phones, OurWorkMobile,
- * a run of full screens, which carries the same text for search engines too.
- */
-export default function OurWork() {
-    const [desktop, setDesktop] = useState(false)
-    useEffect(() => {
-        const mq = window.matchMedia("(min-width: 901px)")
-        const sync = () => setDesktop(mq.matches)
-        sync()
-        mq.addEventListener("change", sync)
-        return () => mq.removeEventListener("change", sync)
-    }, [])
-    return (
-        <div id="work">
-            {desktop && <OurWorkDesktop />}
-            {/* phones: the same works as a run of full screens, one per scroll */}
-            <OurWorkMobile niches={NICHES} viewAll={VIEW_ALL_HREF} />
         </div>
     )
 }

@@ -595,9 +595,25 @@
     }
 }
 
-/* phones get OurWorkMobile instead of this pinned sequence */
+/* the scroll stops (see STOPS): invisible marks at each stage of the sequence */
+.stop {
+    position: absolute;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+}
+
+/* phones: each stop is a snap point (the html rule in app/globals.css), so one
+   scroll moves one stage: the wall, then each niche, then the close. The glow
+   behind the card, a large live blur, is left out. */
 @media (max-width: 900px) {
-    .scroller {
+    .stop {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+    }
+
+    .glow {
         display: none;
     }
 }

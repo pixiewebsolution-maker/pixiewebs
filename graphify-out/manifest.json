@@ -270,9 +270,9 @@
     "semantic_hash": ""
   },
   "components/OurWork.tsx": {
-    "mtime": 1794215335.5283377,
-    "seen": 1794215398.5007057,
-    "ast_hash": "1f8d75e9aa432e3d27700a05dec18306",
+    "mtime": 1794219311.8995247,
+    "seen": 1794219399.4553227,
+    "ast_hash": "54efc8609943b78d4d6a1d2c51c7fd90",
     "semantic_hash": ""
   },
   "public/work/01.webp": {
@@ -1839,12 +1839,6 @@
     "mtime": 1794211619.9266768,
     "seen": 1794212352.9039173,
     "ast_hash": "059370830d4bb21d1282527b07d95980",
-    "semantic_hash": ""
-  },
-  "components/OurWorkMobile.tsx": {
-    "mtime": 1794215045.3655741,
-    "seen": 1794215398.5007057,
-    "ast_hash": "35687318d26e610fd11b8eb13e914d93",
     "semantic_hash": ""
   },
   "package-lock.json": {
