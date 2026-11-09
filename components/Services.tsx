@@ -25,7 +25,7 @@ const SERVICES: Service[] = [
         title: ["Web Design &", "Development."],
         body: "Modern, responsive websites and scalable web applications designed for performance and usability.",
         includes: ["Website Design", "Web Development", "UI/UX Design"],
-        image: "/services/website.png",
+        image: "/services/website.webp",
         focus: 0.53,
     },
     {
@@ -34,7 +34,7 @@ const SERVICES: Service[] = [
         title: ["E-Commerce", "Solutions."],
         body: "Powerful online stores built to simplify shopping experiences and drive business growth.",
         includes: ["WooCommerce", "Shopify", "Custom E-Commerce"],
-        image: "/services/ecommerce.png",
+        image: "/services/ecommerce.webp",
         focus: 0.52,
     },
     {
@@ -43,7 +43,7 @@ const SERVICES: Service[] = [
         title: ["ERP & CRM", "Solutions."],
         body: "Custom business management systems that streamline operations, workflows and customer relationships.",
         includes: ["ERP", "CRM", "Business Automation", "Custom Management Systems"],
-        image: "/services/erp.png",
+        image: "/services/erp.webp",
         focus: 0.58,
     },
     {
@@ -52,7 +52,7 @@ const SERVICES: Service[] = [
         title: ["Mobile App", "Development."],
         body: "Feature-rich mobile applications built for seamless experiences across Android and iOS.",
         includes: ["Android Apps", "iOS Apps", "Cross-platform Apps"],
-        image: "/services/apps.png",
+        image: "/services/apps.webp",
         focus: 0.525,
     },
     {
@@ -61,7 +61,7 @@ const SERVICES: Service[] = [
         title: ["Digital Growth", "& Support."],
         body: "Improve online visibility, maintain performance and keep your digital platforms running smoothly.",
         includes: ["SEO Optimization", "Maintenance", "Technical Support"],
-        image: "/services/digital%20growth%20and%20support.png",
+        image: "/services/digital-growth.webp",
         focus: 0.63,
     },
 ]

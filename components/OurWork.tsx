@@ -2,106 +2,32 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react"
 import { haptic } from "@/lib/haptics"
+import { CATEGORIES, WORKS, workLink } from "@/lib/works"
 import styles from "./OurWork.module.css"
 
-/** home-page screenshots for the wall, in public/work (960px copies of public/Our works) */
+/** home-page screenshots for the wall, in public/work (960px copies of assets/originals/our-works) */
 const shot = (n: number) => `/work/${String(n).padStart(2, "0")}.webp`
 const SHOT_COUNT = 18
 
 /*
- * The three niches the section turns through, three works each, from
- * public/Our works (ERP by each system's hero image; copies are in
- * public/work/featured). Names come from the screens themselves; the one-line
- * descriptions are written from the screenshots, so check them.
- * PLACEHOLDER LINKS: set each `href` to the live site or a case study, and
- * VIEW_ALL_HREF to a full works page, once they exist.
+ * The three niches the section turns through, built from lib/works.ts: each
+ * category's works marked `featured`, using their image in public/work/featured.
+ * A work's link is its live site, or its card on the /work page until then.
  */
 type Work = { img: string; name: string; kind: string; blurb: string; href: string }
 
-const NICHES: { label: string; tagline: string; works: Work[] }[] = [
-    {
-        label: "ERP Systems",
-        tagline: "Business systems built around how each team works.",
-        works: [
-            {
-                img: "erp-radwa",
-                name: "Radwa ERP",
-                kind: "HR & operations",
-                blurb: "An HR-led ERP covering employees, departments, attendance, leave and documents, with live summaries for managers.",
-                href: "#",
-            },
-            {
-                img: "erp-billing",
-                name: "Projects & Billing Suite",
-                kind: "Projects & invoicing",
-                blurb: "A projects and billing system that tracks clients, project status, deadlines and invoices from a single dashboard.",
-                href: "#",
-            },
-            {
-                img: "erp-smilecare",
-                name: "SmileCare Dental",
-                kind: "Dental clinic",
-                blurb: "A clinic system for a dental practice: appointments, the patient queue, walk-ins, treatments and payments on one dashboard.",
-                href: "#",
-            },
-        ],
-    },
-    {
-        label: "E-Commerce",
-        tagline: "Online stores that turn browsing into buying.",
-        works: [
-            {
-                img: "shop-boss",
-                name: "Boss Perfumes",
-                kind: "Fragrance store",
-                blurb: "A refined online store for a perfume brand, built around its collections and signature fragrances.",
-                href: "#",
-            },
-            {
-                img: "shop-moven",
-                name: "Moven Active",
-                kind: "Activewear store",
-                blurb: "A clean online store for a performance activewear brand, built around big product imagery and a quick checkout.",
-                href: "#",
-            },
-            {
-                img: "shop-velastia",
-                name: "Velastia",
-                kind: "Cosmetics store",
-                blurb: "A rich, luxurious storefront for a cosmetics brand, with offers and collections up front.",
-                href: "#",
-            },
-        ],
-    },
-    {
-        label: "Websites",
-        tagline: "Sites that give a brand a first impression worth keeping.",
-        works: [
-            {
-                img: "web-kerala-travel",
-                name: "Kerala Luxury Travel",
-                kind: "Travel & cabs",
-                blurb: "A premium travel site for luxury journeys and airport transfers across Kerala, with WhatsApp bookings.",
-                href: "#",
-            },
-            {
-                img: "web-rogue-ninja",
-                name: "Rogue Ninja",
-                kind: "Fight gym",
-                blurb: "A bold, high-energy site for a fight gym, with its programs, gallery and sign-ups.",
-                href: "#",
-            },
-            {
-                img: "web-ondezyn",
-                name: "Ondezyn",
-                kind: "Fashion studio",
-                blurb: "An editorial site for a bridal fashion studio, showing its custom designs and collections.",
-                href: "#",
-            },
-        ],
-    },
-]
-const VIEW_ALL_HREF = "#"
+const NICHES: { label: string; tagline: string; works: Work[] }[] = CATEGORIES.map((c) => ({
+    label: c.label,
+    tagline: c.tagline,
+    works: WORKS.filter((w) => w.category === c.id && w.featured).map((w) => ({
+        img: w.featured!,
+        name: w.name,
+        kind: w.kind,
+        blurb: w.blurb,
+        href: workLink(w),
+    })),
+}))
+const VIEW_ALL_HREF = "/work"
 const N = NICHES.length
 /** how long each work holds in a niche's carousel before the next slides in */
 const SLIDE_MS = 3800
@@ -156,6 +82,8 @@ type Geo = {
     drumX: number
     drumY: number
     drumR: number
+    /** phones only: where the work's details start, right under the thumbnails */
+    panelTop: number | null
 }
 
 function measure(): Geo {
@@ -169,6 +97,24 @@ function measure(): Geo {
     // the front card
     // on wide screens, small enough that the heading above and the thumbnails below still fit
     const frontW = phone ? vw * 0.86 : Math.min(vw * 0.48, 780, Math.max(420, (vh - 330) * 2))
+
+    // phones: the niche's name, the card, its thumbnails and the work's details
+    // stack as one group, centred on the screen with no gap between them
+    let drumY = vh * 0.02
+    let panelTop: number | null = null
+    if (phone) {
+        const head = 62 // the niche's name above the card
+        const thumbs = 64 // the thumbnails and View more under it
+        const gap = 22
+        const details = vh <= 720 ? 80 : 175 // kind, name and (on taller phones) the description
+        const cardH = frontW / 2
+        const total = head + cardH + thumbs + gap + details
+        // clear of the Menu button at the top
+        const top = Math.max(76, (vh - total) / 2)
+        const cardCentre = top + head + cardH / 2
+        drumY = cardCentre - vh / 2
+        panelTop = cardCentre + cardH / 2 + thumbs + gap
+    }
     return {
         vh,
         gx,
@@ -177,7 +123,8 @@ function measure(): Geo {
         wallW,
         frontW,
         drumX: phone ? 0 : -vw * 0.14,
-        drumY: phone ? -vh * 0.12 : vh * 0.02,
+        drumY,
+        panelTop,
         // a three-sided prism: the distance from its axis to each 2:1 face, with a little air
         drumR: (frontW / 4 / Math.tan(Math.PI / N)) * 1.6,
     }
@@ -343,6 +290,7 @@ export default function OurWork() {
             }
         }
         if (panelRef.current) {
+            panelRef.current.style.top = g.panelTop === null ? "" : `${g.panelTop}px`
             panelRef.current.style.opacity = String(show)
             panelRef.current.style.transform = `translateY(${(1 - show) * 24}px)`
             panelRef.current.style.visibility = show > 0.02 ? "visible" : "hidden"
@@ -460,7 +408,7 @@ export default function OurWork() {
                 <div ref={glowRef} className={styles.glow} aria-hidden="true" style={{ opacity: 0 }}>
                     {NICHES.map((n, ni) =>
                         n.works.map((w, k) => (
-                            <img key={w.img} src={`/work/featured/${w.img}.webp`} alt="" decoding="async" data-on={ni === niche && k === slide} />
+                            <img key={w.img} src={`/work/featured/${w.img}.webp`} alt="" loading="lazy" decoding="async" data-on={ni === niche && k === slide} />
                         )),
                     )}
                 </div>
@@ -477,7 +425,7 @@ export default function OurWork() {
                                 className={styles.wallCard}
                                 aria-hidden="true"
                             >
-                                <img src={shot(WALL_SHOT[i])} alt="" decoding="async" />
+                                <img src={shot(WALL_SHOT[i])} alt="" loading="lazy" decoding="async" />
                             </div>
                         ))}
 
@@ -512,15 +460,19 @@ export default function OurWork() {
                                     onTransitionEnd={(e) => e.target === e.currentTarget && onSlid(i)}
                                 >
                                     {[...n.works, n.works[0]].map((w, k) => (
-                                        <img
-                                            key={k}
-                                            src={`/work/featured/${w.img}.webp`}
-                                            alt=""
-                                            decoding="async"
-                                            className={styles.slide}
-                                            // the first slide zooms with its copy, so the jump back to it can't be seen
-                                            data-on={k === pos[i] || (k === 0 && pos[i] === n.works.length)}
-                                        />
+                                        // each slide in its own clipped frame, so its slow zoom
+                                        // never spills into the slide beside it
+                                        <div key={k} className={styles.slideFrame}>
+                                            <img
+                                                src={`/work/featured/${w.img}.webp`}
+                                                alt=""
+                                                loading="lazy"
+                                                decoding="async"
+                                                className={styles.slide}
+                                                // the first slide zooms with its copy, so the jump back to it can't be seen
+                                                data-on={k === pos[i] || (k === 0 && pos[i] === n.works.length)}
+                                            />
+                                        </div>
                                     ))}
                                 </div>
                             </div>
@@ -551,7 +503,7 @@ export default function OurWork() {
                                 aria-current={k === slide}
                                 onClick={() => pickWork(niche, k)}
                             >
-                                <img src={`/work/featured/${w.img}.webp`} alt="" decoding="async" />
+                                <img src={`/work/featured/${w.img}.webp`} alt="" loading="lazy" decoding="async" />
                                 {/* the time left on this slide, filling until the next one slides in */}
                                 {k === slide && (
                                     <span

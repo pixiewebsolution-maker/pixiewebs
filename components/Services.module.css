@@ -103,8 +103,10 @@
     z-index: 1;
     pointer-events: none;
     background:
-        /* the base settles into the band's own charcoal, which Our Work below
-           starts on, so the two sections meet without a seam */
+        /* the top rises out of the band's charcoal, which Trusted By above ends
+           on, and the base settles back into it for Our Work below, so the
+           sections meet without a seam */
+        linear-gradient(180deg, var(--band) 0%, rgba(24, 24, 26, 0) 16%),
         linear-gradient(180deg, rgba(24, 24, 26, 0) 80%, var(--band) 100%),
         linear-gradient(
             90deg,

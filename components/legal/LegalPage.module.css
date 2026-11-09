@@ -1,0 +1,254 @@
+/* The legal pages, in the site's dark band like Contact and Our Works:
+   a two-tone title, then the sections in one comfortable reading column. */
+.page {
+    --ink: #ffffff;
+    --ink-soft: rgba(255, 255, 255, 0.72);
+    --ink-dim: rgba(255, 255, 255, 0.45);
+    --line: rgba(255, 255, 255, 0.14);
+    position: relative;
+    min-height: 100vh;
+    padding-top: clamp(28px, 4vw, 44px);
+    padding-bottom: clamp(80px, 10vw, 160px);
+    color: var(--ink);
+    background:
+        radial-gradient(45% 40% at 80% 8%, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0) 70%),
+        #18181a;
+}
+
+/* ── the logo lockup, lined up with the fixed Menu button ── */
+
+.lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    height: 44px;
+    margin-left: var(--gutter);
+}
+
+.logo {
+    display: block;
+    width: auto;
+    height: 28px;
+}
+
+.divider {
+    display: block;
+    width: 1px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.brand {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.01em;
+}
+
+/* ── the title ── */
+
+.hero {
+    padding: clamp(48px, 7vw, 110px) var(--gutter) 0;
+}
+
+/* small spaced capitals, like the service categories */
+.tag {
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    margin-top: clamp(14px, 1.6vw, 22px);
+    font-size: clamp(2.6rem, 6vw, 6rem);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+}
+
+.title em {
+    font-style: normal;
+    background: linear-gradient(90deg, #ffffff 0%, #c9c9c9 55%, #9a9a9a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.updated {
+    margin-top: clamp(18px, 2vw, 28px);
+    font-size: 14.5px;
+    color: var(--ink-dim);
+}
+
+.rule {
+    height: 1px;
+    margin: clamp(32px, 4vw, 56px) var(--gutter) 0;
+    background: var(--line);
+}
+
+/* ── the text ── */
+
+/* the contents list on the left, the text on the right, on wide screens */
+.layout {
+    display: grid;
+    grid-template-columns: minmax(220px, 300px) minmax(0, 780px);
+    justify-content: start;
+    align-items: start;
+    gap: clamp(40px, 6vw, 120px);
+    padding: 0 var(--gutter);
+}
+
+.body {
+    padding-top: clamp(32px, 4vw, 56px);
+}
+
+/* ── the contents list ── */
+
+.toc {
+    position: sticky;
+    top: clamp(100px, 14vh, 140px);
+    margin-top: clamp(32px, 4vw, 56px);
+    padding: clamp(22px, 2vw, 30px);
+    border: 1px solid var(--line);
+    border-radius: clamp(18px, 1.6vw, 24px);
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015) 60%);
+}
+
+/* small spaced capitals, like the service categories */
+.tocTitle {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+}
+
+.toc ol {
+    display: grid;
+    gap: 4px;
+    margin-top: 14px;
+    list-style: none;
+}
+
+.tocLink {
+    display: flex;
+    gap: 12px;
+    padding: 6px 0;
+    font-size: 14.5px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--ink-soft);
+    transition: color 0.25s ease;
+}
+
+.tocLink:hover {
+    color: var(--ink);
+}
+
+.tocLink:focus-visible {
+    outline-color: #ffffff;
+}
+
+/* thin numerals, as in the section headings */
+.tocNum {
+    flex: none;
+    width: 1.6em;
+    font-weight: 300;
+    color: var(--ink-dim);
+    font-variant-numeric: tabular-nums;
+}
+
+/* narrower screens: one column, the contents list not needed */
+@media (max-width: 1000px) {
+    .layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .body {
+        max-width: 780px;
+    }
+
+    .toc {
+        display: none;
+    }
+}
+
+.intro {
+    font-size: clamp(16px, 1.3vw, 20px);
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--ink-soft);
+}
+
+.section {
+    margin-top: clamp(40px, 4vw, 60px);
+    scroll-margin-top: 90px;
+}
+
+.heading {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    font-size: clamp(1.25rem, 1.7vw, 1.6rem);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+/* thin numerals, as in the Testimonials deck */
+.num {
+    flex: none;
+    font-size: 0.7em;
+    font-weight: 300;
+    color: var(--ink-dim);
+    font-variant-numeric: tabular-nums;
+}
+
+.text {
+    margin-top: 14px;
+    font-size: clamp(15px, 1.08vw, 17px);
+    line-height: 1.75;
+    color: var(--ink-soft);
+}
+
+.text p + p,
+.text p + ul,
+.text ul + p {
+    margin-top: 12px;
+}
+
+.text ul {
+    display: grid;
+    gap: 8px;
+    padding-left: 1.2em;
+}
+
+.text li::marker {
+    color: var(--ink-dim);
+}
+
+.text strong {
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.text a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.35);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.25s ease;
+}
+
+.text a:hover {
+    text-decoration-color: #ffffff;
+}
+
+.lockup:focus-visible,
+.text a:focus-visible {
+    outline-color: #ffffff;
+}

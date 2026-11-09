@@ -149,7 +149,7 @@ export const Section26Hero = () => {
         {/* Hand, in its natural colour */}
         <img
           aria-hidden
-          src={asset("hand.png")}
+          src={asset("hand.webp")}
           alt=""
           className="pointer-events-none absolute top-[calc(50%+255px)] left-[calc(50%-4px)] z-10 h-[410px] w-[738px] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover ipad:top-[894px] ipad:left-1/2 ipad:h-[502px] ipad:w-[902px] desktop-sm:top-auto desktop-sm:bottom-0 desktop-sm:h-auto desktop-sm:w-[86vw] desktop-sm:origin-bottom desktop-sm:scale-115 desktop-sm:translate-y-0 ultrawide:top-[384px] ultrawide:bottom-auto ultrawide:w-[1180px] ultrawide:min-w-0 ultrawide:scale-100"
           style={{

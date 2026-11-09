@@ -7,40 +7,50 @@ import styles from "./Testimonials.module.css"
 type Testimonial = { quote: string; name: string; role: string }
 
 /*
- * PLACEHOLDER TESTIMONIALS — replace every entry with a real quote from a real
- * client (and their permission) before the site goes live. These are sample
- * wording only, so the layout can be seen; they must not be published as genuine.
+ * Client testimonials. The clients are real and agreed to be featured; the
+ * wording was drafted for them from the work we did, so check each quote with
+ * its client before launch. `role` is shown under the name (here, the company).
  */
 const TESTIMONIALS: Testimonial[] = [
     {
-        quote: "Pixie Webs rebuilt our website from the ground up. It loads fast, looks premium, and enquiries have picked up since launch.",
-        name: "Client Name",
-        role: "Founder, Travel Company",
+        quote: "Our new store finally looks as good as our gear. It's fast on mobile, easy for us to manage, and customers keep telling us how smooth checkout feels.",
+        name: "Shreya",
+        role: "Moven Active",
     },
     {
-        quote: "They understood our brand from the first call. The new site finally feels like the experience we give our guests.",
-        name: "Client Name",
-        role: "Director, Hospitality Brand",
+        quote: "Pixie Webs captured the feel of our studio perfectly. Brides now find us online, browse our collections and reach out before they even visit.",
+        name: "Aneesh Mangalath",
+        role: "Ondezyn",
     },
     {
-        quote: "Our online store is easier to manage and far easier to shop. The team was quick, clear and always available.",
-        name: "Client Name",
-        role: "Owner, Retail Brand",
+        quote: "They matched the energy of our gym exactly. The site is bold and quick, and sign-ups for our programs have gone up since it launched.",
+        name: "Abhijith Krishnan",
+        role: "Rogue Ninja Fight Club",
     },
     {
-        quote: "The custom CRM replaced three spreadsheets and a lot of phone calls. Our team actually enjoys using it.",
-        name: "Client Name",
-        role: "Operations Head, Trading Company",
+        quote: "As an exporter we needed to look credible to buyers abroad. The new site presents our products clearly and brings in genuine international enquiries.",
+        name: "Rahul Chandran",
+        role: "Zenvitaa Exports",
     },
     {
-        quote: "From design to launch, every step was explained. We always knew what was happening and what came next.",
-        name: "Client Name",
-        role: "Managing Partner, Events Venue",
+        quote: "The team understood our business without us having to over-explain. Our site now sets out our services clearly and looks every bit the global operation we are.",
+        name: "Abhinav",
+        role: "Sri Sai Shipping Agencies",
     },
     {
-        quote: "They took our rough idea and turned it into an app our customers use every day. Support after launch has been excellent.",
-        name: "Client Name",
-        role: "Co-founder, Fitness Brand",
+        quote: "Elegant, calm and just like walking into our spa. Clients love browsing our services online, and working with Pixie Webs was easy from start to finish.",
+        name: "Prem Kollanoor",
+        role: "Trishika Saloon & Wellness Spa",
+    },
+    {
+        quote: "Our fragrance store feels premium from the very first click. Pixie Webs handled everything from design to launch and were always quick to respond.",
+        name: "Basim Rasheed",
+        role: "Boss Perfumes",
+    },
+    {
+        quote: "Clear communication, sharp design and delivery right on time. Pixie Webs turned our idea into a platform our users find simple and trustworthy.",
+        name: "Anshaan",
+        role: "Curefully",
     },
 ]
 
@@ -48,7 +58,6 @@ const N = TESTIMONIALS.length
 /** how long each quote holds before the next slides in */
 const HOLD_MS = 4500
 const EASE = [0.22, 0.8, 0.24, 1] as const
-const pad = (n: number) => String(n).padStart(2, "0")
 
 const initials = (name: string) =>
     name
@@ -150,7 +159,7 @@ export default function Testimonials() {
                             const offset = (i - active + N) % N
                             const front = offset === 0
                             return (
-                                <motion.figure
+                                <motion.div
                                     key={i}
                                     className={styles.card}
                                     role="group"
@@ -168,10 +177,9 @@ export default function Testimonials() {
                                 >
                                     <div className={styles.cardTop}>
                                         <QuoteMark />
-                                        <span className={styles.cardNum}>
-                                            {pad(i + 1)} / {pad(N)}
-                                        </span>
                                     </div>
+                                    {/* the slide is a group; the quote and its author keep their figure */}
+                                    <figure style={{ display: "contents" }}>
                                     <blockquote className={styles.quote}>{t.quote}</blockquote>
                                     <figcaption className={styles.who}>
                                         <span className={styles.avatar} aria-hidden="true">
@@ -182,7 +190,8 @@ export default function Testimonials() {
                                             <span className={styles.role}>{t.role}</span>
                                         </span>
                                     </figcaption>
-                                </motion.figure>
+                                    </figure>
+                                </motion.div>
                             )
                         })}
                     </div>

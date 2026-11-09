@@ -1,5 +1,6 @@
 import Hero19 from "@/components/originkit/hero-19"
 import SideNav from "@/components/SideNav"
+import HeroStack from "@/components/HeroStack"
 import WhyChooseUs from "@/components/WhyChooseUs"
 import TrustedBy from "@/components/TrustedBy"
 import Services from "@/components/Services"
@@ -14,8 +15,10 @@ export default function Home() {
         <>
             <SideNav />
             <main>
-                <Hero19 />
-                <WhyChooseUs />
+                {/* the hero stays put while Why Choose Us scrolls up over it */}
+                <HeroStack hero={<Hero19 />}>
+                    <WhyChooseUs />
+                </HeroStack>
                 <TrustedBy />
                 <Services />
                 <OurWork />

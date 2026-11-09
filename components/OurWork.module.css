@@ -133,8 +133,15 @@
     transition: none;
 }
 
-.workCard .slide {
+/* one slide's slot in the track: clips the zoom below to the slide's own edges */
+.slideFrame {
     flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.workCard .slide {
     width: 100%;
     height: 100%;
     /* the screen settles in slowly once it's the one showing */
@@ -516,15 +523,17 @@
     color: var(--ink-soft);
 }
 
-/* ── phones and tablets: the panel sits under the drum, without the index ── */
+/* ── phones and tablets: the details sit right under the thumbnails (their top
+   is set from the script, as part of one centred group), without the index ── */
 
 @media (max-width: 900px) {
     .panel {
         top: auto;
         right: var(--gutter);
         left: var(--gutter);
-        bottom: max(28px, env(safe-area-inset-bottom));
+        bottom: auto;
         width: auto;
+        justify-content: flex-start;
         padding-top: 0;
     }
 

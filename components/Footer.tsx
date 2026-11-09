@@ -1,13 +1,22 @@
+import type { ReactNode } from "react"
+import { FaInstagram, FaLinkedinIn, FaThreads } from "react-icons/fa6"
 import HalftoneWordmark from "@/components/HalftoneWordmark"
 import Logo from "@/components/Logo"
+import { EMAIL, PHONES, SOCIALS, whatsappLink } from "@/lib/contact"
 import styles from "./Footer.module.css"
 
-/*
- * Contact details for the Contact column. Left empty until they're confirmed;
- * an empty one isn't shown, and the column falls back to the Let's Talk link.
- */
-const EMAIL: string = ""
-const PHONE: string = ""
+/** the legal pages: linked only from here, not from the main menu */
+const LEGAL = [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms & Conditions", href: "/terms" },
+]
+
+/** the official brand marks for the social links (Font Awesome brands, via react-icons) */
+const SOCIAL_ICONS: Record<string, ReactNode> = {
+    Instagram: <FaInstagram aria-hidden="true" />,
+    LinkedIn: <FaLinkedinIn aria-hidden="true" />,
+    Threads: <FaThreads aria-hidden="true" />,
+}
 
 const COLUMNS = [
     {
@@ -16,7 +25,8 @@ const COLUMNS = [
             { label: "Home", href: "/#home" },
             { label: "Services", href: "/#services" },
             { label: "Why Us", href: "/#why" },
-            { label: "Our Works", href: "/#work" },
+            { label: "Our Works", href: "/work" },
+            { label: "About", href: "/about" },
         ],
     },
     {
@@ -48,6 +58,15 @@ export default function Footer() {
                         <span className={styles.name}>PIXIE WEBS</span>
                     </a>
                     <p className={styles.tagline}>Websites, business systems and mobile apps that move businesses forward.</p>
+                    <ul className={styles.socials} aria-label="Pixie Webs on social media">
+                        {SOCIALS.map((s) => (
+                            <li key={s.name}>
+                                <a href={s.href} target="_blank" rel="noopener noreferrer" className={styles.social} aria-label={s.name}>
+                                    {SOCIAL_ICONS[s.name]}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
                     <p className={styles.copy}>&copy; {year} Pixie Webs. All rights reserved.</p>
                 </div>
 
@@ -69,23 +88,21 @@ export default function Footer() {
                 <div className={styles.col}>
                     <p className={styles.heading}>Contact</p>
                     <ul>
-                        {EMAIL && (
-                            <li>
-                                <a href={`mailto:${EMAIL}`} className={styles.link}>
-                                    {EMAIL}
-                                </a>
-                            </li>
-                        )}
-                        {PHONE && (
-                            <li>
-                                <a href={`tel:${PHONE.replace(/\s/g, "")}`} className={styles.link}>
-                                    {PHONE}
-                                </a>
-                            </li>
-                        )}
                         <li>
-                            <a href="/contact" className={styles.link}>
-                                Let&rsquo;s Talk
+                            <a href={`mailto:${EMAIL}`} className={styles.link}>
+                                {EMAIL}
+                            </a>
+                        </li>
+                        {PHONES.map((p) => (
+                            <li key={p.tel}>
+                                <a href={`tel:${p.tel}`} className={styles.link}>
+                                    {p.display}
+                                </a>
+                            </li>
+                        ))}
+                        <li>
+                            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                Chat on WhatsApp
                             </a>
                         </li>
                     </ul>
@@ -94,6 +111,13 @@ export default function Footer() {
 
             <div className={styles.rule}>
                 <div className={styles.ruleInner}>
+                    <nav className={styles.legal} aria-label="Legal">
+                        {LEGAL.map((l) => (
+                            <a key={l.href} href={l.href} className={styles.legalLink}>
+                                {l.label}
+                            </a>
+                        ))}
+                    </nav>
                     <a href="/#home" className={styles.link}>
                         Back to top
                         <span className={styles.up} aria-hidden="true">

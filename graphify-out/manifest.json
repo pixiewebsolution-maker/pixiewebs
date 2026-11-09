@@ -1,8 +1,8 @@
 {
   ".claude/launch.json": {
-    "mtime": 1793567229.1068342,
-    "seen": 1793567526.1693234,
-    "ast_hash": "80b5aade2d2e9bfeaf8c04501b526800",
+    "mtime": 1794211730.899451,
+    "seen": 1794212352.9039173,
+    "ast_hash": "9e8083720b8ba3a0723528fdc530432c",
     "semantic_hash": ""
   },
   ".claude/settings.json": {
@@ -18,33 +18,27 @@
     "semantic_hash": ""
   },
   "app/layout.tsx": {
-    "mtime": 1793862956.8468723,
-    "seen": 1793863843.753973,
-    "ast_hash": "7030781f14bb856a2d4569608b16d191",
+    "mtime": 1794211678.2964394,
+    "seen": 1794212352.9039173,
+    "ast_hash": "35a23983aeef8e722297eb13c9a09aac",
     "semantic_hash": ""
   },
   "app/page.tsx": {
-    "mtime": 1793911683.5337455,
-    "seen": 1793911823.1537406,
-    "ast_hash": "830132b4b40bdfc0057880f8a05f5df4",
-    "semantic_hash": ""
-  },
-  "components/BluebellPass.tsx": {
-    "mtime": 1793604563.3326051,
-    "seen": 1793863843.753973,
-    "ast_hash": "ae577587dfdfe2b89a8b616723fe6821",
+    "mtime": 1794201645.1445124,
+    "seen": 1794201708.8212538,
+    "ast_hash": "77605ed95845a14a27b317339c6e0bee",
     "semantic_hash": ""
   },
   "components/Logo.tsx": {
-    "mtime": 1793780975.7897713,
-    "seen": 1793863843.753973,
-    "ast_hash": "425d44e621475806e49f912b05ae5146",
+    "mtime": 1794211869.0015793,
+    "seen": 1794212352.9039173,
+    "ast_hash": "1f8f620a7f89258d209e71b722f723fa",
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1793943905.118614,
-    "seen": 1793944172.1244068,
-    "ast_hash": "36c21d37aec6fd3a6898a6035a5ca453",
+    "mtime": 1794212210.153254,
+    "seen": 1794212352.9039173,
+    "ast_hash": "a35e88e574779b937508b220030c2ea4",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -78,39 +72,33 @@
     "semantic_hash": ""
   },
   "components/Services.tsx": {
-    "mtime": 1793914725.6904652,
-    "seen": 1793914836.276635,
-    "ast_hash": "6cb23b446ad41081e21397c56530a943",
+    "mtime": 1794207180.957052,
+    "seen": 1794207338.8796546,
+    "ast_hash": "9d1f8820a6cc3c47c108e240fc288d4a",
     "semantic_hash": ""
   },
   "components/SideNav.tsx": {
-    "mtime": 1793914725.6904652,
-    "seen": 1793914836.276635,
-    "ast_hash": "8059175b614811ae22f4aec4b1c0bc9e",
+    "mtime": 1794209949.9048924,
+    "seen": 1794210015.2629783,
+    "ast_hash": "21835272de2f2d87df721ce281ff769b",
     "semantic_hash": ""
   },
   "components/TrustedBy.tsx": {
-    "mtime": 1793878688.206043,
-    "seen": 1793878831.0535133,
-    "ast_hash": "da5a09440567c7f593e7357c725c5855",
+    "mtime": 1794210130.4203508,
+    "seen": 1794210183.9348428,
+    "ast_hash": "479c9fbe2a4059305fcab8ecd241cffc",
     "semantic_hash": ""
   },
   "components/WhyChooseUs.tsx": {
-    "mtime": 1793596870.200945,
-    "seen": 1793863843.753973,
-    "ast_hash": "0cb539fd08cbf378a843d298959a84f1",
+    "mtime": 1794201386.1595488,
+    "seen": 1794201411.9075847,
+    "ast_hash": "b421f492e22f441f3a43e72739368293",
     "semantic_hash": ""
   },
   "components/originkit/hero-19.tsx": {
     "mtime": 1793781496.2772455,
     "seen": 1793863843.753973,
     "ast_hash": "388a14c77da161d3be08c7a528a5b83d",
-    "semantic_hash": ""
-  },
-  "components/originkit/ui/hero-19/backdrop.tsx": {
-    "mtime": 1793781496.2825189,
-    "seen": 1793863843.753973,
-    "ast_hash": "e9fa8f73fd5ee971c8ce002b70d6cd7b",
     "semantic_hash": ""
   },
   "components/originkit/ui/hero-19/mask-group.tsx": {
@@ -120,27 +108,21 @@
     "semantic_hash": ""
   },
   "components/originkit/ui/hero-19/orb.tsx": {
-    "mtime": 1793781797.7933898,
-    "seen": 1793863843.753973,
-    "ast_hash": "172c6d162969aa21c690aad630a38bbc",
+    "mtime": 1794211879.3969913,
+    "seen": 1794212352.9039173,
+    "ast_hash": "2c4dff0b9a7749a75d60b6844cedc533",
     "semantic_hash": ""
   },
   "components/originkit/ui/hero-19/particle-sphere.tsx": {
-    "mtime": 1793781496.2893848,
-    "seen": 1793863843.753973,
-    "ast_hash": "53253b922230e98e072d4316d2d7ae1d",
-    "semantic_hash": ""
-  },
-  "components/originkit/ui/hero-19/particlesphere.tsx": {
-    "mtime": 1793781496.2799554,
-    "seen": 1793863843.753973,
-    "ast_hash": "905faaba038d93346c0e4132c77489d6",
+    "mtime": 1794211315.2576013,
+    "seen": 1794212352.9039173,
+    "ast_hash": "de38ae5891e9e171cafff9948ec2526c",
     "semantic_hash": ""
   },
   "components/originkit/ui/hero-19/section-26-hero.tsx": {
-    "mtime": 1793914725.6904652,
-    "seen": 1793914836.276635,
-    "ast_hash": "b66fccfeed486e18cb4f17d1231f11f6",
+    "mtime": 1794211619.969797,
+    "seen": 1794212352.9039173,
+    "ast_hash": "70e3ff51eebcc026f6aef162dd2e7ee1",
     "semantic_hash": ""
   },
   "components/ui/text-roll.tsx": {
@@ -161,202 +143,10 @@
     "ast_hash": "128fcd4baa55f1150d6a61642cfa504b",
     "semantic_hash": ""
   },
-  "public/clients/mono-dark/manifest.json": {
-    "mtime": 1793780962.5325537,
-    "seen": 1793863843.753973,
-    "ast_hash": "0dacccce8ab6ed81f763db881b0fc522",
-    "semantic_hash": ""
-  },
   "public/clients/mono/manifest.json": {
-    "mtime": 1793650632.8769069,
-    "seen": 1793863843.753973,
-    "ast_hash": "0dacccce8ab6ed81f763db881b0fc522",
-    "semantic_hash": ""
-  },
-  "public/SERVICES/apps.png": {
-    "mtime": 1793691455.4128413,
-    "seen": 1793863843.753973,
-    "ast_hash": "d0620275dd48d96ff9bf9bbd7860cd54",
-    "semantic_hash": ""
-  },
-  "public/SERVICES/digital growth and support.png": {
-    "mtime": 1793691391.9522545,
-    "seen": 1793863843.753973,
-    "ast_hash": "1c631d28623857d8a5db733d00c3481a",
-    "semantic_hash": ""
-  },
-  "public/SERVICES/ecommerce.png": {
-    "mtime": 1793691581.9062667,
-    "seen": 1793863843.753973,
-    "ast_hash": "716d20b3bde9d8d51c7fe5998e82b1be",
-    "semantic_hash": ""
-  },
-  "public/SERVICES/erp.png": {
-    "mtime": 1793691504.605243,
-    "seen": 1793863843.753973,
-    "ast_hash": "29076220e0b08ae1ed0b31b085c9d9cb",
-    "semantic_hash": ""
-  },
-  "public/SERVICES/website.png": {
-    "mtime": 1793691134.8544724,
-    "seen": 1793863843.753973,
-    "ast_hash": "681f18120c848606c1f09fc82115e686",
-    "semantic_hash": ""
-  },
-  "public/clients/atl.png": {
-    "mtime": 1793648815.4242058,
-    "seen": 1793863843.753973,
-    "ast_hash": "a01d964b1883e34563471e605a80bd10",
-    "semantic_hash": ""
-  },
-  "public/clients/bossperfumes.webp": {
-    "mtime": 1793648587.7361763,
-    "seen": 1793863843.753973,
-    "ast_hash": "a9319a46206d263e1a03a4bc6fe40e17",
-    "semantic_hash": ""
-  },
-  "public/clients/curefully.png": {
-    "mtime": 1793650202.8044577,
-    "seen": 1793863843.753973,
-    "ast_hash": "6443e86a874d246d8007139fec04463d",
-    "semantic_hash": ""
-  },
-  "public/clients/flynova.webp": {
-    "mtime": 1793649244.0806627,
-    "seen": 1793863843.753973,
-    "ast_hash": "1676057a5ca41fc6c4dfc179ef8fef95",
-    "semantic_hash": ""
-  },
-  "public/clients/jacob ventures.jpeg": {
-    "mtime": 1793649015.1854658,
-    "seen": 1793863843.753973,
-    "ast_hash": "86447bc34a74d4b027b6879f8f0fecaf",
-    "semantic_hash": ""
-  },
-  "public/clients/kerala mist.webp": {
-    "mtime": 1793648758.785517,
-    "seen": 1793863843.753973,
-    "ast_hash": "188e807bbc226fc4566a5cb21018ad52",
-    "semantic_hash": ""
-  },
-  "public/clients/maximum efforts.png": {
-    "mtime": 1793649611.4158032,
-    "seen": 1793863843.753973,
-    "ast_hash": "fcfcba7eaaadcf8a91bdf99bd7a13b1b",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/atl.png": {
-    "mtime": 1793780962.201019,
-    "seen": 1793863843.753973,
-    "ast_hash": "97f9b4921e15fad00d402d2252155111",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/bossperfumes.png": {
-    "mtime": 1793780962.2159252,
-    "seen": 1793863843.753973,
-    "ast_hash": "aedad990ef4d6f06750cc7c98f56bafa",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/curefully.png": {
-    "mtime": 1793780962.2300625,
-    "seen": 1793863843.753973,
-    "ast_hash": "0b42d978740676d6e7c3769f3ffd9089",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/flynova.png": {
-    "mtime": 1793780962.2300625,
-    "seen": 1793863843.753973,
-    "ast_hash": "3c473eaa2e09db0c1f9adfdf2a5db172",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/jacob-ventures.png": {
-    "mtime": 1793780962.2463303,
-    "seen": 1793863843.753973,
-    "ast_hash": "cee820e0e7e86e17d6a81640159d515b",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/kerala-mist.png": {
-    "mtime": 1793780962.2842994,
-    "seen": 1793863843.753973,
-    "ast_hash": "e0b884ae3712e7e1a17ab68d4bcbf82a",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/maximum-efforts.png": {
-    "mtime": 1793780962.2842994,
-    "seen": 1793863843.753973,
-    "ast_hash": "919a352cf54151d2a590b7e5feddaf08",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/moven-active.png": {
-    "mtime": 1793780962.2842994,
-    "seen": 1793863843.753973,
-    "ast_hash": "95f1a322a68158b028128eb55815e87a",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/ondezyn.png": {
-    "mtime": 1793780962.3124993,
-    "seen": 1793863843.753973,
-    "ast_hash": "a45aedc9b488739e714e781086bda670",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/raha.png": {
-    "mtime": 1793780962.3259172,
-    "seen": 1793863843.753973,
-    "ast_hash": "74f65f0d760b97f1c1ba6e819de836e6",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/rasoi-studio.png": {
-    "mtime": 1793780962.342266,
-    "seen": 1793863843.753973,
-    "ast_hash": "e4dd0447257a14463db5e41d64509ee9",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/rogue-ninja.png": {
-    "mtime": 1793780962.393766,
-    "seen": 1793863843.753973,
-    "ast_hash": "999321d8bd1f8855d321cb377f553748",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/sezo-cabs.png": {
-    "mtime": 1793780962.4112604,
-    "seen": 1793863843.753973,
-    "ast_hash": "7bbb1de2c21b0cf7d513afa796474456",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/trishika.png": {
-    "mtime": 1793780962.425117,
-    "seen": 1793863843.753973,
-    "ast_hash": "8c20de2fd90da2b55d4f6c6de923ba36",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/velastia.png": {
-    "mtime": 1793780962.453081,
-    "seen": 1793863843.753973,
-    "ast_hash": "b16180c9022c59e16a35fe9013f6d725",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/vesper-wedding-company.png": {
-    "mtime": 1793780962.468807,
-    "seen": 1793863843.753973,
-    "ast_hash": "d2af0d468d6edb49f9aba33a9d3ae2d7",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/voiture.png": {
-    "mtime": 1793780962.484607,
-    "seen": 1793863843.753973,
-    "ast_hash": "5075aef093c11ac169dc9531b1e6b6fa",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/why-marketing.png": {
-    "mtime": 1793780962.5165532,
-    "seen": 1793863843.753973,
-    "ast_hash": "26c57c6b8de2fed226c68b5316e69275",
-    "semantic_hash": ""
-  },
-  "public/clients/mono-dark/zenvitaa.png": {
-    "mtime": 1793780962.5325537,
-    "seen": 1793863843.753973,
-    "ast_hash": "dbdbbe1c3cc66f2787d10fa686e77cc7",
+    "mtime": 1794210130.268548,
+    "seen": 1794210183.9348428,
+    "ast_hash": "c9871cb5065e241c40a9af95012ceb2f",
     "semantic_hash": ""
   },
   "public/clients/mono/atl.png": {
@@ -396,9 +186,9 @@
     "semantic_hash": ""
   },
   "public/clients/mono/maximum-efforts.png": {
-    "mtime": 1793650630.251651,
-    "seen": 1793863843.753973,
-    "ast_hash": "f349007d9cad6ca93f64e3a9b0d67916",
+    "mtime": 1794210130.268548,
+    "seen": 1794210183.9348428,
+    "ast_hash": "8b7289b18a5fe787f89eac433e3de23d",
     "semantic_hash": ""
   },
   "public/clients/mono/moven-active.png": {
@@ -473,244 +263,16 @@
     "ast_hash": "12a9639bfd10bf381f041e48ef74dff5",
     "semantic_hash": ""
   },
-  "public/clients/ondezyn.webp": {
-    "mtime": 1793648685.3190775,
-    "seen": 1793863843.7549725,
-    "ast_hash": "6698bdf2f526d2277f8485752e89ad76",
-    "semantic_hash": ""
-  },
-  "public/clients/raha.png": {
-    "mtime": 1793649060.6745043,
-    "seen": 1793863843.7549725,
-    "ast_hash": "32613b41dc6236a730e30c4e8c5d24be",
-    "semantic_hash": ""
-  },
-  "public/clients/rasoi studio.png": {
-    "mtime": 1793649284.8917108,
-    "seen": 1793863843.7549725,
-    "ast_hash": "4b03a97583a1275273ecc48fb1afd23e",
-    "semantic_hash": ""
-  },
-  "public/clients/rogue ninja.webp": {
-    "mtime": 1793649733.8925033,
-    "seen": 1793863843.7549725,
-    "ast_hash": "670bfa3a419637cb8373ffd233a4b965",
-    "semantic_hash": ""
-  },
-  "public/clients/sezo cabs.webp": {
-    "mtime": 1793649789.6537728,
-    "seen": 1793863843.7549725,
-    "ast_hash": "6f8413e6c28019fb0a50fe9ada61e716",
-    "semantic_hash": ""
-  },
-  "public/clients/trishika.webp": {
-    "mtime": 1793649763.6604087,
-    "seen": 1793863843.7549725,
-    "ast_hash": "ceabde406ffebd52bf2a262355eeebd2",
-    "semantic_hash": ""
-  },
-  "public/clients/velastia.png": {
-    "mtime": 1789810863.4542778,
-    "seen": 1793863843.7549725,
-    "ast_hash": "fc723c1dafd6d1f16bfc6ce0c673a705",
-    "semantic_hash": ""
-  },
-  "public/clients/vesper wedding company.webp": {
-    "mtime": 1793649693.1043234,
-    "seen": 1793863843.7549725,
-    "ast_hash": "80bfdd62a45547e428582f7af5c4a224",
-    "semantic_hash": ""
-  },
-  "public/clients/why marketing.webp": {
-    "mtime": 1793649151.790792,
-    "seen": 1793863843.7549725,
-    "ast_hash": "cc24fa23bc5e6ebb01d3a239bb28c15a",
-    "semantic_hash": ""
-  },
-  "public/clients/zenvitaa.webp": {
-    "mtime": 1793649343.7754493,
-    "seen": 1793863843.7549725,
-    "ast_hash": "e38a94c07499e7c2ab07b1d416e309e5",
-    "semantic_hash": ""
-  },
   "public/logo-dark.png": {
     "mtime": 1793780962.548565,
     "seen": 1793863843.7549725,
     "ast_hash": "39b5462c71074419873aebbba5b5ae9c",
     "semantic_hash": ""
   },
-  "public/originkit/hero-19/arcs-desktop.png": {
-    "mtime": 1793781497.1457188,
-    "seen": 1793863843.7549725,
-    "ast_hash": "b8126ac7b02b5f5ac2365eedce0c35c9",
-    "semantic_hash": ""
-  },
-  "public/originkit/hero-19/arcs-texture.png": {
-    "mtime": 1793781496.9261336,
-    "seen": 1793863843.7549725,
-    "ast_hash": "be8fe68c0c0cffe91c03cfe8ac3c46b9",
-    "semantic_hash": ""
-  },
-  "public/originkit/hero-19/bg-shapes-desktop.png": {
-    "mtime": 1793781499.3810256,
-    "seen": 1793863843.7549725,
-    "ast_hash": "7f0ffc72778ad41fe2a26c1e11d2c7d6",
-    "semantic_hash": ""
-  },
-  "public/originkit/hero-19/bg-shapes-tablet.png": {
-    "mtime": 1793781497.37651,
-    "seen": 1793863843.7549725,
-    "ast_hash": "e4b967fb0b018a26c1b579a65931ee92",
-    "semantic_hash": ""
-  },
-  "public/originkit/hero-19/bg-shapes.png": {
-    "mtime": 1793781497.5646775,
-    "seen": 1793863843.7549725,
-    "ast_hash": "2e56eef7a9f5d00c9365f5ff5815f7f3",
-    "semantic_hash": ""
-  },
-  "public/originkit/hero-19/hand.png": {
-    "mtime": 1793781497.8088906,
-    "seen": 1793863843.7549725,
-    "ast_hash": "b8b8d435ff57258611c0795144cb5e7f",
-    "semantic_hash": ""
-  },
-  "public/originkit/hero-19/icon-running.svg": {
-    "mtime": 1793781498.4934926,
-    "seen": 1793863843.7549725,
-    "ast_hash": "0d1c3f8275a5a224c8ba4cb60a64bbaf",
-    "semantic_hash": ""
-  },
-  "public/originkit/hero-19/icon-sleep.svg": {
-    "mtime": 1793781498.033957,
-    "seen": 1793863843.7549725,
-    "ast_hash": "abf3a21d92e7867a1b020e3609a75573",
-    "semantic_hash": ""
-  },
-  "public/originkit/hero-19/icon-star-fall.svg": {
-    "mtime": 1793781498.432558,
-    "seen": 1793863843.7549725,
-    "ast_hash": "71e49bee966dc2ff80ba79e182d9c0e9",
-    "semantic_hash": ""
-  },
-  "public/originkit/hero-19/icon-water.svg": {
-    "mtime": 1793781498.65152,
-    "seen": 1793863843.7549725,
-    "ast_hash": "112856487059bf5a66d621cbb6857f0a",
-    "semantic_hash": ""
-  },
-  "public/originkit/hero-19/ipad-texture.png": {
-    "mtime": 1793781498.7829187,
-    "seen": 1793863843.7549725,
-    "ast_hash": "c9746a2fc1d6623743cdaf153e8634e6",
-    "semantic_hash": ""
-  },
-  "public/originkit/hero-19/logo-mark.svg": {
-    "mtime": 1793781499.0419629,
-    "seen": 1793863843.7549725,
-    "ast_hash": "aa9b364c840a665fad2054ccdaf11e67",
-    "semantic_hash": ""
-  },
-  "public/originkit/hero-19/logo-mask.svg": {
-    "mtime": 1793781499.0133004,
-    "seen": 1793863843.7549725,
-    "ast_hash": "95665e36aa8cfdc323241d938f56a011",
-    "semantic_hash": ""
-  },
-  "public/originkit/hero-19/logo-strip-marquee.svg": {
-    "mtime": 1793781499.7560499,
-    "seen": 1793863843.7549725,
-    "ast_hash": "993addac84c27d7a153c4c34172a4a76",
-    "semantic_hash": ""
-  },
-  "public/originkit/hero-19/menu.svg": {
-    "mtime": 1793781499.270774,
-    "seen": 1793863843.7549725,
-    "ast_hash": "42b787112c3c4b594e7a61db18c05aa9",
-    "semantic_hash": ""
-  },
-  "public/originkit/hero-19/texture-desktop.png": {
-    "mtime": 1793781499.505788,
-    "seen": 1793863843.7549725,
-    "ast_hash": "8f98b90cb3d4b1d87d5872bb89fc8f40",
-    "semantic_hash": ""
-  },
   "components/OurWork.tsx": {
-    "mtime": 1794036497.2949796,
-    "seen": 1794036573.1832988,
-    "ast_hash": "5c610506e17ba5badd6c539d0b891a0e",
-    "semantic_hash": ""
-  },
-  "components/ui/great-ui-diagonal-marquee-carousel.tsx": {
-    "mtime": 1793873978.046242,
-    "seen": 1793874086.4885285,
-    "ast_hash": "771015c0e668f7132c163f7aa82db2a3",
-    "semantic_hash": ""
-  },
-  "public/Our works/Screenshot 2026-11-05 152704.png": {
-    "mtime": 1793872624.5402174,
-    "seen": 1793874086.4885285,
-    "ast_hash": "234f3eae376a6a1cd07783ab83983373",
-    "semantic_hash": ""
-  },
-  "public/Our works/Screenshot 2026-11-05 152731.png": {
-    "mtime": 1793872651.560987,
-    "seen": 1793874086.4885285,
-    "ast_hash": "326288e0410c36a250a51e1ee46628a3",
-    "semantic_hash": ""
-  },
-  "public/Our works/Screenshot 2026-11-05 152752.png": {
-    "mtime": 1793872673.0532982,
-    "seen": 1793874086.4885285,
-    "ast_hash": "b5ac2940b7ab8d7ee8f1ff5f5ff375d8",
-    "semantic_hash": ""
-  },
-  "public/Our works/Screenshot 2026-11-05 152812.png": {
-    "mtime": 1793872692.913968,
-    "seen": 1793874086.4885285,
-    "ast_hash": "0280d9fe1de7880ee11fc974ba60d8cd",
-    "semantic_hash": ""
-  },
-  "public/Our works/Screenshot 2026-11-05 153012.png": {
-    "mtime": 1793872812.4656575,
-    "seen": 1793874086.4885285,
-    "ast_hash": "6df5982e23f7677c9a3b5d0b86b7bd70",
-    "semantic_hash": ""
-  },
-  "public/Our works/Screenshot 2026-11-05 153041.png": {
-    "mtime": 1793872841.5436578,
-    "seen": 1793874086.4885285,
-    "ast_hash": "1cd60a383e8729ba1e3b19e06cbf2eac",
-    "semantic_hash": ""
-  },
-  "public/Our works/Screenshot 2026-11-05 153114.png": {
-    "mtime": 1793872874.6069422,
-    "seen": 1793874086.4885285,
-    "ast_hash": "e1bdace1f27c0fc7abaee1f48ec73599",
-    "semantic_hash": ""
-  },
-  "public/Our works/Screenshot 2026-11-05 153135.png": {
-    "mtime": 1793872895.3588622,
-    "seen": 1793874086.4885285,
-    "ast_hash": "090612903f328711ba115e62ba981153",
-    "semantic_hash": ""
-  },
-  "public/Our works/Screenshot 2026-11-05 153403.png": {
-    "mtime": 1793873043.480974,
-    "seen": 1793874086.4885285,
-    "ast_hash": "1d5953df6db64854e2876993ae55559a",
-    "semantic_hash": ""
-  },
-  "public/Our works/Screenshot 2026-11-05 153454.png": {
-    "mtime": 1793873094.97169,
-    "seen": 1793874086.4885285,
-    "ast_hash": "d6702dcaac86e6c525ce0d9842d51acc",
-    "semantic_hash": ""
-  },
-  "public/Our works/Screenshot 2026-11-05 153516.png": {
-    "mtime": 1793873116.6596935,
-    "seen": 1793874086.4885285,
-    "ast_hash": "fade8097332ce6f767ebd59c83c33c8d",
+    "mtime": 1794213487.400083,
+    "seen": 1794213513.37457,
+    "ast_hash": "832f83250b6916dca2cac4006efd9b5a",
     "semantic_hash": ""
   },
   "public/work/01.webp": {
@@ -797,136 +359,16 @@
     "ast_hash": "4eae89751d95b5f8095c7569732654fd",
     "semantic_hash": ""
   },
-  "public/clients/color/manifest.json": {
-    "mtime": 1793878675.7180061,
-    "seen": 1793878831.0535133,
-    "ast_hash": "39cf796315d16fd731638163d9eef881",
-    "semantic_hash": ""
-  },
-  "public/clients/color/atl.png": {
-    "mtime": 1793878672.1344767,
-    "seen": 1793878831.0535133,
-    "ast_hash": "75abc3502580048d7d19bded5e2ee415",
-    "semantic_hash": ""
-  },
-  "public/clients/color/bossperfumes.png": {
-    "mtime": 1793878672.1735616,
-    "seen": 1793878831.0535133,
-    "ast_hash": "925e51b17aa3d6b320b68da463a50622",
-    "semantic_hash": ""
-  },
-  "public/clients/color/curefully.png": {
-    "mtime": 1793878672.214526,
-    "seen": 1793878831.0535133,
-    "ast_hash": "828f90fb26f0c243a95cfe34517a1f37",
-    "semantic_hash": ""
-  },
-  "public/clients/color/flynova.png": {
-    "mtime": 1793780962.2300625,
-    "seen": 1793878831.0535133,
-    "ast_hash": "3c473eaa2e09db0c1f9adfdf2a5db172",
-    "semantic_hash": ""
-  },
-  "public/clients/color/jacob-ventures.png": {
-    "mtime": 1793878672.439001,
-    "seen": 1793878831.0535133,
-    "ast_hash": "d7f15af757decbb13881b7f022a96e6c",
-    "semantic_hash": ""
-  },
-  "public/clients/color/kerala-mist.png": {
-    "mtime": 1793878672.4933627,
-    "seen": 1793878831.0535133,
-    "ast_hash": "bff9399da3dec5ca568fd4e1438ed1f2",
-    "semantic_hash": ""
-  },
-  "public/clients/color/maximum-efforts.png": {
-    "mtime": 1793780962.2842994,
-    "seen": 1793878831.0535133,
-    "ast_hash": "919a352cf54151d2a590b7e5feddaf08",
-    "semantic_hash": ""
-  },
-  "public/clients/color/moven-active.png": {
-    "mtime": 1793878672.5252357,
-    "seen": 1793878831.0535133,
-    "ast_hash": "bf9596c8c1560440c85ad28bcbeb5a70",
-    "semantic_hash": ""
-  },
-  "public/clients/color/ondezyn.png": {
-    "mtime": 1793878674.6495578,
-    "seen": 1793878831.0535133,
-    "ast_hash": "bdad3fd98aaf2b4a0b8be4751b6326c5",
-    "semantic_hash": ""
-  },
-  "public/clients/color/raha.png": {
-    "mtime": 1793878674.8936114,
-    "seen": 1793878831.0535133,
-    "ast_hash": "98e555d865c4ece9d608cc4ac316c108",
-    "semantic_hash": ""
-  },
-  "public/clients/color/rasoi-studio.png": {
-    "mtime": 1793878674.955169,
-    "seen": 1793878831.0535133,
-    "ast_hash": "c2693d879e0ee8d8c2e32c0b5e8fbf83",
-    "semantic_hash": ""
-  },
-  "public/clients/color/rogue-ninja.png": {
-    "mtime": 1793780962.393766,
-    "seen": 1793878831.0535133,
-    "ast_hash": "999321d8bd1f8855d321cb377f553748",
-    "semantic_hash": ""
-  },
-  "public/clients/color/sezo-cabs.png": {
-    "mtime": 1793878675.0141034,
-    "seen": 1793878831.0535133,
-    "ast_hash": "c86e1b868451acc7ecae116d2e1bf5fa",
-    "semantic_hash": ""
-  },
-  "public/clients/color/trishika.png": {
-    "mtime": 1793878675.0519824,
-    "seen": 1793878831.0535133,
-    "ast_hash": "9f91915268dc4ba1ca4e25d2e2cfe743",
-    "semantic_hash": ""
-  },
-  "public/clients/color/velastia.png": {
-    "mtime": 1793878675.4756522,
-    "seen": 1793878831.0535133,
-    "ast_hash": "103c20e1e6f680973668910f5a9890c7",
-    "semantic_hash": ""
-  },
-  "public/clients/color/vesper-wedding-company.png": {
-    "mtime": 1793878675.5166156,
-    "seen": 1793878831.0535133,
-    "ast_hash": "8379d6c82e8f3f811e56abfb91c1ecef",
-    "semantic_hash": ""
-  },
-  "public/clients/color/voiture.png": {
-    "mtime": 1793878675.6351473,
-    "seen": 1793878831.0535133,
-    "ast_hash": "b7470baac7e83feb57552a109eea1bd0",
-    "semantic_hash": ""
-  },
-  "public/clients/color/why-marketing.png": {
-    "mtime": 1793878675.6712034,
-    "seen": 1793878831.0535133,
-    "ast_hash": "4ee1b8b198fc5e8ef3235d9292f7ee16",
-    "semantic_hash": ""
-  },
-  "public/clients/color/zenvitaa.png": {
-    "mtime": 1793878675.7180061,
-    "seen": 1793878831.0535133,
-    "ast_hash": "64a2050331389f0ef552337c6c358ee7",
-    "semantic_hash": ""
-  },
   "components/Testimonials.tsx": {
-    "mtime": 1793893171.1235187,
-    "seen": 1793893272.1121142,
-    "ast_hash": "eb5ad0dde2d1f130ce08ebbc4d3a398c",
+    "mtime": 1794211869.006662,
+    "seen": 1794212352.9039173,
+    "ast_hash": "7800c62134d2f259477d1d6ccedc6987",
     "semantic_hash": ""
   },
   "components/Faq.tsx": {
-    "mtime": 1793914725.6904652,
-    "seen": 1793914836.276635,
-    "ast_hash": "7242d927b60448925775ce43925eed0c",
+    "mtime": 1794211869.006662,
+    "seen": 1794212352.9039173,
+    "ast_hash": "4b6db37cd0cd4ac69228f0e4c6b23dba",
     "semantic_hash": ""
   },
   "components/FinalCta.tsx": {
@@ -936,9 +378,9 @@
     "semantic_hash": ""
   },
   "components/Footer.tsx": {
-    "mtime": 1793914725.6904652,
-    "seen": 1793914836.276635,
-    "ast_hash": "4d39c045c871fdca976ae05e104e9147",
+    "mtime": 1794210926.9136777,
+    "seen": 1794210957.9613583,
+    "ast_hash": "7a3d20976fd9444de0803c8a95d58ac5",
     "semantic_hash": ""
   },
   "components/HalftoneWordmark.tsx": {
@@ -947,178 +389,22 @@
     "ast_hash": "7c965cfb716e916490aa75d87a35d752",
     "semantic_hash": ""
   },
-  "app/api/contact/route.ts": {
-    "mtime": 1793914655.8320222,
-    "seen": 1793914836.276635,
-    "ast_hash": "1a32d12680279251ba00a00bd40344fc",
-    "semantic_hash": ""
-  },
   "app/contact/page.tsx": {
-    "mtime": 1793914713.7713745,
-    "seen": 1793914836.276635,
-    "ast_hash": "5680f47b85f25976c8850b58d9029717",
+    "mtime": 1794207270.7250786,
+    "seen": 1794207338.8796546,
+    "ast_hash": "1ed7804869ae530528ad3c2cd1418902",
     "semantic_hash": ""
   },
   "components/contact/ContactPage.tsx": {
-    "mtime": 1793944110.129769,
-    "seen": 1793944172.1244068,
-    "ast_hash": "9b5d492afc0c0f1751457c9aba806465",
+    "mtime": 1794212051.9942312,
+    "seen": 1794212352.9039173,
+    "ast_hash": "a1f325ac1fb384cc37654ae642b40557",
     "semantic_hash": ""
   },
   "components/ui/globe.tsx": {
-    "mtime": 1793943995.9242096,
-    "seen": 1793944172.1244068,
-    "ast_hash": "e2c647043da853656d6321b75732f39e",
-    "semantic_hash": ""
-  },
-  "public/Our works/Screenshot 2026-11-06 142238.png": {
-    "mtime": 1793955158.238435,
-    "seen": 1793963198.5321438,
-    "ast_hash": "00b39269fe7e18ebc5d556bc2999d66b",
-    "semantic_hash": ""
-  },
-  "public/Our works/Screenshot 2026-11-06 142319.png": {
-    "mtime": 1793955199.9722395,
-    "seen": 1793963198.5321438,
-    "ast_hash": "6f860bee743b2012135291ce8b2b0619",
-    "semantic_hash": ""
-  },
-  "public/Our works/Screenshot 2026-11-06 142427.png": {
-    "mtime": 1793955267.4115095,
-    "seen": 1793963198.5321438,
-    "ast_hash": "be8e49bb9ecf4c2812501baf274aa453",
-    "semantic_hash": ""
-  },
-  "public/Our works/Screenshot 2026-11-06 143517.png": {
-    "mtime": 1793955918.1919048,
-    "seen": 1793963198.5321438,
-    "ast_hash": "82fdb129599780b51f1a989803d68a57",
-    "semantic_hash": ""
-  },
-  "public/Our works/ecommerce/bossperfumes.png": {
-    "mtime": 1793873137.9104695,
-    "seen": 1793963198.5321438,
-    "ast_hash": "b5e4cfd32f6860b54085850ba5209bab",
-    "semantic_hash": ""
-  },
-  "public/Our works/ecommerce/moven.png": {
-    "mtime": 1793872998.874655,
-    "seen": 1793963198.5321438,
-    "ast_hash": "f03ebbc4bf5b872cb9413b93a0e20038",
-    "semantic_hash": ""
-  },
-  "public/Our works/ecommerce/velastia.png": {
-    "mtime": 1793873222.127011,
-    "seen": 1793963198.5321438,
-    "ast_hash": "20fb97f96800e58d7e105873ea845fc0",
-    "semantic_hash": ""
-  },
-  "public/Our works/erp/carwash managment/hero.png": {
-    "mtime": 1793946093.2517781,
-    "seen": 1793963198.5321438,
-    "ast_hash": "ef504558a8da5aa4d15250c89aff1f3a",
-    "semantic_hash": ""
-  },
-  "public/Our works/erp/carwash managment/image (1).png": {
-    "mtime": 1793946085.2736804,
-    "seen": 1793963198.5321438,
-    "ast_hash": "2bb8ce1d4931dd93d4abc6588ce35b6b",
-    "semantic_hash": ""
-  },
-  "public/Our works/erp/carwash managment/image (2).png": {
-    "mtime": 1793946089.9441507,
-    "seen": 1793963198.5321438,
-    "ast_hash": "835921430e99d20b6cb59a0b76460b5c",
-    "semantic_hash": ""
-  },
-  "public/Our works/erp/dental erp/SmileCare Dental Analytics Dashboard.png": {
-    "mtime": 1793948144.0610971,
-    "seen": 1793963198.5321438,
-    "ast_hash": "bf273471482464a135f8e6280330e470",
-    "semantic_hash": ""
-  },
-  "public/Our works/erp/dental erp/cdbfc68f-31c6-4e17-9394-db11fb7db424.png": {
-    "mtime": 1793948124.0158403,
-    "seen": 1793963198.5321438,
-    "ast_hash": "c20b8d95a5f8524051345f948d750001",
-    "semantic_hash": ""
-  },
-  "public/Our works/erp/dental erp/hero.png": {
-    "mtime": 1793948137.8776908,
-    "seen": 1793963198.5321438,
-    "ast_hash": "8e0dd98d6a597e60fd9a606b96856001",
-    "semantic_hash": ""
-  },
-  "public/Our works/erp/invoice billing/Screenshot 2026-11-06 114736.png": {
-    "mtime": 1793945856.8796754,
-    "seen": 1793963198.5321438,
-    "ast_hash": "829d2d8932daf54b15c51a00a54e53b3",
-    "semantic_hash": ""
-  },
-  "public/Our works/erp/invoice billing/Screenshot 2026-11-06 114917.png": {
-    "mtime": 1793945957.9062433,
-    "seen": 1793963198.5321438,
-    "ast_hash": "ade0b788e84cff0c74ca8a6eaac046a0",
-    "semantic_hash": ""
-  },
-  "public/Our works/erp/invoice billing/hero.png": {
-    "mtime": 1793945895.7982948,
-    "seen": 1793963198.5321438,
-    "ast_hash": "1a613d45e4edf26fe1e81add15d8cd52",
-    "semantic_hash": ""
-  },
-  "public/Our works/erp/radwa erp/WhatsApp Image 2026-11-06 at 11.07.47 AM.jpeg": {
-    "mtime": 1793945669.153384,
-    "seen": 1793963198.5321438,
-    "ast_hash": "8396fd70337a35c0aa73d190feda55f9",
-    "semantic_hash": ""
-  },
-  "public/Our works/erp/radwa erp/WhatsApp Image 2026-11-06 at 11.10.45 AM.jpeg": {
-    "mtime": 1793945669.1572542,
-    "seen": 1793963198.5321438,
-    "ast_hash": "6ae0f5191465ca3ba9b21c4ae43ccfe8",
-    "semantic_hash": ""
-  },
-  "public/Our works/erp/radwa erp/hero.jpeg": {
-    "mtime": 1793945669.155741,
-    "seen": 1793963198.5321438,
-    "ast_hash": "e8932bad6583a4fc89b800718729967e",
-    "semantic_hash": ""
-  },
-  "public/Our works/erp/restaurent billing/WhatsApp Image 2026-11-06 at 4.11.25 PM.jpeg": {
-    "mtime": 1793962025.2263525,
-    "seen": 1793963198.5321438,
-    "ast_hash": "03f2c0dea29f31804af371eeca58be6e",
-    "semantic_hash": ""
-  },
-  "public/Our works/erp/restaurent billing/WhatsApp Image 2026-11-06 at 4.11.26 PM.jpeg": {
-    "mtime": 1793962035.2061028,
-    "seen": 1793963198.5321438,
-    "ast_hash": "607151c60181f03f321346940c101238",
-    "semantic_hash": ""
-  },
-  "public/Our works/erp/restaurent billing/hero.jpeg": {
-    "mtime": 1793962001.1232135,
-    "seen": 1793963198.5321438,
-    "ast_hash": "0cb43663c391bf56bb108ab07e901997",
-    "semantic_hash": ""
-  },
-  "public/Our works/website/Screenshot 2026-11-05 152704.png": {
-    "mtime": 1793872624.5402174,
-    "seen": 1793963198.5321438,
-    "ast_hash": "234f3eae376a6a1cd07783ab83983373",
-    "semantic_hash": ""
-  },
-  "public/Our works/website/Screenshot 2026-11-05 152752.png": {
-    "mtime": 1793872673.0532982,
-    "seen": 1793963198.5321438,
-    "ast_hash": "b5ac2940b7ab8d7ee8f1ff5f5ff375d8",
-    "semantic_hash": ""
-  },
-  "public/Our works/website/Screenshot 2026-11-05 153516.png": {
-    "mtime": 1793873116.6596935,
-    "seen": 1793963198.5321438,
-    "ast_hash": "fade8097332ce6f767ebd59c83c33c8d",
+    "mtime": 1794212220.192042,
+    "seen": 1794212352.9039173,
+    "ast_hash": "b5655ba659e8e52e0b382b515b179162",
     "semantic_hash": ""
   },
   "public/work/15.webp": {
@@ -1211,10 +497,1354 @@
     "ast_hash": "958f9a0929a0c2bd84db1d076b4d756f",
     "semantic_hash": ""
   },
+  "app/work/page.tsx": {
+    "mtime": 1794207270.7250786,
+    "seen": 1794207338.8796546,
+    "ast_hash": "b3b0676c119e0e3c3f7e1795a0fe9a56",
+    "semantic_hash": ""
+  },
+  "components/work/WorksPage.tsx": {
+    "mtime": 1794212051.9942312,
+    "seen": 1794212352.9039173,
+    "ast_hash": "52c301be0512bad7853b6f937d8520f9",
+    "semantic_hash": ""
+  },
+  "lib/haptics.ts": {
+    "mtime": 1794036850.1284733,
+    "seen": 1794160379.3069172,
+    "ast_hash": "518907b8db0549daf315aaf7e96b4fa1",
+    "semantic_hash": ""
+  },
+  "lib/works.ts": {
+    "mtime": 1794211469.441949,
+    "seen": 1794212352.9039173,
+    "ast_hash": "683ed09fdd0e4ffc430fc76eb1cb8a3c",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1794037748.492577,
+    "seen": 1794160379.3069172,
+    "ast_hash": "2c7dd9e1e8a47b0f05cb0e0ba905a85d",
+    "semantic_hash": ""
+  },
+  "public/work/all/arabian-mandhi-1-1600.webp": {
+    "mtime": 1794160070.6976657,
+    "seen": 1794160379.3069172,
+    "ast_hash": "13874d18ab3d60f59d958bc14e94914e",
+    "semantic_hash": ""
+  },
+  "public/work/all/arabian-mandhi-1-960.webp": {
+    "mtime": 1794160070.4419444,
+    "seen": 1794160379.3069172,
+    "ast_hash": "6471228b16eb13d861515605226e764d",
+    "semantic_hash": ""
+  },
+  "public/work/all/arabian-mandhi-2-1600.webp": {
+    "mtime": 1794160071.096889,
+    "seen": 1794160379.3069172,
+    "ast_hash": "9826c6d15ea6918e3e4574ac39b1ef7f",
+    "semantic_hash": ""
+  },
+  "public/work/all/arabian-mandhi-2-960.webp": {
+    "mtime": 1794160070.8365562,
+    "seen": 1794160379.3069172,
+    "ast_hash": "0622fdd021d71a180911f845d73ec8ae",
+    "semantic_hash": ""
+  },
+  "public/work/all/arabian-mandhi-3-1600.webp": {
+    "mtime": 1794160071.4951081,
+    "seen": 1794160379.3069172,
+    "ast_hash": "f1aff191618a5f8703e1b48208b683df",
+    "semantic_hash": ""
+  },
+  "public/work/all/arabian-mandhi-3-960.webp": {
+    "mtime": 1794160071.2340355,
+    "seen": 1794160379.3069172,
+    "ast_hash": "63aacf6621841be79d26054a6e734955",
+    "semantic_hash": ""
+  },
+  "public/work/all/atl-1-1600.webp": {
+    "mtime": 1794160063.6208897,
+    "seen": 1794160379.3069172,
+    "ast_hash": "28513898c76e3fa05b93941c57deb2e5",
+    "semantic_hash": ""
+  },
+  "public/work/all/atl-1-960.webp": {
+    "mtime": 1794160063.4200811,
+    "seen": 1794160379.3069172,
+    "ast_hash": "1e795a930203393a1a4d99b27b534a9c",
+    "semantic_hash": ""
+  },
+  "public/work/all/billing-suite-1-1600.webp": {
+    "mtime": 1794160068.9882514,
+    "seen": 1794160379.3069172,
+    "ast_hash": "0960bf07d468bae6d2bd9743450ded5e",
+    "semantic_hash": ""
+  },
+  "public/work/all/billing-suite-1-960.webp": {
+    "mtime": 1794160068.8019495,
+    "seen": 1794160379.3069172,
+    "ast_hash": "bcd930935dff3bcb5af2939cdf0176fa",
+    "semantic_hash": ""
+  },
+  "public/work/all/billing-suite-2-1600.webp": {
+    "mtime": 1794160069.2766087,
+    "seen": 1794160379.3069172,
+    "ast_hash": "2fd09ac0da89d15980d836fd6c61bb94",
+    "semantic_hash": ""
+  },
+  "public/work/all/billing-suite-2-960.webp": {
+    "mtime": 1794160069.0729344,
+    "seen": 1794160379.3069172,
+    "ast_hash": "07f5dc4988ba202500d34f190adfbd92",
+    "semantic_hash": ""
+  },
+  "public/work/all/billing-suite-3-1600.webp": {
+    "mtime": 1794160069.5658512,
+    "seen": 1794160379.3069172,
+    "ast_hash": "a6608a15739ccde937d66a3799405885",
+    "semantic_hash": ""
+  },
+  "public/work/all/billing-suite-3-960.webp": {
+    "mtime": 1794160069.3770401,
+    "seen": 1794160379.3069172,
+    "ast_hash": "15ed5e1c40f348603385558a3d6da5c1",
+    "semantic_hash": ""
+  },
+  "public/work/all/boss-perfumes-1-1600.webp": {
+    "mtime": 1794160066.1211128,
+    "seen": 1794160379.3069172,
+    "ast_hash": "7a5d187bcc0348108464627d5404f3ea",
+    "semantic_hash": ""
+  },
+  "public/work/all/boss-perfumes-1-960.webp": {
+    "mtime": 1794160065.898371,
+    "seen": 1794160379.3069172,
+    "ast_hash": "57201c8e31fe9cce117bd94122658769",
+    "semantic_hash": ""
+  },
+  "public/work/all/dr-priyanka-1-1600.webp": {
+    "mtime": 1794160065.40576,
+    "seen": 1794160379.3069172,
+    "ast_hash": "d5acb725087ac33c9e43342f65cb0029",
+    "semantic_hash": ""
+  },
+  "public/work/all/dr-priyanka-1-960.webp": {
+    "mtime": 1794160065.2220664,
+    "seen": 1794160379.3069172,
+    "ast_hash": "6ca68bd1489c0f9697ff09082861d614",
+    "semantic_hash": ""
+  },
+  "public/work/all/flynova-1-1600.webp": {
+    "mtime": 1794160062.7184145,
+    "seen": 1794160379.3069172,
+    "ast_hash": "a3717f3eca238d6348bc166196b09afc",
+    "semantic_hash": ""
+  },
+  "public/work/all/flynova-1-960.webp": {
+    "mtime": 1794160062.4618917,
+    "seen": 1794160379.3069172,
+    "ast_hash": "f1beb4b039a1fd3910ec7ff76224cf14",
+    "semantic_hash": ""
+  },
+  "public/work/all/guardexo-1-1600.webp": {
+    "mtime": 1794160064.7712986,
+    "seen": 1794160379.3069172,
+    "ast_hash": "1a6d670dbee49cff00bbd9ff9189a46c",
+    "semantic_hash": ""
+  },
+  "public/work/all/guardexo-1-960.webp": {
+    "mtime": 1794160064.5850983,
+    "seen": 1794160379.3069172,
+    "ast_hash": "92e424c4667392073d0ccd702858a07e",
+    "semantic_hash": ""
+  },
+  "public/work/all/kerala-mist-1-1600.webp": {
+    "mtime": 1794160064.1588275,
+    "seen": 1794160379.3069172,
+    "ast_hash": "fb96bf61cf25b0a185eb8436d49219ac",
+    "semantic_hash": ""
+  },
+  "public/work/all/kerala-mist-1-960.webp": {
+    "mtime": 1794160063.7962322,
+    "seen": 1794160379.3069172,
+    "ast_hash": "6d3330a14faa239035560ed054994e10",
+    "semantic_hash": ""
+  },
+  "public/work/all/moven-1-1600.webp": {
+    "mtime": 1794160066.4077895,
+    "seen": 1794160379.3069172,
+    "ast_hash": "182994f71c8916df86093931783b829e",
+    "semantic_hash": ""
+  },
+  "public/work/all/moven-1-960.webp": {
+    "mtime": 1794160066.2205756,
+    "seen": 1794160379.3069172,
+    "ast_hash": "e699c5759879f8374faf68225943b740",
+    "semantic_hash": ""
+  },
+  "public/work/all/ondezyn-1-1600.webp": {
+    "mtime": 1794160064.4856372,
+    "seen": 1794160379.3069172,
+    "ast_hash": "b9636f4df4eab45ca750b11acf26ff68",
+    "semantic_hash": ""
+  },
+  "public/work/all/ondezyn-1-960.webp": {
+    "mtime": 1794160064.2607238,
+    "seen": 1794160379.3069172,
+    "ast_hash": "4a2bbff72022e0714ff152dec20b2d4b",
+    "semantic_hash": ""
+  },
+  "public/work/all/pitstop-1-1600.webp": {
+    "mtime": 1794160067.0024133,
+    "seen": 1794160379.3069172,
+    "ast_hash": "b38061436a65c87c34235bd677ec26a2",
+    "semantic_hash": ""
+  },
+  "public/work/all/pitstop-1-960.webp": {
+    "mtime": 1794160066.8231015,
+    "seen": 1794160379.3069172,
+    "ast_hash": "0505e22f09a7eceac2d4006cf4114cac",
+    "semantic_hash": ""
+  },
+  "public/work/all/pitstop-2-1600.webp": {
+    "mtime": 1794160067.2679062,
+    "seen": 1794160379.3069172,
+    "ast_hash": "16b86db77e48a7dece5ddd69949bb116",
+    "semantic_hash": ""
+  },
+  "public/work/all/pitstop-2-960.webp": {
+    "mtime": 1794160067.089275,
+    "seen": 1794160379.3069172,
+    "ast_hash": "f8e03f6fe65a9fdeb0818d7a31cf597a",
+    "semantic_hash": ""
+  },
+  "public/work/all/pitstop-3-1600.webp": {
+    "mtime": 1794160067.5050728,
+    "seen": 1794160379.3069172,
+    "ast_hash": "d1b773afa4db81fa71d124e14bdf0817",
+    "semantic_hash": ""
+  },
+  "public/work/all/pitstop-3-960.webp": {
+    "mtime": 1794160067.3593462,
+    "seen": 1794160379.3069172,
+    "ast_hash": "3f2f94d32a9eb7b11322a757e204b4b8",
+    "semantic_hash": ""
+  },
+  "public/work/all/radwa-1-1600.webp": {
+    "mtime": 1794160069.815806,
+    "seen": 1794160379.3069172,
+    "ast_hash": "8de8f3dac4d0a0ee4d287057b89e5914",
+    "semantic_hash": ""
+  },
+  "public/work/all/radwa-1-960.webp": {
+    "mtime": 1794160069.6552045,
+    "seen": 1794160379.3069172,
+    "ast_hash": "d0725d7259f215ae8f8c76005196bacf",
+    "semantic_hash": ""
+  },
+  "public/work/all/radwa-2-1600.webp": {
+    "mtime": 1794160070.0599992,
+    "seen": 1794160379.3069172,
+    "ast_hash": "d2bc1ed87f5598bee232426b600a9e1f",
+    "semantic_hash": ""
+  },
+  "public/work/all/radwa-2-960.webp": {
+    "mtime": 1794160069.9048703,
+    "seen": 1794160379.3069172,
+    "ast_hash": "3d6b3394ffdc63fd52e6beb8de3b1d2d",
+    "semantic_hash": ""
+  },
+  "public/work/all/radwa-3-1600.webp": {
+    "mtime": 1794160070.301741,
+    "seen": 1794160379.3069172,
+    "ast_hash": "c92d467ebd948e51fb59375d98f6d0a0",
+    "semantic_hash": ""
+  },
+  "public/work/all/radwa-3-960.webp": {
+    "mtime": 1794160070.1436784,
+    "seen": 1794160379.3069172,
+    "ast_hash": "74a043db8fc314c11f0cceda236f39b1",
+    "semantic_hash": ""
+  },
+  "public/work/all/raha-1-1600.webp": {
+    "mtime": 1794160063.3153462,
+    "seen": 1794160379.3069172,
+    "ast_hash": "0f90608ef3c463dc01fa7d9b0779cab9",
+    "semantic_hash": ""
+  },
+  "public/work/all/raha-1-960.webp": {
+    "mtime": 1794160063.086257,
+    "seen": 1794160379.3069172,
+    "ast_hash": "95930dc34e6bef94dd8480f971833c6d",
+    "semantic_hash": ""
+  },
+  "public/work/all/rogue-ninja-1-1600.webp": {
+    "mtime": 1794160061.5528944,
+    "seen": 1794160379.3069172,
+    "ast_hash": "c18ab48b5758fa970a85c860ba53383b",
+    "semantic_hash": ""
+  },
+  "public/work/all/rogue-ninja-1-960.webp": {
+    "mtime": 1794160061.330959,
+    "seen": 1794160379.3069172,
+    "ast_hash": "c21000df9fec36078ea2a869418b57a9",
+    "semantic_hash": ""
+  },
+  "public/work/all/sezo-cabs-1-1600.webp": {
+    "mtime": 1794160060.935241,
+    "seen": 1794160379.3069172,
+    "ast_hash": "aae0799a4440a645e520740ce67cfe76",
+    "semantic_hash": ""
+  },
+  "public/work/all/sezo-cabs-1-960.webp": {
+    "mtime": 1794160060.6850717,
+    "seen": 1794160379.3069172,
+    "ast_hash": "79a59e1d34f12851b82aa3c9a1eef1ad",
+    "semantic_hash": ""
+  },
+  "public/work/all/smilecare-1-1600.webp": {
+    "mtime": 1794160067.909747,
+    "seen": 1794160379.3069172,
+    "ast_hash": "6910580a5cb01d1be3cd3842d912963e",
+    "semantic_hash": ""
+  },
+  "public/work/all/smilecare-1-960.webp": {
+    "mtime": 1794160067.649386,
+    "seen": 1794160379.3069172,
+    "ast_hash": "bedff70e024f5148e2a24025845bd029",
+    "semantic_hash": ""
+  },
+  "public/work/all/smilecare-2-1600.webp": {
+    "mtime": 1794160068.3159955,
+    "seen": 1794160379.3069172,
+    "ast_hash": "da5857689fe9afce29240f54f007a60c",
+    "semantic_hash": ""
+  },
+  "public/work/all/smilecare-2-960.webp": {
+    "mtime": 1794160068.0578175,
+    "seen": 1794160379.3069172,
+    "ast_hash": "05a1c5bcf6776b29b7c8f959a0792362",
+    "semantic_hash": ""
+  },
+  "public/work/all/smilecare-3-1600.webp": {
+    "mtime": 1794160068.7113073,
+    "seen": 1794160379.3069172,
+    "ast_hash": "9912d34683846be808d3533244767184",
+    "semantic_hash": ""
+  },
+  "public/work/all/smilecare-3-960.webp": {
+    "mtime": 1794160068.4591758,
+    "seen": 1794160379.3069172,
+    "ast_hash": "3a179f21784aaf18e4c7f606dc3028fa",
+    "semantic_hash": ""
+  },
+  "public/work/all/sri-sai-1-1600.webp": {
+    "mtime": 1794160065.7851267,
+    "seen": 1794160379.3069172,
+    "ast_hash": "fc5f70c50248c1991f1ab873393459ff",
+    "semantic_hash": ""
+  },
+  "public/work/all/sri-sai-1-960.webp": {
+    "mtime": 1794160065.5345123,
+    "seen": 1794160379.3069172,
+    "ast_hash": "1736905f51fe1336fdff1ba9d20a929a",
+    "semantic_hash": ""
+  },
+  "public/work/all/trishika-1-1600.webp": {
+    "mtime": 1794160061.225382,
+    "seen": 1794160379.3069172,
+    "ast_hash": "a7991798c0f052b1a310c876bf47366d",
+    "semantic_hash": ""
+  },
+  "public/work/all/trishika-1-960.webp": {
+    "mtime": 1794160061.030452,
+    "seen": 1794160379.3069172,
+    "ast_hash": "923d3952c803e72ca9b83b7dd80478f2",
+    "semantic_hash": ""
+  },
+  "public/work/all/velastia-1-1600.webp": {
+    "mtime": 1794160066.7365057,
+    "seen": 1794160379.3069172,
+    "ast_hash": "5eace063e0c841e42c34d596b6324f9b",
+    "semantic_hash": ""
+  },
+  "public/work/all/velastia-1-960.webp": {
+    "mtime": 1794160066.5177703,
+    "seen": 1794160379.3069172,
+    "ast_hash": "f68a4f0d3fa633bb1f70d0bd51f5c1a8",
+    "semantic_hash": ""
+  },
+  "public/work/all/vesper-1-1600.webp": {
+    "mtime": 1794160061.946489,
+    "seen": 1794160379.3069172,
+    "ast_hash": "adefd36aeaf9f085ea4454d7720114e5",
+    "semantic_hash": ""
+  },
+  "public/work/all/vesper-1-960.webp": {
+    "mtime": 1794160061.6866174,
+    "seen": 1794160379.3069172,
+    "ast_hash": "e38a8e846c5638ba0dc44b22197cc9a4",
+    "semantic_hash": ""
+  },
+  "public/work/all/voiture-1-1600.webp": {
+    "mtime": 1794160065.123283,
+    "seen": 1794160379.3069172,
+    "ast_hash": "6c06bf26ed219001d6d00239946ee78f",
+    "semantic_hash": ""
+  },
+  "public/work/all/voiture-1-960.webp": {
+    "mtime": 1794160064.893419,
+    "seen": 1794160379.3069172,
+    "ast_hash": "a0bbe93ea17d01f3b2a92182d1606c48",
+    "semantic_hash": ""
+  },
+  "public/work/all/why-marketing-1-1600.webp": {
+    "mtime": 1794160062.983351,
+    "seen": 1794160379.3069172,
+    "ast_hash": "6776fa1964064335e015ea6092a24e84",
+    "semantic_hash": ""
+  },
+  "public/work/all/why-marketing-1-960.webp": {
+    "mtime": 1794160062.8053236,
+    "seen": 1794160379.3069172,
+    "ast_hash": "2c0f0789241844d94b23bf857f8cec4f",
+    "semantic_hash": ""
+  },
+  "public/work/all/zenvitaa-1-1600.webp": {
+    "mtime": 1794160062.3245127,
+    "seen": 1794160379.3069172,
+    "ast_hash": "17fd994754fd060b55c56984f9fff1e1",
+    "semantic_hash": ""
+  },
+  "public/work/all/zenvitaa-1-960.webp": {
+    "mtime": 1794160062.074011,
+    "seen": 1794160379.3069172,
+    "ast_hash": "464776a28d7cf15cf86723ea19ac33f8",
+    "semantic_hash": ""
+  },
+  "components/work/ScrollStroke.tsx": {
+    "mtime": 1794212037.1547482,
+    "seen": 1794212352.9039173,
+    "ast_hash": "3bf22669baa2a53074ef53870688299c",
+    "semantic_hash": ""
+  },
+  "components/HeroStack.tsx": {
+    "mtime": 1794201958.6394558,
+    "seen": 1794201972.3449376,
+    "ast_hash": "0f2da92ce9fd1d95bb3bc50b92d5bc86",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/manifest.json": {
+    "mtime": 1794210130.3175983,
+    "seen": 1794210183.9348428,
+    "ast_hash": "e316f40cb2ee5866f834b393f3b066c0",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/atl.png": {
+    "mtime": 1794204232.4457781,
+    "seen": 1794204283.8373318,
+    "ast_hash": "144e592d7aa1d2fab76cf2a24b820268",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/bossperfumes.png": {
+    "mtime": 1794204232.5018299,
+    "seen": 1794204283.8373318,
+    "ast_hash": "c7a6425888dc18b710acaefc63f12f6d",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/curefully.png": {
+    "mtime": 1794204232.5482357,
+    "seen": 1794204283.8373318,
+    "ast_hash": "3539bd32771374fc3a673dea14e8c8f9",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/flynova.png": {
+    "mtime": 1794204232.5901802,
+    "seen": 1794204283.8373318,
+    "ast_hash": "8ee101d174a47785368db79364118161",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/jacob-ventures.png": {
+    "mtime": 1794204232.6315482,
+    "seen": 1794204283.8373318,
+    "ast_hash": "9ff26fd80e6f228b7abc0ebc9b8b4acc",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/kerala-mist.png": {
+    "mtime": 1794204232.6746564,
+    "seen": 1794204283.8373318,
+    "ast_hash": "d68a3b6ae5232d110853934b4cc86878",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/maximum-efforts.png": {
+    "mtime": 1794210130.316184,
+    "seen": 1794210183.9348428,
+    "ast_hash": "8b7289b18a5fe787f89eac433e3de23d",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/moven-active.png": {
+    "mtime": 1794204232.6953435,
+    "seen": 1794204283.8373318,
+    "ast_hash": "b29278ff78885e4332e0829f5e427578",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/ondezyn.png": {
+    "mtime": 1794204232.748709,
+    "seen": 1794204283.8373318,
+    "ast_hash": "adf2f532b22b56b8de0b13c83db7f52d",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/raha.png": {
+    "mtime": 1794204245.8830698,
+    "seen": 1794204283.8373318,
+    "ast_hash": "98e555d865c4ece9d608cc4ac316c108",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/rasoi-studio.png": {
+    "mtime": 1794204245.8177114,
+    "seen": 1794204283.8373318,
+    "ast_hash": "c2693d879e0ee8d8c2e32c0b5e8fbf83",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/rogue-ninja.png": {
+    "mtime": 1794204232.9882424,
+    "seen": 1794204283.8373318,
+    "ast_hash": "31f1d3bf4938e1dcc3be1e4ddeb1df8d",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/sezo-cabs.png": {
+    "mtime": 1794204233.0273507,
+    "seen": 1794204283.8373318,
+    "ast_hash": "e7d36a4eb659489577b005984db5b6c2",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/trishika.png": {
+    "mtime": 1794204245.8523953,
+    "seen": 1794204283.8373318,
+    "ast_hash": "9f91915268dc4ba1ca4e25d2e2cfe743",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/velastia.png": {
+    "mtime": 1794204233.1567714,
+    "seen": 1794204283.8373318,
+    "ast_hash": "1d53ccc82e252c677192cd2d9fd1a7d6",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/vesper-wedding-company.png": {
+    "mtime": 1794204233.1950743,
+    "seen": 1794204283.8373318,
+    "ast_hash": "ddd365340f25f4625e96543b12650857",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/voiture.png": {
+    "mtime": 1794204233.325893,
+    "seen": 1794204283.8373318,
+    "ast_hash": "4c24ea2907dfdd1c036127266c44ebaf",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/why-marketing.png": {
+    "mtime": 1794204233.3548293,
+    "seen": 1794204283.8373318,
+    "ast_hash": "e74b4cc93443164d40b25764d6ed0643",
+    "semantic_hash": ""
+  },
+  "public/clients/color-dark/zenvitaa.png": {
+    "mtime": 1794204233.3835993,
+    "seen": 1794204283.8373318,
+    "ast_hash": "5f2e0e625882b20802492000e0a44bbf",
+    "semantic_hash": ""
+  },
+  "app/not-found.tsx": {
+    "mtime": 1794207291.984799,
+    "seen": 1794207338.8796546,
+    "ast_hash": "b945b457caa3e01156a15dd241d05c13",
+    "semantic_hash": ""
+  },
+  "app/robots.ts": {
+    "mtime": 1794207253.7128503,
+    "seen": 1794207338.8796546,
+    "ast_hash": "2f5639848376c76b4aa11d04b557ed7f",
+    "semantic_hash": ""
+  },
+  "app/sitemap.ts": {
+    "mtime": 1794209949.9774685,
+    "seen": 1794210015.2629783,
+    "ast_hash": "f3a1dd6c3debbde08988850ee8dd2852",
+    "semantic_hash": ""
+  },
+  "assets/brand/make-icons.py": {
+    "mtime": 1794207252.6904178,
+    "seen": 1794207338.8796546,
+    "ast_hash": "82860438c0bd5fbfb3e87f6c0cbd829d",
+    "semantic_hash": ""
+  },
+  "lib/site.ts": {
+    "mtime": 1794211678.2964394,
+    "seen": 1794212352.9039173,
+    "ast_hash": "98df76c0155dd7da925cd76a4a7fdb43",
+    "semantic_hash": ""
+  },
+  "app/opengraph-image.alt.txt": {
+    "mtime": 1794207252.697918,
+    "seen": 1794207338.8796546,
+    "ast_hash": "f78cce7cb2216532d41a88362a87394e",
+    "semantic_hash": ""
+  },
+  "app/twitter-image.alt.txt": {
+    "mtime": 1794207252.74281,
+    "seen": 1794207338.8796546,
+    "ast_hash": "f78cce7cb2216532d41a88362a87394e",
+    "semantic_hash": ""
+  },
+  "assets/originals/README.md": {
+    "mtime": 1794211640.025916,
+    "seen": 1794212352.9039173,
+    "ast_hash": "ae16e49be3d21c56f6922541e85a5cdb",
+    "semantic_hash": ""
+  },
+  "app/apple-icon.png": {
+    "mtime": 1794207236.1020916,
+    "seen": 1794207338.8796546,
+    "ast_hash": "3cee4cf2ba37a6446a5d448a6488f143",
+    "semantic_hash": ""
+  },
+  "app/icon.png": {
+    "mtime": 1794207236.0950801,
+    "seen": 1794207338.8796546,
+    "ast_hash": "25a995270bd9114587c2afc029d78f3e",
+    "semantic_hash": ""
+  },
+  "app/opengraph-image.png": {
+    "mtime": 1794207236.2133415,
+    "seen": 1794207338.8796546,
+    "ast_hash": "977ac74a7916770c7ae66136caa52bde",
+    "semantic_hash": ""
+  },
+  "app/twitter-image.png": {
+    "mtime": 1794207236.2704277,
+    "seen": 1794207338.8796546,
+    "ast_hash": "977ac74a7916770c7ae66136caa52bde",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/Screenshot 2026-11-05 152704.png": {
+    "mtime": 1793872624.5402174,
+    "seen": 1794207338.8796546,
+    "ast_hash": "234f3eae376a6a1cd07783ab83983373",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/Screenshot 2026-11-05 152731.png": {
+    "mtime": 1793872651.560987,
+    "seen": 1794207338.8796546,
+    "ast_hash": "326288e0410c36a250a51e1ee46628a3",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/Screenshot 2026-11-05 152752.png": {
+    "mtime": 1793872673.0532982,
+    "seen": 1794207338.8796546,
+    "ast_hash": "b5ac2940b7ab8d7ee8f1ff5f5ff375d8",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/Screenshot 2026-11-05 152812.png": {
+    "mtime": 1793872692.913968,
+    "seen": 1794207338.8796546,
+    "ast_hash": "0280d9fe1de7880ee11fc974ba60d8cd",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/Screenshot 2026-11-05 153012.png": {
+    "mtime": 1793872812.4656575,
+    "seen": 1794207338.8796546,
+    "ast_hash": "6df5982e23f7677c9a3b5d0b86b7bd70",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/Screenshot 2026-11-05 153041.png": {
+    "mtime": 1793872841.5436578,
+    "seen": 1794207338.8796546,
+    "ast_hash": "1cd60a383e8729ba1e3b19e06cbf2eac",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/Screenshot 2026-11-05 153114.png": {
+    "mtime": 1793872874.6069422,
+    "seen": 1794207338.8796546,
+    "ast_hash": "e1bdace1f27c0fc7abaee1f48ec73599",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/Screenshot 2026-11-05 153135.png": {
+    "mtime": 1793872895.3588622,
+    "seen": 1794207338.8796546,
+    "ast_hash": "090612903f328711ba115e62ba981153",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/Screenshot 2026-11-05 153403.png": {
+    "mtime": 1793873043.480974,
+    "seen": 1794207338.8796546,
+    "ast_hash": "1d5953df6db64854e2876993ae55559a",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/Screenshot 2026-11-05 153454.png": {
+    "mtime": 1793873094.97169,
+    "seen": 1794207338.8796546,
+    "ast_hash": "d6702dcaac86e6c525ce0d9842d51acc",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/Screenshot 2026-11-05 153516.png": {
+    "mtime": 1793873116.6596935,
+    "seen": 1794207338.8796546,
+    "ast_hash": "fade8097332ce6f767ebd59c83c33c8d",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/Screenshot 2026-11-06 142238.png": {
+    "mtime": 1793955158.238435,
+    "seen": 1794207338.8796546,
+    "ast_hash": "00b39269fe7e18ebc5d556bc2999d66b",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/Screenshot 2026-11-06 142319.png": {
+    "mtime": 1793955199.9722395,
+    "seen": 1794207338.8796546,
+    "ast_hash": "6f860bee743b2012135291ce8b2b0619",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/Screenshot 2026-11-06 142427.png": {
+    "mtime": 1793955267.4115095,
+    "seen": 1794207338.8796546,
+    "ast_hash": "be8e49bb9ecf4c2812501baf274aa453",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/Screenshot 2026-11-06 143517.png": {
+    "mtime": 1793955918.1919048,
+    "seen": 1794207338.8796546,
+    "ast_hash": "82fdb129599780b51f1a989803d68a57",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/ecommerce/bossperfumes.png": {
+    "mtime": 1793873137.9104695,
+    "seen": 1794207338.8796546,
+    "ast_hash": "b5e4cfd32f6860b54085850ba5209bab",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/ecommerce/moven.png": {
+    "mtime": 1793872998.874655,
+    "seen": 1794207338.8796546,
+    "ast_hash": "f03ebbc4bf5b872cb9413b93a0e20038",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/ecommerce/velastia.png": {
+    "mtime": 1793873222.127011,
+    "seen": 1794207338.8796546,
+    "ast_hash": "20fb97f96800e58d7e105873ea845fc0",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/erp/carwash managment/hero.png": {
+    "mtime": 1793946093.2517781,
+    "seen": 1794207338.8796546,
+    "ast_hash": "ef504558a8da5aa4d15250c89aff1f3a",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/erp/carwash managment/image (1).png": {
+    "mtime": 1793946085.2736804,
+    "seen": 1794207338.8796546,
+    "ast_hash": "2bb8ce1d4931dd93d4abc6588ce35b6b",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/erp/carwash managment/image (2).png": {
+    "mtime": 1793946089.9441507,
+    "seen": 1794207338.8796546,
+    "ast_hash": "835921430e99d20b6cb59a0b76460b5c",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/erp/dental erp/SmileCare Dental Analytics Dashboard.png": {
+    "mtime": 1793948144.0610971,
+    "seen": 1794207338.8796546,
+    "ast_hash": "bf273471482464a135f8e6280330e470",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/erp/dental erp/cdbfc68f-31c6-4e17-9394-db11fb7db424.png": {
+    "mtime": 1793948124.0158403,
+    "seen": 1794207338.8796546,
+    "ast_hash": "c20b8d95a5f8524051345f948d750001",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/erp/dental erp/hero.png": {
+    "mtime": 1793948137.8776908,
+    "seen": 1794207338.8796546,
+    "ast_hash": "8e0dd98d6a597e60fd9a606b96856001",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/erp/invoice billing/Screenshot 2026-11-06 114736.png": {
+    "mtime": 1793945856.8796754,
+    "seen": 1794207338.8796546,
+    "ast_hash": "829d2d8932daf54b15c51a00a54e53b3",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/erp/invoice billing/Screenshot 2026-11-06 114917.png": {
+    "mtime": 1793945957.9062433,
+    "seen": 1794207338.8796546,
+    "ast_hash": "ade0b788e84cff0c74ca8a6eaac046a0",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/erp/invoice billing/hero.png": {
+    "mtime": 1793945895.7982948,
+    "seen": 1794207338.8796546,
+    "ast_hash": "1a613d45e4edf26fe1e81add15d8cd52",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/erp/radwa erp/WhatsApp Image 2026-11-06 at 11.07.47 AM.jpeg": {
+    "mtime": 1793945669.153384,
+    "seen": 1794207338.8796546,
+    "ast_hash": "8396fd70337a35c0aa73d190feda55f9",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/erp/radwa erp/WhatsApp Image 2026-11-06 at 11.10.45 AM.jpeg": {
+    "mtime": 1793945669.1572542,
+    "seen": 1794207338.8796546,
+    "ast_hash": "6ae0f5191465ca3ba9b21c4ae43ccfe8",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/erp/radwa erp/hero.jpeg": {
+    "mtime": 1793945669.155741,
+    "seen": 1794207338.8796546,
+    "ast_hash": "e8932bad6583a4fc89b800718729967e",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/erp/restaurent billing/WhatsApp Image 2026-11-06 at 4.11.25 PM.jpeg": {
+    "mtime": 1793962025.2263525,
+    "seen": 1794207338.8796546,
+    "ast_hash": "03f2c0dea29f31804af371eeca58be6e",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/erp/restaurent billing/WhatsApp Image 2026-11-06 at 4.11.26 PM.jpeg": {
+    "mtime": 1793962035.2061028,
+    "seen": 1794207338.8796546,
+    "ast_hash": "607151c60181f03f321346940c101238",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/erp/restaurent billing/hero.jpeg": {
+    "mtime": 1793962001.1232135,
+    "seen": 1794207338.8796546,
+    "ast_hash": "0cb43663c391bf56bb108ab07e901997",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/website/Screenshot 2026-11-05 152704.png": {
+    "mtime": 1793872624.5402174,
+    "seen": 1794207338.8796546,
+    "ast_hash": "234f3eae376a6a1cd07783ab83983373",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/website/Screenshot 2026-11-05 152752.png": {
+    "mtime": 1793872673.0532982,
+    "seen": 1794207338.8796546,
+    "ast_hash": "b5ac2940b7ab8d7ee8f1ff5f5ff375d8",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/website/Screenshot 2026-11-05 153516.png": {
+    "mtime": 1793873116.6596935,
+    "seen": 1794207338.8796546,
+    "ast_hash": "fade8097332ce6f767ebd59c83c33c8d",
+    "semantic_hash": ""
+  },
+  "assets/originals/services/apps.png": {
+    "mtime": 1793691455.4128413,
+    "seen": 1794207338.8796546,
+    "ast_hash": "d0620275dd48d96ff9bf9bbd7860cd54",
+    "semantic_hash": ""
+  },
+  "assets/originals/services/digital growth and support.png": {
+    "mtime": 1793691391.9522545,
+    "seen": 1794207338.8796546,
+    "ast_hash": "1c631d28623857d8a5db733d00c3481a",
+    "semantic_hash": ""
+  },
+  "assets/originals/services/ecommerce.png": {
+    "mtime": 1793691581.9062667,
+    "seen": 1794207338.8796546,
+    "ast_hash": "716d20b3bde9d8d51c7fe5998e82b1be",
+    "semantic_hash": ""
+  },
+  "assets/originals/services/erp.png": {
+    "mtime": 1793691504.605243,
+    "seen": 1794207338.8796546,
+    "ast_hash": "29076220e0b08ae1ed0b31b085c9d9cb",
+    "semantic_hash": ""
+  },
+  "assets/originals/services/website.png": {
+    "mtime": 1793691134.8544724,
+    "seen": 1794207338.8796546,
+    "ast_hash": "681f18120c848606c1f09fc82115e686",
+    "semantic_hash": ""
+  },
+  "public/services/apps.webp": {
+    "mtime": 1794207170.9358099,
+    "seen": 1794207338.8796546,
+    "ast_hash": "b3646e4882a925587d421cf97c35ac73",
+    "semantic_hash": ""
+  },
+  "public/services/digital-growth.webp": {
+    "mtime": 1794207171.216274,
+    "seen": 1794207338.8796546,
+    "ast_hash": "71524d2558ed95153c50dbf274d95573",
+    "semantic_hash": ""
+  },
+  "public/services/ecommerce.webp": {
+    "mtime": 1794207171.5000176,
+    "seen": 1794207338.8796546,
+    "ast_hash": "25b1b8eb2211f84c15d5dbe817e3fadc",
+    "semantic_hash": ""
+  },
+  "public/services/erp.webp": {
+    "mtime": 1794207171.8168647,
+    "seen": 1794207338.8796546,
+    "ast_hash": "f6efe2cf817e3732c86a08090b57e7c9",
+    "semantic_hash": ""
+  },
+  "public/services/website.webp": {
+    "mtime": 1794207172.0879877,
+    "seen": 1794207338.8796546,
+    "ast_hash": "5fd832387186d85bb16651b57d0e9c2f",
+    "semantic_hash": ""
+  },
+  "app/privacy/page.tsx": {
+    "mtime": 1794208617.581418,
+    "seen": 1794208687.5149174,
+    "ast_hash": "508b47d0537e6dbc098a0e763c75cad1",
+    "semantic_hash": ""
+  },
+  "app/terms/page.tsx": {
+    "mtime": 1794208617.6927283,
+    "seen": 1794208687.5149174,
+    "ast_hash": "83d04eefeea3933ab20ea855bffc0b2f",
+    "semantic_hash": ""
+  },
+  "components/legal/LegalPage.tsx": {
+    "mtime": 1794210738.0762055,
+    "seen": 1794210748.0510945,
+    "ast_hash": "1f72ad79f19203c01453620c993e3dc2",
+    "semantic_hash": ""
+  },
+  "lib/contact.ts": {
+    "mtime": 1794208427.578305,
+    "seen": 1794208687.5149174,
+    "ast_hash": "cc176e39419b597609f4219e3e966a74",
+    "semantic_hash": ""
+  },
+  "app/about/page.tsx": {
+    "mtime": 1794209943.6057415,
+    "seen": 1794210015.2629783,
+    "ast_hash": "4cbb587cf81c1562f8c3c15f76e68f48",
+    "semantic_hash": ""
+  },
+  "components/about/AboutPage.tsx": {
+    "mtime": 1794210427.398722,
+    "seen": 1794210554.418315,
+    "ast_hash": "7ee7d4b094083d7242a77e90434d5586",
+    "semantic_hash": ""
+  },
+  "components/about/ScrollWords.tsx": {
+    "mtime": 1794209849.3755329,
+    "seen": 1794210015.2629783,
+    "ast_hash": "4be4c0e881eb211539e04efdc3704243",
+    "semantic_hash": ""
+  },
+  "components/about/TextGlobe.tsx": {
+    "mtime": 1794209808.349296,
+    "seen": 1794210015.2629783,
+    "ast_hash": "016dc0814b020d8fe6de2425b74c5cec",
+    "semantic_hash": ""
+  },
+  "components/about/VelocityMarquee.tsx": {
+    "mtime": 1794209849.4696748,
+    "seen": 1794210015.2629783,
+    "ast_hash": "27854be59ab62ec0eecca05e0c7381a3",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/maximum effort logo.png": {
+    "mtime": 1794209953.4850218,
+    "seen": 1794210183.9348428,
+    "ast_hash": "e2416d86f0be3e5b6f6bd8ad8962367e",
+    "semantic_hash": ""
+  },
+  "assets/originals/our-works/ecommerce/lakaffy.png": {
+    "mtime": 1794206642.885086,
+    "seen": 1794210183.9348428,
+    "ast_hash": "0086aaa36f7e7ed6d5b21673c1457212",
+    "semantic_hash": ""
+  },
+  "public/work/all/lakaffy-1-1600.webp": {
+    "mtime": 1794210118.9732401,
+    "seen": 1794210183.9348428,
+    "ast_hash": "aeb4ad0da3ff62ec438db939e1a04f93",
+    "semantic_hash": ""
+  },
+  "public/work/all/lakaffy-1-960.webp": {
+    "mtime": 1794210118.7631946,
+    "seen": 1794210183.9348428,
+    "ast_hash": "c93ab02200475dd48fe850677d65c33c",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/manifest.json": {
+    "mtime": 1794210130.2928793,
+    "seen": 1794212352.9039173,
+    "ast_hash": "e316f40cb2ee5866f834b393f3b066c0",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/manifest.json": {
+    "mtime": 1794210130.3390446,
+    "seen": 1794212352.9039173,
+    "ast_hash": "c9871cb5065e241c40a9af95012ceb2f",
+    "semantic_hash": ""
+  },
+  "components/StructuredData.tsx": {
+    "mtime": 1794211677.4687693,
+    "seen": 1794212352.9039173,
+    "ast_hash": "db9cec29b8e8dd33858b5c911b4f7f2c",
+    "semantic_hash": ""
+  },
+  "next.config.ts": {
+    "mtime": 1794212315.3200872,
+    "seen": 1794212352.9039173,
+    "ast_hash": "bc58628458033c8f74326747a20efe29",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/atl.png": {
+    "mtime": 1793648815.4242058,
+    "seen": 1794212352.9039173,
+    "ast_hash": "a01d964b1883e34563471e605a80bd10",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/bossperfumes.webp": {
+    "mtime": 1793648587.7361763,
+    "seen": 1794212352.9039173,
+    "ast_hash": "a9319a46206d263e1a03a4bc6fe40e17",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/atl.png": {
+    "mtime": 1793878672.1344767,
+    "seen": 1794212352.9039173,
+    "ast_hash": "75abc3502580048d7d19bded5e2ee415",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/bossperfumes.png": {
+    "mtime": 1793878672.1735616,
+    "seen": 1794212352.9039173,
+    "ast_hash": "925e51b17aa3d6b320b68da463a50622",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/curefully.png": {
+    "mtime": 1793878672.214526,
+    "seen": 1794212352.9039173,
+    "ast_hash": "828f90fb26f0c243a95cfe34517a1f37",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/flynova.png": {
+    "mtime": 1793780962.2300625,
+    "seen": 1794212352.9039173,
+    "ast_hash": "3c473eaa2e09db0c1f9adfdf2a5db172",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/jacob-ventures.png": {
+    "mtime": 1793878672.439001,
+    "seen": 1794212352.9039173,
+    "ast_hash": "d7f15af757decbb13881b7f022a96e6c",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/kerala-mist.png": {
+    "mtime": 1793878672.4933627,
+    "seen": 1794212352.9039173,
+    "ast_hash": "bff9399da3dec5ca568fd4e1438ed1f2",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/maximum-efforts.png": {
+    "mtime": 1794210130.2928793,
+    "seen": 1794212352.9039173,
+    "ast_hash": "8b7289b18a5fe787f89eac433e3de23d",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/moven-active.png": {
+    "mtime": 1793878672.5252357,
+    "seen": 1794212352.9039173,
+    "ast_hash": "bf9596c8c1560440c85ad28bcbeb5a70",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/ondezyn.png": {
+    "mtime": 1793878674.6495578,
+    "seen": 1794212352.9039173,
+    "ast_hash": "bdad3fd98aaf2b4a0b8be4751b6326c5",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/raha.png": {
+    "mtime": 1793878674.8936114,
+    "seen": 1794212352.9039173,
+    "ast_hash": "98e555d865c4ece9d608cc4ac316c108",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/rasoi-studio.png": {
+    "mtime": 1793878674.955169,
+    "seen": 1794212352.9039173,
+    "ast_hash": "c2693d879e0ee8d8c2e32c0b5e8fbf83",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/rogue-ninja.png": {
+    "mtime": 1793780962.393766,
+    "seen": 1794212352.9039173,
+    "ast_hash": "999321d8bd1f8855d321cb377f553748",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/sezo-cabs.png": {
+    "mtime": 1793878675.0141034,
+    "seen": 1794212352.9039173,
+    "ast_hash": "c86e1b868451acc7ecae116d2e1bf5fa",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/trishika.png": {
+    "mtime": 1793878675.0519824,
+    "seen": 1794212352.9039173,
+    "ast_hash": "9f91915268dc4ba1ca4e25d2e2cfe743",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/velastia.png": {
+    "mtime": 1793878675.4756522,
+    "seen": 1794212352.9039173,
+    "ast_hash": "103c20e1e6f680973668910f5a9890c7",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/vesper-wedding-company.png": {
+    "mtime": 1793878675.5166156,
+    "seen": 1794212352.9039173,
+    "ast_hash": "8379d6c82e8f3f811e56abfb91c1ecef",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/voiture.png": {
+    "mtime": 1793878675.6351473,
+    "seen": 1794212352.9039173,
+    "ast_hash": "b7470baac7e83feb57552a109eea1bd0",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/why-marketing.png": {
+    "mtime": 1793878675.6712034,
+    "seen": 1794212352.9039173,
+    "ast_hash": "4ee1b8b198fc5e8ef3235d9292f7ee16",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/color/zenvitaa.png": {
+    "mtime": 1793878675.7180061,
+    "seen": 1794212352.9039173,
+    "ast_hash": "64a2050331389f0ef552337c6c358ee7",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/curefully.png": {
+    "mtime": 1793650202.8044577,
+    "seen": 1794212352.9039173,
+    "ast_hash": "6443e86a874d246d8007139fec04463d",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/flynova.webp": {
+    "mtime": 1793649244.0806627,
+    "seen": 1794212352.9039173,
+    "ast_hash": "1676057a5ca41fc6c4dfc179ef8fef95",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/jacob ventures.jpeg": {
+    "mtime": 1793649015.1854658,
+    "seen": 1794212352.9039173,
+    "ast_hash": "86447bc34a74d4b027b6879f8f0fecaf",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/kerala mist.webp": {
+    "mtime": 1793648758.785517,
+    "seen": 1794212352.9039173,
+    "ast_hash": "188e807bbc226fc4566a5cb21018ad52",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/maximum efforts.png": {
+    "mtime": 1793649611.4158032,
+    "seen": 1794212352.9039173,
+    "ast_hash": "fcfcba7eaaadcf8a91bdf99bd7a13b1b",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/atl.png": {
+    "mtime": 1793780962.201019,
+    "seen": 1794212352.9039173,
+    "ast_hash": "97f9b4921e15fad00d402d2252155111",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/bossperfumes.png": {
+    "mtime": 1793780962.2159252,
+    "seen": 1794212352.9039173,
+    "ast_hash": "aedad990ef4d6f06750cc7c98f56bafa",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/curefully.png": {
+    "mtime": 1793780962.2300625,
+    "seen": 1794212352.9039173,
+    "ast_hash": "0b42d978740676d6e7c3769f3ffd9089",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/flynova.png": {
+    "mtime": 1793780962.2300625,
+    "seen": 1794212352.9039173,
+    "ast_hash": "3c473eaa2e09db0c1f9adfdf2a5db172",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/jacob-ventures.png": {
+    "mtime": 1793780962.2463303,
+    "seen": 1794212352.9039173,
+    "ast_hash": "cee820e0e7e86e17d6a81640159d515b",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/kerala-mist.png": {
+    "mtime": 1793780962.2842994,
+    "seen": 1794212352.9039173,
+    "ast_hash": "e0b884ae3712e7e1a17ab68d4bcbf82a",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/maximum-efforts.png": {
+    "mtime": 1794210130.3380244,
+    "seen": 1794212352.9039173,
+    "ast_hash": "15e1a9dd57dfc8694ee4e3614480a814",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/moven-active.png": {
+    "mtime": 1793780962.2842994,
+    "seen": 1794212352.9039173,
+    "ast_hash": "95f1a322a68158b028128eb55815e87a",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/ondezyn.png": {
+    "mtime": 1793780962.3124993,
+    "seen": 1794212352.9039173,
+    "ast_hash": "a45aedc9b488739e714e781086bda670",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/raha.png": {
+    "mtime": 1793780962.3259172,
+    "seen": 1794212352.9039173,
+    "ast_hash": "74f65f0d760b97f1c1ba6e819de836e6",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/rasoi-studio.png": {
+    "mtime": 1793780962.342266,
+    "seen": 1794212352.9039173,
+    "ast_hash": "e4dd0447257a14463db5e41d64509ee9",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/rogue-ninja.png": {
+    "mtime": 1793780962.393766,
+    "seen": 1794212352.9039173,
+    "ast_hash": "999321d8bd1f8855d321cb377f553748",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/sezo-cabs.png": {
+    "mtime": 1793780962.4112604,
+    "seen": 1794212352.9039173,
+    "ast_hash": "7bbb1de2c21b0cf7d513afa796474456",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/trishika.png": {
+    "mtime": 1793780962.425117,
+    "seen": 1794212352.9039173,
+    "ast_hash": "8c20de2fd90da2b55d4f6c6de923ba36",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/velastia.png": {
+    "mtime": 1793780962.453081,
+    "seen": 1794212352.9039173,
+    "ast_hash": "b16180c9022c59e16a35fe9013f6d725",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/vesper-wedding-company.png": {
+    "mtime": 1793780962.468807,
+    "seen": 1794212352.9039173,
+    "ast_hash": "d2af0d468d6edb49f9aba33a9d3ae2d7",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/voiture.png": {
+    "mtime": 1793780962.484607,
+    "seen": 1794212352.9039173,
+    "ast_hash": "5075aef093c11ac169dc9531b1e6b6fa",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/why-marketing.png": {
+    "mtime": 1793780962.5165532,
+    "seen": 1794212352.9039173,
+    "ast_hash": "26c57c6b8de2fed226c68b5316e69275",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/mono-dark/zenvitaa.png": {
+    "mtime": 1793780962.5325537,
+    "seen": 1794212352.9039173,
+    "ast_hash": "dbdbbe1c3cc66f2787d10fa686e77cc7",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/ondezyn.webp": {
+    "mtime": 1793648685.3190775,
+    "seen": 1794212352.9039173,
+    "ast_hash": "6698bdf2f526d2277f8485752e89ad76",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/raha.png": {
+    "mtime": 1793649060.6745043,
+    "seen": 1794212352.9039173,
+    "ast_hash": "32613b41dc6236a730e30c4e8c5d24be",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/rasoi studio.png": {
+    "mtime": 1793649284.8917108,
+    "seen": 1794212352.9039173,
+    "ast_hash": "4b03a97583a1275273ecc48fb1afd23e",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/rogue ninja.webp": {
+    "mtime": 1793649733.8925033,
+    "seen": 1794212352.9039173,
+    "ast_hash": "670bfa3a419637cb8373ffd233a4b965",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/sezo cabs.webp": {
+    "mtime": 1793649789.6537728,
+    "seen": 1794212352.9039173,
+    "ast_hash": "6f8413e6c28019fb0a50fe9ada61e716",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/trishika.webp": {
+    "mtime": 1793649763.6604087,
+    "seen": 1794212352.9039173,
+    "ast_hash": "ceabde406ffebd52bf2a262355eeebd2",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/velastia.png": {
+    "mtime": 1789810863.4542778,
+    "seen": 1794212352.9039173,
+    "ast_hash": "fc723c1dafd6d1f16bfc6ce0c673a705",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/vesper wedding company.webp": {
+    "mtime": 1793649693.1043234,
+    "seen": 1794212352.9039173,
+    "ast_hash": "80bfdd62a45547e428582f7af5c4a224",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/why marketing.webp": {
+    "mtime": 1793649151.790792,
+    "seen": 1794212352.9039173,
+    "ast_hash": "cc24fa23bc5e6ebb01d3a239bb28c15a",
+    "semantic_hash": ""
+  },
+  "assets/originals/clients/zenvitaa.webp": {
+    "mtime": 1793649343.7754493,
+    "seen": 1794212352.9039173,
+    "ast_hash": "e38a94c07499e7c2ab07b1d416e309e5",
+    "semantic_hash": ""
+  },
+  "public/originkit/hero-19/hand.webp": {
+    "mtime": 1794211619.9266768,
+    "seen": 1794212352.9039173,
+    "ast_hash": "059370830d4bb21d1282527b07d95980",
+    "semantic_hash": ""
+  },
   "package-lock.json": {
-    "mtime": 1793943905.1493554,
-    "seen": 1793944172.1244068,
-    "ast_hash": "c9027263f73c7dac63f0d77d59b7f0cd",
+    "mtime": 1794212210.1823063,
+    "seen": 1794212352.9044218,
+    "ast_hash": "d3536b1a23d5858e49a33b855eb3ab0c",
     "semantic_hash": ""
   }
 }

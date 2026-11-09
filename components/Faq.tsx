@@ -164,6 +164,17 @@ const CATEGORIES: { label: string; faqs: QA[] }[] = [
     },
 ]
 
+/** all the questions, as schema.org FAQPage JSON-LD ("<" escaped so the text can't close the tag) */
+const FAQ_LD = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: CATEGORIES.flatMap((c) => c.faqs).map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+}).replace(/</g, "\\u003c")
+
 const EASE = [0.22, 0.8, 0.24, 1] as const
 const pad = (n: number) => String(n).padStart(2, "0")
 /** pinning needs a screen tall enough to hold the title, tabs and a few rows */
@@ -336,6 +347,8 @@ export default function Faq() {
             style={pinned ? { height: `calc(100svh + ${extra}px)` } : undefined}
         >
             <section id="faq" className={styles.section} aria-labelledby={`${id}-title`}>
+                {/* every question and answer as FAQPage structured data, for rich results in search */}
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: FAQ_LD }} />
                 <div className={styles.inner}>
                     <div className={styles.side}>
                         <div className={styles.head}>
@@ -409,11 +422,10 @@ export default function Faq() {
                             {/* the window the questions scroll through */}
                             <div ref={viewportRef} className={styles.viewport}>
                                 <div ref={contentRef} className={styles.content}>
+                                    {/* the tab panel wraps the list, so the list keeps its own list role */}
+                                    <div id={`${id}-panel`} role="tabpanel" aria-labelledby={`${id}-tab${cat}`}>
                                     <motion.ul
                                         key={cat}
-                                        id={`${id}-panel`}
-                                        role="tabpanel"
-                                        aria-labelledby={`${id}-tab${cat}`}
                                         className={styles.list}
                                         variants={listMotion}
                                         initial="hidden"
@@ -472,6 +484,7 @@ export default function Faq() {
                                             )
                                         })}
                                     </motion.ul>
+                                    </div>
                                     {/* on phones the contact card closes the list */}
                                     <ContactCard className={styles.contactEnd} />
                                 </div>

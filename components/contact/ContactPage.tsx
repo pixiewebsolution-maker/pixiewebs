@@ -1,16 +1,12 @@
 "use client"
 
-import { memo, useState, type FormEvent } from "react"
+import { memo, useEffect, useState, type FormEvent } from "react"
+import dynamic from "next/dynamic"
 import { motion } from "motion/react"
 import Logo from "@/components/Logo"
-import Globe from "@/components/ui/globe"
+import { EMAIL, PHONES, whatsappLink } from "@/lib/contact"
 import styles from "./ContactPage.module.css"
 
-/*
- * Shown large under the heading once there's a confirmed address; until then
- * the line invites people to the form instead.
- */
-const CONTACT_EMAIL: string = ""
 
 const SERVICES = ["Website", "E-Commerce", "ERP & CRM", "Mobile App", "SEO & Support", "Something else"]
 const TICKER = ["Websites", "E-Commerce", "ERP & CRM", "Mobile Apps", "SEO & Support"]
@@ -43,12 +39,48 @@ const GLOBE_PROPS = {
     detail: 5,
 }
 
-/** drawn once: the form's state changes never re-render (and so never rebuild) the globe */
+/** the globe's code loads in its own chunk, so it never holds up the form and heading */
+const Globe = dynamic(() => import("@/components/ui/globe"), { ssr: false })
+
+/**
+ * Drawn once: the form's state changes never re-render (and so never rebuild)
+ * the globe. It starts once the browser is idle after the first paint, since
+ * building its map of dots is heavy work on a phone.
+ */
 const ContactGlobe = memo(function ContactGlobe() {
-    return <Globe {...GLOBE_PROPS} />
+    const [ready, setReady] = useState(false)
+    useEffect(() => {
+        const go = () => setReady(true)
+        if ("requestIdleCallback" in window) {
+            const id = window.requestIdleCallback(go, { timeout: 2500 })
+            return () => window.cancelIdleCallback(id)
+        }
+        const t = setTimeout(go, 1200)
+        return () => clearTimeout(t)
+    }, [])
+    return ready ? <Globe {...GLOBE_PROPS} /> : null
 })
 
-type Status = "idle" | "sending" | "sent" | "not-configured" | "error"
+type Status = "idle" | "sent"
+
+/** the form, written out as a WhatsApp message */
+function toMessage(d: Record<string, string>, services: string[]) {
+    // optional fields left empty are skipped (null); "" keeps a blank line
+    const lines: (string | null)[] = [
+        "Hi Pixie Webs, I'd like to talk about a project.",
+        "",
+        `Name: ${d.name.trim()}`,
+        `Email: ${d.email.trim()}`,
+        d.company?.trim() ? `Company: ${d.company.trim()}` : null,
+        d.phone?.trim() ? `Phone: ${d.phone.trim()}` : null,
+        services.length > 0 ? `Looking for: ${services.join(", ")}` : null,
+        d.budget?.trim() ? `Budget: ${d.budget.trim()}` : null,
+        "",
+        "About the project:",
+        d.message.trim(),
+    ]
+    return lines.filter((l): l is string => l !== null).join("\n")
+}
 
 function Arrow() {
     return (
@@ -128,33 +160,27 @@ export default function ContactPage() {
     const [services, setServices] = useState<string[]>([])
     const [status, setStatus] = useState<Status>("idle")
     const [sentName, setSentName] = useState("")
+    /** the WhatsApp link for the last message, in case the new tab was blocked */
+    const [sentLink, setSentLink] = useState("")
 
     const toggle = (s: string) => setServices((cur) => (cur.includes(s) ? cur.filter((x) => x !== s) : [...cur, s]))
 
-    const submit = async (e: FormEvent<HTMLFormElement>) => {
+    // Send opens a WhatsApp chat with Pixie Webs, the message already written
+    // out from the form; the visitor just presses send in WhatsApp.
+    const submit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const form = e.currentTarget
         if (!form.reportValidity()) return
         const data = Object.fromEntries(new FormData(form)) as Record<string, string>
-        setStatus("sending")
-        try {
-            const res = await fetch("/api/contact", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ ...data, services }),
-            })
-            if (res.ok) {
-                setSentName(data.name?.split(" ")[0] ?? "")
-                setStatus("sent")
-                form.reset()
-                setServices([])
-                return
-            }
-            const body = await res.json().catch(() => ({}))
-            setStatus(body.error === "not-configured" ? "not-configured" : "error")
-        } catch {
-            setStatus("error")
-        }
+        // a field people never see; bots that fill it get nowhere
+        if (data.website) return
+        const link = whatsappLink(toMessage(data, services))
+        window.open(link, "_blank", "noopener,noreferrer")
+        setSentLink(link)
+        setSentName(data.name?.split(" ")[0] ?? "")
+        setStatus("sent")
+        form.reset()
+        setServices([])
     }
 
     return (
@@ -179,11 +205,14 @@ export default function ContactPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
                 >
-                    {CONTACT_EMAIL ? (
-                        <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-                    ) : (
-                        <>Tell us about it below, and we&rsquo;ll take it from there.</>
-                    )}
+                    <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+                    <span className={styles.phones}>
+                        {PHONES.map((p) => (
+                            <a key={p.tel} href={`tel:${p.tel}`}>
+                                {p.display}
+                            </a>
+                        ))}
+                    </span>
                 </motion.p>
             </section>
 
@@ -202,7 +231,12 @@ export default function ContactPage() {
                         <div className={styles.sent} role="status">
                             <p className={styles.sentTitle}>Thank you{sentName ? `, ${sentName}` : ""}.</p>
                             <p className={styles.sentText}>
-                                Your message is on its way. We&rsquo;ll read it properly and get back to you soon.
+                                WhatsApp has opened with your message written out. Just press send there, and
+                                we&rsquo;ll get back to you soon. If it didn&rsquo;t open,{" "}
+                                <a href={sentLink} target="_blank" rel="noopener noreferrer">
+                                    open WhatsApp here
+                                </a>
+                                .
                             </p>
                             <button type="button" className={styles.again} onClick={() => setStatus("idle")}>
                                 Send another message
@@ -239,16 +273,13 @@ export default function ContactPage() {
                             <input type="text" name="website" tabIndex={-1} autoComplete="off" className={styles.trap} aria-hidden="true" />
 
                             <div className={styles.submitRow}>
-                                <button type="submit" className={styles.pill} disabled={status === "sending"}>
-                                    {status === "sending" ? "Sending…" : "Send"}
+                                <button type="submit" className={styles.pill}>
+                                    Send on WhatsApp
                                     <span className={styles.pillIcon}>
                                         <Arrow />
                                     </span>
                                 </button>
-                                <p className={styles.note} role="status" aria-live="polite">
-                                    {status === "not-configured" && "Our form isn't connected yet. Please try again a little later."}
-                                    {status === "error" && "Something went wrong sending that. Please try again."}
-                                </p>
+                                <p className={styles.note}>Opens WhatsApp with your message ready to send.</p>
                             </div>
                         </form>
                     )}

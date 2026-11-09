@@ -895,8 +895,9 @@ export default function ParticleSphereRefactor(
     };
 
     // Track touch position for particle repulsion
+    // Pixie Webs: the page keeps scrolling under a finger on the sphere (no
+    // preventDefault), and the particles still part around the touch.
     const handleTouchMove = (event: TouchEvent) => {
-      event.preventDefault(); // Prevent scrolling
       const containerRect = container.getBoundingClientRect();
       const touch = event.touches[0];
       if (touch) {
@@ -1039,8 +1040,6 @@ export default function ParticleSphereRefactor(
     const handleTouchStart = (event: TouchEvent) => {
       if (!cursorConfig.enabled || !cursorConfig.clickForce) return;
 
-      event.preventDefault();
-
       // Update matrix to ensure it's current
       particlesGroup.updateMatrixWorld(true);
 
@@ -1155,10 +1154,10 @@ export default function ParticleSphereRefactor(
       canvas.addEventListener("mouseleave", handleMouseLeaveCursor);
       canvas.addEventListener("click", handleClick);
       canvas.addEventListener("touchmove", handleTouchMove, {
-        passive: false,
+        passive: true,
       });
       canvas.addEventListener("touchstart", handleTouchStart, {
-        passive: false,
+        passive: true,
       });
       canvas.addEventListener("touchend", handleTouchEnd);
       canvas.addEventListener("touchcancel", handleTouchEnd);

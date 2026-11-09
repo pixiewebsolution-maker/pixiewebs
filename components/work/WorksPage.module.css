@@ -1,0 +1,721 @@
+/* The Our Works page, in the site's dark band, like Contact and the home
+   page's Our Works: white Montserrat, a silver second line, small spaced
+   capitals, the white pill, and each project in a dark browser frame. */
+.page {
+    --ink: #ffffff;
+    --ink-soft: rgba(255, 255, 255, 0.72);
+    --ink-dim: rgba(255, 255, 255, 0.45);
+    --line: rgba(255, 255, 255, 0.14);
+    --band: #18181a;
+    position: relative;
+    min-height: 100vh;
+    padding-top: clamp(28px, 4vw, 44px);
+    overflow: clip;
+    background:
+        radial-gradient(45% 40% at 80% 8%, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0) 70%),
+        var(--band);
+    color: var(--ink);
+}
+
+/* ── the logo lockup, lined up with the fixed Menu button ── */
+
+.lockup {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    height: 44px;
+    margin-left: var(--gutter);
+}
+
+.logo {
+    display: block;
+    width: auto;
+    height: 28px;
+}
+
+.divider {
+    display: block;
+    width: 1px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.brand {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.01em;
+}
+
+/* ── the stroke that draws itself on scroll (ScrollStroke) ── */
+
+/* laid across the whole page in its own pixels, behind everything: a faint
+   silver line in the background that the text and projects sit on top of */
+.stroke {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    display: block;
+    overflow: visible;
+    pointer-events: none;
+    opacity: 0.18;
+}
+
+.hero,
+.filters,
+.group,
+.cta {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── the statement ── */
+
+.hero {
+    padding: clamp(48px, 7vw, 110px) var(--gutter) 0;
+}
+
+/* small spaced capitals, like the service categories */
+.tag,
+.kind {
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    margin-top: clamp(14px, 1.6vw, 22px);
+    font-size: clamp(2.6rem, 6.4vw, 6.6rem);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+}
+
+/* each line rises out of its own mask */
+.line {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.06em;
+    margin-bottom: -0.06em;
+}
+
+.line > * {
+    display: block;
+}
+
+/* the silver second line, like the service titles */
+.title em,
+.ctaTitle em {
+    font-style: normal;
+    background: linear-gradient(90deg, #ffffff 0%, #c9c9c9 55%, #9a9a9a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.intro {
+    max-width: 640px;
+    margin-top: clamp(20px, 2.4vw, 36px);
+    font-size: clamp(1.05rem, 1.5vw, 1.45rem);
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: var(--ink-soft);
+}
+
+/* ── the filter chips ── */
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: clamp(40px, 5vw, 72px);
+    padding: 0 var(--gutter);
+    scroll-margin-top: 90px;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 44px;
+    padding: 0 22px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.chip:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.chip[aria-pressed="true"] {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #0c0c0d;
+}
+
+/* ── a category and its projects ── */
+
+.group {
+    padding: clamp(48px, 6vw, 96px) var(--gutter) 0;
+}
+
+.groupHead {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: baseline;
+    gap: 8px clamp(16px, 2.4vw, 40px);
+    padding-bottom: clamp(18px, 2vw, 28px);
+    border-bottom: 1px solid var(--line);
+}
+
+.groupTitle {
+    font-size: clamp(1.8rem, 3.2vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+}
+
+.groupLine {
+    font-size: clamp(14.5px, 1.05vw, 17px);
+    color: var(--ink-soft);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(48px, 5vw, 80px) clamp(24px, 3vw, 48px);
+    margin-top: clamp(32px, 4vw, 56px);
+}
+
+.card {
+    scroll-margin-top: 100px;
+}
+
+/* text for screen readers only */
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* the browser frame: a top bar and the cover under it */
+.frame {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: clamp(14px, 1.4vw, 22px);
+    overflow: hidden;
+    background: #111113;
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
+    text-align: left;
+    cursor: zoom-in;
+    transition:
+        transform 0.5s cubic-bezier(0.22, 0.8, 0.24, 1),
+        border-color 0.4s ease,
+        box-shadow 0.5s ease;
+}
+
+.frame:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 50px 110px rgba(0, 0, 0, 0.6);
+}
+
+.frame:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
+}
+
+/* a soft light that follows the pointer, and a fine highlight along the top edge */
+.frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+        radial-gradient(40% 60% at var(--mx, 50%) var(--my, 0%), rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 70%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0) 18%);
+    opacity: 0.35;
+    transition: opacity 0.4s ease;
+}
+
+.frame:hover::after {
+    opacity: 1;
+}
+
+.bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: clamp(30px, 2.4vw, 38px);
+    padding: 0 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: #1d1d20;
+}
+
+.dots {
+    display: flex;
+    gap: 6px;
+}
+
+.dots i {
+    display: block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.url {
+    flex: 1;
+    max-width: 280px;
+    margin: 0 auto;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    font-size: 11.5px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.shot {
+    display: block;
+    aspect-ratio: 2 / 1;
+    overflow: hidden;
+}
+
+.shot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transform: scale(1.01);
+    transition: transform 1.2s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.frame:hover .shot img {
+    transform: scale(1.045);
+}
+
+/* the "3 screens" / "View" tag, rising in on hover */
+.peek {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 36px;
+    padding: 0 14px 0 16px;
+    border-radius: 999px;
+    background: rgba(12, 12, 13, 0.78);
+    backdrop-filter: blur(8px);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #ffffff;
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+        opacity 0.3s ease,
+        transform 0.4s cubic-bezier(0.22, 0.8, 0.24, 1);
+}
+
+.peek svg {
+    width: 12px;
+    height: 12px;
+}
+
+.frame:hover .peek,
+.frame:focus-visible .peek {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* touch screens have no hover, so the tag is always there */
+@media (hover: none) {
+    .peek {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* the details under the frame */
+.meta {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: start;
+    gap: clamp(14px, 1.6vw, 24px);
+    margin-top: clamp(20px, 2vw, 28px);
+}
+
+.num {
+    padding-top: 2px;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--ink-dim);
+    font-variant-numeric: tabular-nums;
+}
+
+.name {
+    margin-top: 8px;
+    font-size: clamp(1.4rem, 1.9vw, 2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+}
+
+.blurb {
+    max-width: 520px;
+    margin-top: 10px;
+    font-size: clamp(14.5px, 1.05vw, 16.5px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+}
+
+/* a small outlined pill to the live site */
+.visit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 42px;
+    padding: 0 5px 0 16px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    font-size: 13.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.visitIcon {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #0c0c0d;
+}
+
+.visitIcon svg {
+    width: 42%;
+    height: 42%;
+    transition: transform 0.25s ease;
+}
+
+.visit:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #0c0c0d;
+}
+
+.visit:hover .visitIcon {
+    background: #0c0c0d;
+    color: #ffffff;
+}
+
+.visit:hover .visitIcon svg {
+    transform: translate(2px, -2px);
+}
+
+/* ── the closing call to action ── */
+
+.cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: clamp(96px, 12vw, 180px);
+    padding: clamp(64px, 8vw, 120px) var(--gutter) clamp(80px, 10vw, 150px);
+    border-top: 1px solid var(--line);
+    text-align: center;
+    background: radial-gradient(45% 60% at 50% 40%, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0) 70%);
+}
+
+.ctaTitle {
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(2.4rem, 5.6vw, 5.6rem);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+}
+
+.ctaText {
+    max-width: 520px;
+    margin: clamp(18px, 2vw, 28px) 0 clamp(28px, 3vw, 44px);
+    font-size: clamp(15px, 1.15vw, 18px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+}
+
+/* the white pill with a black arrow disc, as in Services */
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    height: 58px;
+    padding: 0 7px 0 30px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #0c0c0d;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.pill:hover {
+    background: #e8e8e8;
+    transform: translateY(-2px);
+}
+
+.pillIcon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #0c0c0d;
+    color: #ffffff;
+}
+
+.pillIcon svg {
+    width: 40%;
+    height: 40%;
+    transition: transform 0.25s ease;
+}
+
+.pill:hover .pillIcon svg {
+    transform: translate(2px, -2px);
+}
+
+.pill:focus-visible,
+.chip:focus-visible,
+.visit:focus-visible,
+.lockup:focus-visible,
+.close:focus-visible,
+.navBtn:focus-visible {
+    outline-color: #ffffff;
+}
+
+/* ── the full-screen viewer ── */
+
+.viewer {
+    position: fixed;
+    inset: 0;
+    /* above the Menu button */
+    z-index: 80;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: clamp(14px, 2vw, 24px);
+    padding: clamp(16px, 2.6vw, 36px) var(--gutter);
+    background: rgba(12, 12, 13, 0.94);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+}
+
+.viewerTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.viewerName {
+    margin-top: 6px;
+    font-size: clamp(1.3rem, 2vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+/* the white disc with a cross, like the open Menu button */
+.close {
+    position: relative;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ffffff;
+    transition: transform 0.25s ease;
+}
+
+.close:hover {
+    transform: rotate(90deg);
+}
+
+.close span {
+    position: absolute;
+    width: 16px;
+    height: 1.5px;
+    border-radius: 2px;
+    background: #0c0c0d;
+    transform: rotate(45deg);
+}
+
+.close span + span {
+    transform: rotate(-45deg);
+}
+
+.stagePic {
+    display: grid;
+    place-items: center;
+    min-height: 0;
+}
+
+.bigShot {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: clamp(10px, 1.2vw, 18px);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+    object-fit: contain;
+}
+
+.viewerBottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px 20px;
+}
+
+.viewerBottom:has(.counter) {
+    justify-content: center;
+}
+
+.navBtn {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 50%;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.navBtn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.navBtn:hover {
+    background: #ffffff;
+    color: #0c0c0d;
+}
+
+.counter {
+    min-width: 76px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-variant-numeric: tabular-nums;
+}
+
+.viewerBottom .pill {
+    height: 50px;
+    padding-left: 24px;
+}
+
+.viewerBottom:has(.counter) .pill {
+    margin-left: auto;
+}
+
+.viewerBottom .pill .pillIcon {
+    width: 38px;
+    height: 38px;
+}
+
+/* ── smaller screens ── */
+
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .groupHead {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    /* the Visit pill moves under the text */
+    .meta {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .visit {
+        grid-column: 2;
+        justify-self: start;
+    }
+
+    .bar {
+        gap: 10px;
+    }
+
+    .url {
+        max-width: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .frame,
+    .shot img,
+    .peek,
+    .close {
+        transition: none;
+    }
+
+    .frame:hover {
+        transform: none;
+    }
+
+    .frame:hover .shot img {
+        transform: scale(1.01);
+    }
+}

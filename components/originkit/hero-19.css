@@ -17,6 +17,13 @@
   animation-delay: calc(0.15s + var(--d, 0) * 0.12s);
 }
 
+/* the particle sphere fading in once it starts (orb.tsx) */
+@keyframes h19-fade {
+  from {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .h19 .h19-in {
     animation: none;

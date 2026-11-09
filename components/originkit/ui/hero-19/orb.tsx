@@ -2,9 +2,13 @@
 // Delivered by Originkit · stack: nextjs · styling: tailwind
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 
-import ParticleSphere from "@/components/originkit/ui/hero-19/particle-sphere";
+// Pixie Webs: the sphere's three.js code loads in its own chunk and starts once
+// the browser is idle after the first paint, so it never holds up the headline
+// and hand (the page's largest paint) on load.
+const ParticleSphere = dynamic(() => import("@/components/originkit/ui/hero-19/particle-sphere"), { ssr: false });
 import { MaskGroup } from "@/components/originkit/ui/hero-19/mask-group";
 import { haptic } from "@/lib/haptics";
 
@@ -65,6 +69,18 @@ export const Orb = () => {
   const coreRef = useRef<HTMLDivElement>(null);
   /** whether the press's own tap already went off, so the click doesn't tap twice */
   const pressTapped = useRef(false);
+  /** the sphere mounts once the browser is idle; phones draw fewer particles */
+  const [sphere, setSphere] = useState<{ count: number } | null>(null);
+
+  useEffect(() => {
+    const start = () => setSphere({ count: window.innerWidth < 768 ? 6000 : 10000 });
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(start, { timeout: 2500 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const t = setTimeout(start, 1200);
+    return () => clearTimeout(t);
+  }, []);
 
   /**
    * The hole follows the pointer off a window-level listener rather than
@@ -213,22 +229,26 @@ export const Orb = () => {
             if (!pressTapped.current) haptic(PRESS_MS);
           }}
         >
-          <ParticleSphere
-            particlesCount={10000}
-            particleScale={7}
-            rotationDirection="clockwise"
-            speed={20}
-            scale={10}
-            drag
-            smoothing={7}
-            dragSpeed={5}
-            stopOnHover={false}
-            cursorOn
-            cursorRadiusUI={75}
-            cursorStrengthUI={10}
-            clickForce={5}
-            sphereColor="#141414"
-          />
+          {sphere && (
+            <div className="size-full animate-[h19-fade_1s_ease_both]">
+              <ParticleSphere
+                particlesCount={sphere.count}
+                particleScale={7}
+                rotationDirection="clockwise"
+                speed={20}
+                scale={10}
+                drag
+                smoothing={7}
+                dragSpeed={5}
+                stopOnHover={false}
+                cursorOn
+                cursorRadiusUI={75}
+                cursorStrengthUI={10}
+                clickForce={5}
+                sphereColor="#141414"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

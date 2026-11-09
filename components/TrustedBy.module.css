@@ -1,8 +1,15 @@
-/* sits on the same page colour the sections above and below meet it with */
+/* Trusted By: the original strip (a centred heading over two rows of logos,
+   framed by two fading hairlines) in the site's dark band, with the client
+   logos in white. Colours are set here, locally. */
 .strip {
+    --ink: #ffffff;
+    --band: #18181a;
     position: relative;
+    /* overlaps the band above by a pixel, so a fractional edge can't show a hairline */
+    margin-top: -1px;
     padding: clamp(56px, 8vw, 128px) var(--gutter);
-    background: var(--bg);
+    color: var(--ink);
+    background: var(--band);
 }
 
 /* framed by two hairlines that fade out at their ends */
@@ -26,7 +33,7 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, rgba(12, 12, 13, 0), rgba(12, 12, 13, 0.14) 20%, rgba(12, 12, 13, 0.14) 80%, rgba(12, 12, 13, 0));
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.16) 20%, rgba(255, 255, 255, 0.16) 80%, rgba(255, 255, 255, 0));
 }
 
 .inner::before {
@@ -63,32 +70,58 @@
 .slot {
     display: grid;
     place-items: center;
-    width: clamp(130px, 11vw, 200px);
-    height: clamp(72px, 6vw, 108px);
-    font-size: clamp(13px, 1.05vw, 18px);
+    width: clamp(150px, 13vw, 240px);
+    height: clamp(88px, 7.4vw, 132px);
+    font-size: clamp(14px, 1.15vw, 20px);
 }
 
 .mark {
+    position: relative;
     grid-area: 1 / 1;
+    display: grid;
+    place-items: center;
     max-width: 100%;
-    object-fit: contain;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.25s ease;
 }
 
+/* the white and colour versions sit in the same spot; one shows at a time */
+.white,
+.color {
+    grid-area: 1 / 1;
+    max-width: calc(100% - 1.4em);
+    object-fit: contain;
+    transition: opacity 0.35s ease;
+}
+
+.color {
+    opacity: 0;
+}
+
+/* the white marks sit a little softened on the charcoal */
 .mark[data-state="in"] {
-    opacity: 1;
+    opacity: 0.8;
     visibility: visible;
 }
 
-.slot:hover .mark[data-state="in"] {
-    opacity: 1;
+/* hover: the logo shows its own colours (white logos just brighten) */
+@media (hover: hover) {
+    .slot:hover .mark[data-state="in"] {
+        opacity: 1;
+    }
+
+    .slot:hover .mark[data-state="in"] .white:not(:only-child) {
+        opacity: 0;
+    }
+
+    .slot:hover .mark[data-state="in"] .color {
+        opacity: 1;
+    }
 }
 
 /* ── the swap: the outgoing mark lifts and fades, the next rises in, slot by slot.
    The travel and blur stay small and the old mark is gone before it moves far,
-   so dark marks never smear into grey ghosts above the row. ── */
+   so marks never smear into ghosts above the row. ── */
 
 @keyframes markIn {
     from {
@@ -97,7 +130,7 @@
         filter: blur(3px);
     }
     to {
-        opacity: 1;
+        opacity: 0.8;
         transform: none;
         filter: none;
     }
@@ -105,7 +138,7 @@
 
 @keyframes markOut {
     from {
-        opacity: 1;
+        opacity: 0.8;
         transform: none;
         filter: none;
     }
@@ -119,8 +152,9 @@
     }
 }
 
+/* once it has risen in, the resting opacity (and the hover) take over again */
 .logos[data-swapped="true"] .mark[data-state="in"] {
-    animation: markIn 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation: markIn 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
     /* starts as the old mark finishes fading, so the two never stack */
     animation-delay: calc(var(--i) * 0.09s + 0.2s);
 }
@@ -133,23 +167,35 @@
 
 /* ── responsive ── */
 
-/* phones: two rows of three, filling the width */
-@media (max-width: 640px) {
+/* tablets and phones: the slots share the width instead of keeping a fixed
+   size, so a row never runs off the screen */
+@media (max-width: 1000px) {
     .logos {
         width: 100%;
-        grid-template-columns: repeat(var(--per-row, 3), minmax(0, 1fr));
+        grid-template-columns: repeat(var(--per-row, 5), minmax(0, 1fr));
         column-gap: 0;
         row-gap: 10px;
     }
 
     .slot {
         width: auto;
-        height: 64px;
-        font-size: 11px;
+    }
+}
+
+/* phones: two rows of three */
+@media (max-width: 640px) {
+    .slot {
+        height: 76px;
+        font-size: 12px;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .white,
+    .color {
+        transition: none;
+    }
+
     .logos[data-swapped="true"] .mark[data-state="in"],
     .mark[data-state="out"] {
         animation: none;

@@ -9,8 +9,8 @@ const LINKS = [
     { name: "Home", href: "/#home" },
     { name: "Services", href: "/#services" },
     { name: "Why Us", href: "/#why" },
-    { name: "Work", href: "/#work" },
-    { name: "About", href: "/#about" },
+    { name: "Work", href: "/work" },
+    { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
 ]
 

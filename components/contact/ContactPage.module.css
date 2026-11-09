@@ -103,6 +103,21 @@
     text-decoration-color: #ffffff;
 }
 
+/* the two phone numbers, after the email */
+.phones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 28px;
+    margin-top: 10px;
+    font-size: 0.72em;
+}
+
+.sentText a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 .rule {
     height: 1px;
     margin: clamp(32px, 4vw, 56px) var(--gutter) 0;

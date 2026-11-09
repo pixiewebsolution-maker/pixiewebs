@@ -203,14 +203,28 @@ export default function WhyChooseUs() {
     }, [])
 
 
+    const check = (
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M3.5 8.5l3 3 6-7" />
+        </svg>
+    )
+
     return (
         <section id="why" className={styles.section} aria-labelledby="why-title">
             <div ref={trackRef} className={styles.track} style={{ ["--steps" as string]: N }}>
                 <div className={styles.stage}>
+                    {/* the band's heading, in the site's voice: small capitals, then white over silver */}
                     <header className={styles.head}>
-                        <h2 id="why-title" className={styles.title}>
-                            Why Choose Us.
-                        </h2>
+                        <div>
+                            <p className={styles.tag}>Our Approach</p>
+                            <h2 id="why-title" className={styles.title}>
+                                <span>Why</span>
+                                <em>Choose Us.</em>
+                            </h2>
+                        </div>
+                        <p className={styles.lede}>
+                            Six things every project gets from us, from the first plan to long after launch.
+                        </p>
                     </header>
 
                     <div className={styles.body}>
@@ -231,6 +245,12 @@ export default function WhyChooseUs() {
 
                             {/* the fixed stop each feature turns into, like the finger stop on a rotary phone */}
                             <svg className={styles.slot} viewBox="-300 -300 600 600" aria-hidden="true">
+                                <defs>
+                                    <linearGradient id="why-slot" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0" stopColor="#ffffff" />
+                                        <stop offset="1" stopColor="#c9c9c9" />
+                                    </linearGradient>
+                                </defs>
                                 <path d={sector(0, R_OUT + 14)} />
                             </svg>
 
@@ -266,13 +286,14 @@ export default function WhyChooseUs() {
                             </div>
 
                             <div className={styles.hub}>
-                                <Logo className={styles.hubLogo} />
+                                <Logo tone="light" className={styles.hubLogo} />
                                 <span>PIXIE WEBS</span>
                             </div>
                         </div>
 
-                        {/* every feature's content sits stacked in one cell, so the card
-                            keeps the tallest height and the swap is a pure crossfade */}
+                        {/* a frosted panel, like the Testimonials deck. Every feature's content
+                            sits stacked in one cell, so the panel keeps the tallest height and
+                            the swap is a pure crossfade */}
                         <article className={styles.card} aria-live="polite">
                             {REASONS.map((item, i) => (
                                 <div
@@ -281,26 +302,36 @@ export default function WhyChooseUs() {
                                     data-state={i === active ? "active" : i < active ? "before" : "after"}
                                     aria-hidden={i !== active}
                                 >
-                                    <div className={styles.cardHead} style={{ ["--i" as string]: 0 }}>
+                                    <div className={styles.cardTop} style={{ ["--i" as string]: 0 }}>
+                                        <span className={styles.cardNum}>
+                                            {pad(i + 1)}
+                                            <span> / {pad(N)}</span>
+                                        </span>
                                         <span className={styles.cardIcon}>{item.icon}</span>
-                                        <h3 className={styles.cardTitle}>{item.title.join(" ")}</h3>
                                     </div>
-                                    <p className={styles.cardBody} style={{ ["--i" as string]: 1 }}>
+                                    <h3 className={styles.cardTitle} style={{ ["--i" as string]: 1 }}>
+                                        <span>{item.title[0]}</span> <em>{item.title[1]}</em>
+                                    </h3>
+                                    <p className={styles.cardBody} style={{ ["--i" as string]: 2 }}>
                                         {item.body}
                                     </p>
-                                    <ul className={styles.points} style={{ ["--i" as string]: 2 }}>
+                                    <ul className={styles.points} style={{ ["--i" as string]: 3 }}>
                                         {item.points.map((p) => (
-                                            <li key={p}>{p}</li>
+                                            <li key={p}>
+                                                {check}
+                                                {p}
+                                            </li>
                                         ))}
                                     </ul>
-                                    <footer className={styles.cardFoot} style={{ ["--i" as string]: 3 }}>
-                                        <span>{item.title.join(" ")}</span>
-                                        <span className={styles.count}>
-                                            {pad(i + 1)} / {pad(N)}
-                                        </span>
-                                    </footer>
                                 </div>
                             ))}
+
+                            {/* how far round the dial: one short bar per feature, filled up to this one */}
+                            <div className={styles.progress} aria-hidden="true">
+                                {REASONS.map((r, i) => (
+                                    <span key={r.title.join(" ")} data-on={i <= active} />
+                                ))}
+                            </div>
                         </article>
                     </div>
                 </div>

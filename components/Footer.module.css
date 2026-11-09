@@ -70,8 +70,45 @@
     color: rgba(255, 255, 255, 0.62);
 }
 
+/* the social links: line icons in outlined discs, like the back-to-top arrow */
+.socials {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+    list-style: none;
+}
+
+.social {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.8);
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.social svg {
+    width: 18px;
+    height: 18px;
+}
+
+.social:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #0c0c0d;
+}
+
+.social:focus-visible {
+    outline-color: #ffffff;
+}
+
 .copy {
-    margin-top: 14px;
+    margin-top: 18px;
     font-size: 13.5px;
     color: rgba(255, 255, 255, 0.38);
 }
@@ -147,9 +184,34 @@
 
 .ruleInner {
     display: flex;
-    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px 24px;
     padding-top: 18px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* the legal pages, quiet, at the left of the hairline */
+.legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+}
+
+.legalLink {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.25s ease;
+}
+
+.legalLink:hover {
+    color: #ffffff;
+}
+
+.legalLink:focus-visible {
+    outline-color: #ffffff;
 }
 
 /* the wordmark: full bleed, its bottom cut by the page's end */
@@ -182,6 +244,7 @@
     }
 
     .ruleInner {
-        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

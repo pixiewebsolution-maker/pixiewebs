@@ -2,18 +2,21 @@
 
 import { useEffect, useMemo, useRef, useState } from "react"
 import Image from "next/image"
-import manifest from "@/public/clients/color/manifest.json"
+import mono from "@/public/clients/mono/manifest.json"
+import color from "@/public/clients/color-dark/manifest.json"
 import styles from "./TrustedBy.module.css"
 
 /*
- * Client logos in their own colours, made from the files in public/clients (see
- * public/clients/color; logos that are white themselves use their near-black
- * mark from mono-dark, so they show on the light page). Listed
- * so each run of five mixes wide wordmarks with
- * square marks; slot k shows every fifth logo starting at k.
+ * Client logos in white, for the dark band (public/clients/mono, made from the
+ * files in public/clients). Hovering one shows it in its own colours, from
+ * public/clients/color-dark: the colour logos with their black and very dark
+ * parts lifted to white or a light tint, so they read on the charcoal (Raha,
+ * Rasoi Studio and Trishika are their untouched originals). Logos that are
+ * white to begin with simply stay white. Listed so each run of five mixes wide
+ * wordmarks with square marks; slot k shows every fifth logo starting at k.
  */
-const LOGOS: { file: string; name: string }[] = [
-    { file: "rogue-ninja.png", name: "Rogue Ninja" },
+const LOGOS: { file: string; name: string; white?: boolean }[] = [
+    { file: "rogue-ninja.png", name: "Rogue Ninja", white: true },
     { file: "bossperfumes.png", name: "Boss General Trading" },
     { file: "raha.png", name: "Raha Convention Centre" },
     { file: "jacob-ventures.png", name: "Jacob Ventures" },
@@ -23,7 +26,7 @@ const LOGOS: { file: string; name: string }[] = [
     { file: "sezo-cabs.png", name: "Sezo Cabs" },
     { file: "curefully.png", name: "Curefully" },
     { file: "trishika.png", name: "Trishika Saloon & Wellness Spa" },
-    { file: "flynova.png", name: "Flynova Reisen" },
+    { file: "flynova.png", name: "Flynova Reisen", white: true },
 
     { file: "voiture.png", name: "Voiture" },
     { file: "vesper-wedding-company.png", name: "Vesper Wedding Company" },
@@ -34,34 +37,37 @@ const LOGOS: { file: string; name: string }[] = [
     { file: "moven-active.png", name: "Moven Active" },
     { file: "rasoi-studio.png", name: "Rasoi Studio" },
     { file: "why-marketing.png", name: "WhyMarketing × Brandables" },
-    { file: "maximum-efforts.png", name: "Maximum Efforts" },
+    { file: "maximum-efforts.png", name: "Maximum Effort", white: true },
 ]
 
 /** Two rows: five slots each, or three on phones. */
 const SLOTS_WIDE = 10
 const SLOTS_NARROW = 6
-const EVERY_MS = 2000
+const EVERY_MS = 3000
 
 /** Area in em² every mark is drawn at, so a square mark and a long wordmark carry the same weight. */
-const AREA = 21
-/** a slot is ~10em wide at every size, so 9.5em always fits */
-const MAX_W = 9.5
-const MAX_H = 4.5
+const AREA = 28
+/** a slot is ~11em wide at every size, so 10em always fits */
+const MAX_W = 10
+const MAX_H = 5
 
-const size = (file: string) => {
-    const m = manifest.find((x) => x.file === file)
+type Entry = { file: string; w: number; h: number }
+
+/** a mark's pixel size and the height (in em) it's drawn at */
+const size = (list: Entry[], file: string) => {
+    const m = list.find((x) => x.file === file)
     if (!m) throw new Error(`no manifest entry for ${file}`)
     const r = m.w / m.h
     const h = Math.min(Math.sqrt(AREA / r), MAX_H, MAX_W / r)
     return { w: m.w, h: m.h, em: +h.toFixed(3) }
 }
 
-const SIZED = LOGOS.map((l) => ({ ...l, ...size(l.file) }))
+const SIZED = LOGOS.map((l) => ({ ...l, mono: size(mono, l.file), color: size(color, l.file) }))
 
 /**
  * Slot k shows every n-th logo from k, so no logo can appear in two slots. A
- * slot left with a single logo borrows the first one, which is safe while slot
- * 0 holds exactly two: they show it on opposite ticks.
+ * slot left with a single logo borrows the first one; a slot holds rather than
+ * put up a logo another slot is already showing, so it never appears twice.
  */
 function queuesFor(n: number) {
     const queues = Array.from({ length: n }, (_, k) => SIZED.filter((_, i) => i % n === k))
@@ -69,14 +75,26 @@ function queuesFor(n: number) {
     return queues
 }
 
+type Pos = { cur: number[]; prev: (number | null)[] }
+
+const startPos = (n: number): Pos => ({ cur: Array(n).fill(0), prev: Array(n).fill(null) })
+
 export default function TrustedBy() {
     const ref = useRef<HTMLElement>(null)
-    const [tick, setTick] = useState(0)
+    // each slot keeps its own place in its queue, so a hovered one can hold still
+    const [pos, setPos] = useState<Pos>(() => startPos(SLOTS_WIDE))
     // no motion on first paint; only swaps animate
     const [swapped, setSwapped] = useState(false)
     const [slots, setSlots] = useState(SLOTS_WIDE)
     const queues = useMemo(() => queuesFor(slots), [slots])
+    const queuesRef = useRef(queues)
+    queuesRef.current = queues
+    /** the slot under the pointer, which doesn't switch */
+    const hovered = useRef<number | null>(null)
     const perRow = slots / 2
+
+    // a new layout starts every slot on its first logo
+    useEffect(() => setPos(startPos(slots)), [slots])
 
     useEffect(() => {
         const mq = window.matchMedia("(max-width: 640px)")
@@ -86,7 +104,7 @@ export default function TrustedBy() {
         return () => mq.removeEventListener("change", apply)
     }, [])
 
-    // advance every two seconds, but only while the strip is on screen
+    // advance every three seconds, but only while the strip is on screen
     useEffect(() => {
         const el = ref.current
         if (!el) return
@@ -95,7 +113,22 @@ export default function TrustedBy() {
             if (timer) return
             timer = window.setInterval(() => {
                 setSwapped(true)
-                setTick((t) => t + 1)
+                setPos(({ cur }) => {
+                    const qs = queuesRef.current
+                    const next = [...cur]
+                    const prev: (number | null)[] = cur.map(() => null)
+                    qs.forEach((q, k) => {
+                        if (k === hovered.current || q.length < 2) return
+                        const n = (cur[k] + 1) % q.length
+                        // never put up a logo another slot is already showing
+                        // (one slot borrows the first slot's logo)
+                        const shown = qs.some((o, j) => j !== k && o[next[j]]?.file === q[n].file)
+                        if (shown) return
+                        next[k] = n
+                        prev[k] = cur[k]
+                    })
+                    return { cur: next, prev }
+                })
             }, EVERY_MS)
         }
         const stop = () => {
@@ -116,24 +149,44 @@ export default function TrustedBy() {
                 <h2 className={styles.heading}>Trusted by the best</h2>
                 <ul className={styles.logos} data-swapped={swapped} style={{ ["--per-row" as string]: perRow }}>
                     {queues.map((queue, slot) => {
-                        const cur = tick % queue.length
-                        const prev = (tick - 1 + queue.length) % queue.length
+                        const cur = (pos.cur[slot] ?? 0) % queue.length
+                        const prev = pos.prev[slot] ?? null
                         // stagger along each row, the second row a beat behind the first
                         const delay = (slot % perRow) + Math.floor(slot / perRow) * 0.5
                         return (
-                            <li key={slot} className={styles.slot} style={{ ["--i" as string]: delay }}>
+                            <li
+                                key={slot}
+                                className={styles.slot}
+                                style={{ ["--i" as string]: delay }}
+                                onMouseEnter={() => (hovered.current = slot)}
+                                onMouseLeave={() => (hovered.current = null)}
+                            >
                                 {queue.map((logo, i) => (
-                                    <Image
+                                    <span
                                         key={logo.file}
-                                        src={`/clients/color/${logo.file}`}
-                                        alt={i === cur ? logo.name : ""}
-                                        aria-hidden={i !== cur}
-                                        width={logo.w}
-                                        height={logo.h}
                                         className={styles.mark}
                                         data-state={i === cur ? "in" : swapped && i === prev ? "out" : "idle"}
-                                        style={{ height: `${logo.em}em`, width: "auto" }}
-                                    />
+                                        aria-hidden={i !== cur}
+                                    >
+                                        <Image
+                                            src={`/clients/mono/${logo.file}`}
+                                            alt={i === cur ? logo.name : ""}
+                                            width={logo.mono.w}
+                                            height={logo.mono.h}
+                                            className={styles.white}
+                                            style={{ height: `${logo.mono.em}em`, width: "auto" }}
+                                        />
+                                        {!logo.white && (
+                                            <Image
+                                                src={`/clients/color-dark/${logo.file}`}
+                                                alt=""
+                                                width={logo.color.w}
+                                                height={logo.color.h}
+                                                className={styles.color}
+                                                style={{ height: `${logo.color.em}em`, width: "auto" }}
+                                            />
+                                        )}
+                                    </span>
                                 ))}
                             </li>
                         )

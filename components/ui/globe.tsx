@@ -445,11 +445,16 @@ function __OriginkitBase_Globe({
         const loadWorldData = async () => {
             try {
                 setIsLoading(true);
-                const response = await fetch(
-                    "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/50m/physical/ne_50m_land.json"
-                );
-                if (!response.ok) throw new Error("Failed to load land data");
-                const landFeatures = await response.json();
+                // Pixie Webs: the land shapes ship with the site (Natural Earth via
+                // world-atlas) instead of being fetched from GitHub on every visit;
+                // phones and tablets get the lighter 1:110m map, larger screens 1:50m.
+                const small = window.innerWidth < 1024;
+                const [{ feature }, topoModule] = await Promise.all([
+                    import("topojson-client"),
+                    small ? import("world-atlas/land-110m.json") : import("world-atlas/land-50m.json"),
+                ]);
+                const topo: any = (topoModule as any).default ?? topoModule;
+                const landFeatures: any = feature(topo, topo.objects.land);
 
                 while (continentOutlineGroup.children.length > 0) {
                     continentOutlineGroup.remove(
