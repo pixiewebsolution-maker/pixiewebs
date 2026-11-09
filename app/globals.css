@@ -45,6 +45,14 @@
         scroll-behavior: smooth;
     }
 
+    /* phones: the Our Works screens (OurWorkMobile) are snap points, so each
+       scroll stops on the next one; elsewhere the page scrolls freely */
+    @media (max-width: 900px) {
+        html {
+            scroll-snap-type: y proximity;
+        }
+    }
+
     body {
         background: var(--bg);
         color: var(--ink);

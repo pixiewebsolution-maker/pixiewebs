@@ -108,15 +108,15 @@
     "semantic_hash": ""
   },
   "components/originkit/ui/hero-19/orb.tsx": {
-    "mtime": 1794211879.3969913,
-    "seen": 1794212352.9039173,
-    "ast_hash": "2c4dff0b9a7749a75d60b6844cedc533",
+    "mtime": 1794215205.104046,
+    "seen": 1794215398.5007057,
+    "ast_hash": "014867ff1510408ce71f1723e592965c",
     "semantic_hash": ""
   },
   "components/originkit/ui/hero-19/particle-sphere.tsx": {
-    "mtime": 1794211315.2576013,
-    "seen": 1794212352.9039173,
-    "ast_hash": "de38ae5891e9e171cafff9948ec2526c",
+    "mtime": 1794214974.0080633,
+    "seen": 1794215398.5007057,
+    "ast_hash": "4b7d56c280859c5cf4e9d18a14fdfe8f",
     "semantic_hash": ""
   },
   "components/originkit/ui/hero-19/section-26-hero.tsx": {
@@ -270,9 +270,9 @@
     "semantic_hash": ""
   },
   "components/OurWork.tsx": {
-    "mtime": 1794213487.400083,
-    "seen": 1794213513.37457,
-    "ast_hash": "832f83250b6916dca2cac4006efd9b5a",
+    "mtime": 1794215335.5283377,
+    "seen": 1794215398.5007057,
+    "ast_hash": "1f8d75e9aa432e3d27700a05dec18306",
     "semantic_hash": ""
   },
   "public/work/01.webp": {
@@ -930,9 +930,9 @@
     "semantic_hash": ""
   },
   "components/HeroStack.tsx": {
-    "mtime": 1794201958.6394558,
-    "seen": 1794201972.3449376,
-    "ast_hash": "0f2da92ce9fd1d95bb3bc50b92d5bc86",
+    "mtime": 1794214974.0080633,
+    "seen": 1794215398.5007057,
+    "ast_hash": "6cc15e269f7bf27a1d47513feb152860",
     "semantic_hash": ""
   },
   "public/clients/color-dark/manifest.json": {
@@ -1839,6 +1839,12 @@
     "mtime": 1794211619.9266768,
     "seen": 1794212352.9039173,
     "ast_hash": "059370830d4bb21d1282527b07d95980",
+    "semantic_hash": ""
+  },
+  "components/OurWorkMobile.tsx": {
+    "mtime": 1794215045.3655741,
+    "seen": 1794215398.5007057,
+    "ast_hash": "35687318d26e610fd11b8eb13e914d93",
     "semantic_hash": ""
   },
   "package-lock.json": {

@@ -233,3 +233,14 @@
         height: 46px;
     }
 }
+
+/* phones: no live background blur (the panels keep their translucent fill);
+   it's costly on a phone's graphics chip and barely visible at this size */
+@media (max-width: 900px) {
+    /* and a solid fill instead, so the cards stacked behind don't show through */
+    .card {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        background: linear-gradient(140deg, #2c2c30, #222225 60%, #1e1e21);
+    }
+}

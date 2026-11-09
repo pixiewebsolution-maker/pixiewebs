@@ -699,3 +699,17 @@
         filter: none;
     }
 }
+
+/* phones: no live background blur (the panels keep their translucent fill);
+   it's costly on a phone's graphics chip and barely visible at this size */
+@media (max-width: 900px) {
+    .includes li {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+
+    /* the soft blurred copy of each photo behind it: the costliest effect on the page */
+    .ambient {
+        display: none;
+    }
+}

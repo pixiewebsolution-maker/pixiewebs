@@ -580,3 +580,12 @@
         transition: none;
     }
 }
+
+/* phones: no live background blur (the panels keep their translucent fill);
+   it's costly on a phone's graphics chip and barely visible at this size */
+@media (max-width: 900px) {
+    .card {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+}

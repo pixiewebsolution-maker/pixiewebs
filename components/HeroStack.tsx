@@ -17,7 +17,14 @@ export default function HeroStack({ hero, children }: { hero: ReactNode; childre
     const { scrollYProgress } = useScroll({ target: overRef, offset: ["start end", "start start"] })
     const scale = useTransform(scrollYProgress, [0, 1], [1, reduce ? 1 : 0.94])
     const [covered, setCovered] = useState(false)
-    useMotionValueEvent(scrollYProgress, "change", (v) => setCovered(v >= 0.999))
+    useMotionValueEvent(scrollYProgress, "change", (v) => {
+        const now = v >= 0.999
+        if (now === covered) return
+        setCovered(now)
+        // tells the hero's sphere and orb to rest while they're hidden (and wake after)
+        document.documentElement.dataset.heroCovered = String(now)
+        window.dispatchEvent(new CustomEvent("pixie:hero", { detail: { covered: now } }))
+    })
 
     return (
         <div className={styles.stack}>

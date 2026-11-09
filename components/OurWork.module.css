@@ -594,3 +594,10 @@
         transition: none;
     }
 }
+
+/* phones get OurWorkMobile instead of this pinned sequence */
+@media (max-width: 900px) {
+    .scroller {
+        display: none;
+    }
+}

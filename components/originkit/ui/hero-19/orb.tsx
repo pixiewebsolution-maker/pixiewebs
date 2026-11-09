@@ -73,7 +73,7 @@ export const Orb = () => {
   const [sphere, setSphere] = useState<{ count: number } | null>(null);
 
   useEffect(() => {
-    const start = () => setSphere({ count: window.innerWidth < 768 ? 6000 : 10000 });
+    const start = () => setSphere({ count: window.innerWidth < 768 ? 3500 : 10000 });
     if ("requestIdleCallback" in window) {
       const id = window.requestIdleCallback(start, { timeout: 2500 });
       return () => window.cancelIdleCallback(id);
@@ -151,14 +151,25 @@ export const Orb = () => {
       core.style.setProperty("--hole-y", `calc(50% + ${eased.y.toFixed(1)}px)`);
       core.style.setProperty("--hole-r", `${eased.r.toFixed(1)}px`);
 
-      frame = requestAnimationFrame(tick);
+      // Pixie Webs: rest once the hole has caught up (repainting a blurred,
+      // masked layer every frame for nothing was costly); a pointer move wakes it
+      const settled =
+        Math.abs(pointer.x - eased.x) < 0.3 &&
+        Math.abs(pointer.y - eased.y) < 0.3 &&
+        Math.abs(targetR - eased.r) < 0.3;
+      frame = settled ? 0 : requestAnimationFrame(tick);
     };
 
-    window.addEventListener("pointermove", onMove, { passive: true });
+    const wake = (event: PointerEvent) => {
+      onMove(event);
+      if (!frame) frame = requestAnimationFrame(tick);
+    };
+
+    window.addEventListener("pointermove", wake, { passive: true });
     frame = requestAnimationFrame(tick);
 
     return () => {
-      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointermove", wake);
       cancelAnimationFrame(frame);
     };
   }, []);

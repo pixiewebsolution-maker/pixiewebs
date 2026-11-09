@@ -515,9 +515,20 @@ export default function ParticleSphereRefactor(
     // Velocity decay for throw: higher smoothing = more momentum
     const velocityDecay = mapLinear(smoothingN, 0, 1, 0.7, 0.96);
 
+    // Pixie Webs: the sphere rests (no frames drawn) while it can't be seen,
+    // when it's scrolled away or the next section covers the pinned hero
+    // (HeroStack announces that with a "pixie:hero" event).
+    let offscreen = false;
+    let covered = document.documentElement.dataset.heroCovered === "true";
+    const paused = () => offscreen || covered;
+
     // Animation loop - uses cached isCanvas value for performance
     const animate = () => {
-      // Continue with animation (component should always render to show changes)
+      if (paused()) {
+        animationFrameId = null;
+        animationFrameRef.current = null;
+        return;
+      }
       animateCore();
     };
 
@@ -1306,8 +1317,22 @@ export default function ParticleSphereRefactor(
     resizeObserver.observe(container);
     window.addEventListener("resize", handleResize);
 
+    // wake when it comes back into view, rest when it leaves
+    const visibilityObserver = new IntersectionObserver(([entry]) => {
+      offscreen = !entry.isIntersecting;
+      if (!paused()) startAnimation();
+    });
+    visibilityObserver.observe(container);
+    const onHero = (event: Event) => {
+      covered = !!(event as CustomEvent<{ covered: boolean }>).detail?.covered;
+      if (!paused()) startAnimation();
+    };
+    window.addEventListener("pixie:hero", onHero);
+
     // Cleanup for preview/live mode
     return () => {
+      visibilityObserver.disconnect();
+      window.removeEventListener("pixie:hero", onHero);
       resizeObserver.disconnect();
       window.removeEventListener("resize", handleResize);
       if (animationFrameId !== null) {

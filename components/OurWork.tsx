@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react"
 import { haptic } from "@/lib/haptics"
 import { CATEGORIES, WORKS, workLink } from "@/lib/works"
+import OurWorkMobile from "./OurWorkMobile"
 import styles from "./OurWork.module.css"
 
 /** home-page screenshots for the wall, in public/work (960px copies of assets/originals/our-works) */
@@ -154,7 +155,7 @@ function Arrow() {
  * The wall, the break and the turns follow the scroll exactly, so they run
  * both ways; only the carousels move on a timer.
  */
-export default function OurWork() {
+function OurWorkDesktop() {
     const scrollerRef = useRef<HTMLDivElement>(null)
     const wallRefs = useRef<(HTMLDivElement | null)[]>([])
     const faceRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -182,11 +183,50 @@ export default function OurWork() {
     // the last-to-first step still slides forward before snapping back to 0
     const [pos, setPos] = useState<number[]>(() => NICHES.map(() => 0))
     const [snap, setSnap] = useState<boolean[]>(() => NICHES.map(() => false))
+    /** phones get OurWorkMobile instead; none of this sequence's work runs there */
+    const desktopRef = useRef(true)
+    /** the section is near the screen: its images load and its scroll handler runs */
+    const [near, setNear] = useState(false)
+    const nearRef = useRef(false)
+
+    useEffect(() => {
+        const mq = window.matchMedia("(min-width: 901px)")
+        const sync = () => (desktopRef.current = mq.matches)
+        sync()
+        mq.addEventListener("change", sync)
+        // near: within a screen and a half above or below, so the images are in
+        // before they're seen. A plain distance check on scroll (one measurement),
+        // which can't miss the way a deferred observer callback can.
+        const check = () => {
+            const scroller = scrollerRef.current
+            if (!scroller) return
+            const r = scroller.getBoundingClientRect()
+            const vh = window.innerHeight
+            const isNear = r.top < vh * 2.5 && r.bottom > -vh * 1.5
+            if (isNear !== nearRef.current) {
+                nearRef.current = isNear
+                if (isNear) {
+                    setNear(true)
+                    frame()
+                }
+            }
+        }
+        check()
+        window.addEventListener("scroll", check, { passive: true })
+        window.addEventListener("resize", check)
+        return () => {
+            mq.removeEventListener("change", sync)
+            window.removeEventListener("scroll", check)
+            window.removeEventListener("resize", check)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const frame = useCallback(() => {
         const scroller = scrollerRef.current
         const g = geo.current
-        if (!scroller || !g) return
+        // nothing to do on phones, or while the section is far off screen
+        if (!scroller || !g || !desktopRef.current || !nearRef.current) return
         const total = scroller.offsetHeight - g.vh
         const P = total > 0 ? clamp(-scroller.getBoundingClientRect().top / total) : 0
 
@@ -398,7 +438,6 @@ export default function OurWork() {
     return (
         <div
             ref={scrollerRef}
-            id="work"
             className={styles.scroller}
             // one screen, plus the sequence's scroll
             style={{ height: `calc(100svh + ${TOTAL * 100}svh)` }}
@@ -408,7 +447,7 @@ export default function OurWork() {
                 <div ref={glowRef} className={styles.glow} aria-hidden="true" style={{ opacity: 0 }}>
                     {NICHES.map((n, ni) =>
                         n.works.map((w, k) => (
-                            <img key={w.img} src={`/work/featured/${w.img}.webp`} alt="" loading="lazy" decoding="async" data-on={ni === niche && k === slide} />
+                            <img key={w.img} src={near ? `/work/featured/${w.img}.webp` : undefined} alt="" decoding="async" data-on={ni === niche && k === slide} />
                         )),
                     )}
                 </div>
@@ -425,7 +464,7 @@ export default function OurWork() {
                                 className={styles.wallCard}
                                 aria-hidden="true"
                             >
-                                <img src={shot(WALL_SHOT[i])} alt="" loading="lazy" decoding="async" />
+                                <img src={near ? shot(WALL_SHOT[i]) : undefined} alt="" decoding="async" />
                             </div>
                         ))}
 
@@ -464,9 +503,8 @@ export default function OurWork() {
                                         // never spills into the slide beside it
                                         <div key={k} className={styles.slideFrame}>
                                             <img
-                                                src={`/work/featured/${w.img}.webp`}
+                                                src={near ? `/work/featured/${w.img}.webp` : undefined}
                                                 alt=""
-                                                loading="lazy"
                                                 decoding="async"
                                                 className={styles.slide}
                                                 // the first slide zooms with its copy, so the jump back to it can't be seen
@@ -503,7 +541,7 @@ export default function OurWork() {
                                 aria-current={k === slide}
                                 onClick={() => pickWork(niche, k)}
                             >
-                                <img src={`/work/featured/${w.img}.webp`} alt="" loading="lazy" decoding="async" />
+                                <img src={near ? `/work/featured/${w.img}.webp` : undefined} alt="" decoding="async" />
                                 {/* the time left on this slide, filling until the next one slides in */}
                                 {k === slide && (
                                     <span
@@ -571,6 +609,29 @@ export default function OurWork() {
                     </a>
                 </div>
             </section>
+        </div>
+    )
+}
+
+/**
+ * Our Works: on desktop, the pinned 3D sequence above, built only there (on
+ * the client, once the screen is known to be wide); on phones, OurWorkMobile,
+ * a run of full screens, which carries the same text for search engines too.
+ */
+export default function OurWork() {
+    const [desktop, setDesktop] = useState(false)
+    useEffect(() => {
+        const mq = window.matchMedia("(min-width: 901px)")
+        const sync = () => setDesktop(mq.matches)
+        sync()
+        mq.addEventListener("change", sync)
+        return () => mq.removeEventListener("change", sync)
+    }, [])
+    return (
+        <div id="work">
+            {desktop && <OurWorkDesktop />}
+            {/* phones: the same works as a run of full screens, one per scroll */}
+            <OurWorkMobile niches={NICHES} viewAll={VIEW_ALL_HREF} />
         </div>
     )
 }
