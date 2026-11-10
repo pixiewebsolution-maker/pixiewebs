@@ -84,8 +84,10 @@ export const Section26Hero = () => {
         </div>
 
         {/* Headline. Desktop anchors the block to the bottom of the stage, so it
-            holds its place as the viewport grows. */}
-        <div ref={textRef} className="absolute top-[118px] left-1/2 z-20 flex w-[calc(100%-32px)] -translate-x-1/2 flex-col items-center gap-7 ipad:top-[clamp(110px,19.5svh,200px)] ipad:w-[min(640px,calc(100%-96px))] desktop-sm:top-auto desktop-sm:bottom-[clamp(150px,24vh,260px)] desktop-sm:left-25 desktop-sm:w-auto desktop-sm:translate-x-0 desktop-sm:items-start desktop-sm:gap-[44px]">
+            holds its place as the viewport grows. It ignores the pointer: its
+            box reaches over the left of the orb on most laptop screens, and
+            would otherwise swallow the orb's hover there. */}
+        <div ref={textRef} className="pointer-events-none absolute top-[118px] left-1/2 z-20 flex w-[calc(100%-32px)] -translate-x-1/2 flex-col items-center gap-7 ipad:top-[clamp(110px,19.5svh,200px)] ipad:w-[min(640px,calc(100%-96px))] desktop-sm:top-auto desktop-sm:bottom-[clamp(150px,24vh,260px)] desktop-sm:left-25 desktop-sm:w-auto desktop-sm:translate-x-0 desktop-sm:items-start desktop-sm:gap-[44px]">
           <div className="flex flex-col items-center gap-4 text-center text-[#0c0c0d] desktop-sm:w-[600px] desktop-sm:items-start desktop-sm:text-left">
             <h1 className="h19-in font-sans text-[clamp(26px,7.8vw,34px)] leading-[1.1] font-bold tracking-[-0.015em] ipad:text-[46px] desktop-sm:text-[clamp(32px,2.6vw,44px)] desktop-sm:leading-[1.08]" style={{ ["--d" as string]: 1 }}>
               We build technology

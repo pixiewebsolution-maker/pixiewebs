@@ -174,6 +174,10 @@ function mapCursorStrengthUiToMultiplier(ui: number): number {
   return mapLinear(clamped, 0, 1.0, 0, 15);
 }
 
+/** how far round the back of the sphere the cursor still parts the dots, as a
+    share of its radius (0: front only; 0.7: the back's outer ring too) */
+const BACK_RING = 0.7;
+
 // Cursor interaction constants (from ref.tsx)
 const CURSOR_PHYSICS = {
   RETURN_FORCE: 0.015, // Balanced for smooth return after click scatter
@@ -643,12 +647,17 @@ export default function ParticleSphereRefactor(
             const dy = mouse.y - screenY;
             const distanceSquared = dx * dx + dy * dy;
 
-            // Only the front layer (facing the camera, worldPos.z
-            // > 0) reacts — the back layer keeps rotating untouched.
+            // The front layer reacts, plus the back layer's outer ring: the
+            // sphere is see-through, and near its edge the back dots sit
+            // right beside the front ones. Pixie Webs: without that ring the
+            // left edge looked dead, because the sphere turns left to right,
+            // so the dots there are arriving from the back and hadn't been
+            // pushed yet (on the right they already had). Deep back dots,
+            // seen through the middle, still keep rotating untouched.
             if (
               distanceSquared < cursorRadiusSquared &&
               distanceSquared > 0 &&
-              worldPos.z > 0
+              worldPos.z > -BACK_RING * sphereRadius
             ) {
               // Apply repulsion force
               const distance = Math.sqrt(distanceSquared);
