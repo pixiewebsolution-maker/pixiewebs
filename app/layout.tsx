@@ -45,6 +45,10 @@ export const metadata: Metadata = {
         title: SITE_TITLE,
         description: SITE_DESCRIPTION,
     },
+    // proves to Meta (Facebook/Instagram) that pixiewebs.com belongs to Pixie Webs
+    verification: {
+        other: { "facebook-domain-verification": "mzxqbrux3zebaff3gtvqn4kynhi7nq" },
+    },
 }
 
 export const viewport: Viewport = {
